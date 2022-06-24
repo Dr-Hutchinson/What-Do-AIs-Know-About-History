@@ -9,7 +9,7 @@ from pages import benchmarks_results, Baconbot_1_7_1
 app = MultiPage()
 
 st.set_page_config(
-    page_title='Simulated Conversations with Francis Bacon',
+    page_title='The GPT-3 Challenge: Can AIs Accurately Interpret Historical Knowledge?',
     layout='wide',
     page_icon='🔍'
 )
