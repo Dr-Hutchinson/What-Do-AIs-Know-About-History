@@ -8,6 +8,11 @@ from pages import benchmarks_results, Baconbot_1_7_1
 # Create an instance of the app
 app = MultiPage()
 
+st.set_page_config(
+    page_title='Simulated Conversations with Francis Bacon',
+    layout='wide',
+    page_icon='🔍'
+)
 # Title of the main page
 st.title("The GPT-3 Challenge: Can AI Accurately Interpret Historical Knowledge?")
 
