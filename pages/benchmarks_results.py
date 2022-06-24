@@ -41,7 +41,8 @@ def app():
     us_random = df2.sample()
     world_random = df3.sample()
 
-    st.header("History Benchmarks Demo")
+    st.header("What Do AI's Know About History?")
+    st.write("Text")
 
     with st.sidebar.form(key ='Form2'):
         field_choice = st.radio("Choose the subject:", ["U.S. History", "European History", "World History"])
