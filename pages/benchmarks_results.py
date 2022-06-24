@@ -42,7 +42,7 @@ def app():
     world_random = df3.sample()
 
     st.header("What Do AI's Know About History?")
-    st.write("While intense debate defines the field of generative AI, it is possible to assess GPT-3’s capacities for a form of historical knowledge, and document the remarkable advances of those capacities. The first major assessment came from a [January 2021 study](https://arxiv.org/pdf/2008.02275.pdf) by a team of ML researchers led by Dan Hendryks. Their study established a set of benchmarks for assessing GPT-3 on collections of multiple-choice questions in fifty-seven academic disciplines at varying difficulty levels. History was included in this assessment in the form of hundreds of questions drawn from the Advanced Placement (A.P.) curriculums for U.S., European, and World history.")
+    st.write("While intense debate defines the field of generative AI, it is possible to assess GPT-3’s capacities for a form of historical knowledge, and document the remarkable advances of those capacities. The first major assessment came from a [January 2021 study](https://arxiv.org/pdf/2008.02275.pdf) by a team of ML researchers led by [Dan Hendryks](https://people.eecs.berkeley.edu/~hendrycks/). Their study established a set of benchmarks for assessing GPT-3 on collections of multiple-choice questions in fifty-seven academic disciplines at varying difficulty levels. History was included in this assessment in the form of hundreds of questions drawn from the Advanced Placement (A.P.) curriculums for U.S., European, and World history.")
 
     with st.sidebar.form(key ='Form2'):
         field_choice = st.radio("Choose the subject:", ["U.S. History", "European History", "World History"])
