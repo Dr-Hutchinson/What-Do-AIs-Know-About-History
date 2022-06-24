@@ -2,7 +2,7 @@ import streamlit as st
 
 # Custom imports
 from multipage import MultiPage
-from pages import benchmarks_results, Baconbot_1_7_1# import your pages here
+from pages import benchmarks_results, Baconbot_1_7_1
 #from pages import data_upload, machine_learning, metadata, data_visualize, redundant, inference # import your pages here
 
 # Create an instance of the app
