@@ -67,7 +67,7 @@ def app():
         #Begin Baconbot code
         st.title('Simulated Conversations with Francis Bacon')
         col1, col2 = st.columns([3.0,3.5])
-        with col1:
+        with col2:
             bacon_pic = st.image(image='./bacon.png', caption="Portrait of Francis Bacon. National Portrait Gallery, London.")
 
 
@@ -310,7 +310,7 @@ def app():
                     ranking_collection()
                     st.write('Rankings recorded - thank you! Feel free to continue your conversation with Francis Bacon.')
 
-        with col2:
+        with col1:
 
             st.write("Select the 'Ask Bacon' button to ask the AI questions. Select 'Rank Bacon' to note your impressions of his responses.")
 
