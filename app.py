@@ -14,7 +14,8 @@ st.set_page_config(
     page_icon='🔍'
 )
 # Title of the main page
-st.title("The GPT-3 Challenge: Can AI Accurately Interpret Historical Knowledge?")
+with st.sidebar:
+    st.title("The GPT-3 Challenge: Can AI Accurately Interpret Historical Knowledge?")
 
 # Add all your applications (pages) here
 app.add_page("1. Beat the AI!", benchmarks_results.app)
