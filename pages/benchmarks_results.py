@@ -11,7 +11,7 @@ from google.oauth2 import service_account
 
 def app():
 
-    st.set_page_config(layout="wide")
+    #st.set_page_config(layout="wide")
 
     scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
