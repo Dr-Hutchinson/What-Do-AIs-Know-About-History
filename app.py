@@ -9,13 +9,13 @@ from pages import benchmarks_results, Baconbot_1_7_1
 app = MultiPage()
 
 st.set_page_config(
-    page_title="The GPT-3 Challenge: Can AI's Accurately Interpret History?",
+    page_title=" Can AI's Accurately Interpret History? A Digital History Experiment",
     layout='wide',
     page_icon='🔍'
 )
 # Title of the main page
 with st.sidebar:
-    st.title("The GPT-3 Challenge: Can AI's Accurately Interpret History?")
+    st.title("Can AI's Accuratrely Interpret History? A Digital History Experiment")
 
 # Add all your applications (pages) here
 app.add_page("1. What Do AIs Know about History?", benchmarks_results.app)
