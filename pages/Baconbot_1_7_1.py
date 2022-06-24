@@ -10,11 +10,11 @@ from google.oauth2 import service_account
 import ssl
 
 
-st.set_page_config(
-    page_title='Simulated Conversations with Francis Bacon',
-    layout='wide',
-    page_icon='🔍'
-)
+#st.set_page_config(
+    #page_title='Simulated Conversations with Francis Bacon',
+    #layout='wide',
+    #page_icon='🔍'
+#)
 
 #pygsheets credentials for Google Sheets API
 scope = ['https://spreadsheets.google.com/feeds',
