@@ -58,15 +58,18 @@ def app():
         authenticator.logout('Logout', 'main')
         st.write('Welcome *%s*' % (name))
 
+        with st.sidebar.form(key ='Form2'):
+            st.write('Explore more about the life and times of Francis Bacon:')
+            st.write('[Six Degrees of Francis Bacon](http://www.sixdegreesoffrancisbacon.com/), Carnegie Mellon University')
+            st.write('[Jürgen Klein and Guido Giglioni, "Francis Bacon", The Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/francis-bacon/)')
+            st.write('[Richard S. Westfall, "Francis Bacon", The Galileo Project, Rice University](http://galileo.rice.edu/Catalog/NewFiles/bacon.html)')
+
         #Begin Baconbot code
         st.title('Simulated Conversations with Francis Bacon')
         col1, col2 = st.columns([3.0,3.5])
         with col1:
             bacon_pic = st.image(image='./bacon.png', caption="Portrait of Francis Bacon. National Portrait Gallery, London.")
-            st.write('Explore more about the life and times of Francis Bacon:')
-            st.write('[Six Degrees of Francis Bacon](http://www.sixdegreesoffrancisbacon.com/), Carnegie Mellon University')
-            st.write('[Jürgen Klein and Guido Giglioni, "Francis Bacon", The Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/francis-bacon/)')
-            st.write('[Richard S. Westfall, "Francis Bacon", The Galileo Project, Rice University](http://galileo.rice.edu/Catalog/NewFiles/bacon.html)')
+
 
 
         def button_one():
