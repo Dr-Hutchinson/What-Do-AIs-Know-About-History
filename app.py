@@ -12,7 +12,7 @@ app = MultiPage()
 st.title("The GPT-3 Challenge: Can AI Accurately Interpret Historical Knowledge?")
 
 # Add all your applications (pages) here
-app.add_page("1. The GPT-3 History Challenge: Can AIs Answer Advanced Placement History Exam Questions?", benchmarks_results.app)
+app.add_page("1. Beat the AI: Human vs. GPT-3 on A.P. History", benchmarks_results.app)
 app.add_page("2. BaconBot: A GPT-3 Simulation of Francis Bacon [closed-access]", Baconbot_1_7_1.app)
 #app.add_page("Y-Parameter Optimization",redundant.app)
 
