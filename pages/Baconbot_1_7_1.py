@@ -58,7 +58,7 @@ def app():
         authenticator.logout('Logout', 'main')
         st.write('Welcome *%s*' % (name))
 
-        with st.sidebar.form(key ='Form2'):
+        with st.sidebar:
             st.write('Explore more about the life and times of Francis Bacon:')
             st.write('[Six Degrees of Francis Bacon](http://www.sixdegreesoffrancisbacon.com/), Carnegie Mellon University')
             st.write('[Jürgen Klein and Guido Giglioni, "Francis Bacon", The Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/francis-bacon/)')
