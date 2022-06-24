@@ -18,7 +18,7 @@ with st.sidebar:
     st.title("The GPT-3 Challenge: Can AI Accurately Interpret Historical Knowledge?")
 
 # Add all your applications (pages) here
-app.add_page("1. Beat the AI!", benchmarks_results.app)
+app.add_page("1. Humans vs AI: A.P. History Benchmark Tests", benchmarks_results.app)
 app.add_page("2. BaconBot [closed-access]", Baconbot_1_7_1.app)
 #app.add_page("Y-Parameter Optimization",redundant.app)
 
