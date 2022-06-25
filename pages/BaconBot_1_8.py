@@ -60,6 +60,7 @@ def app():
             submit_button_1 = st.form_submit_button(label='Choose Model')
                 #with st.expander("Test:"):
                     #test = st.radio("Test",["test1", "test2"])
+            if submit_button_1:
                 st.write("Model and Question Bank loaded.")
                 if 'model_choice' not in st.session_state:
                     st.session_state.model_choice = model_choice
@@ -85,7 +86,7 @@ def app():
             #j2submit_button_1 = st.form_submit_button(label='Submit Question')
 
             if submit_button_2:
-                    
+
                 os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
                 now = dt.now()
 
