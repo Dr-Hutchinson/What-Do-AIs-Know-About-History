@@ -60,13 +60,14 @@ def app():
                 with st.expander("Biographical Questions:"):
                     bio_question = st.radio("Questions concerning Bacon's life and career.", ["Describe your early life and education.", "How would you describe your career in government?", "What contributions did you make in the field of science?"])
 
+                submit_button_1 = st.form_submit_button(label='Submit Question')
                 #with st.expander("Test:"):
                     #test = st.radio("Test",["test1", "test2"])
 
             #temperature_dial = st.slider("Temperature Dial. Lower values are generally more accurate, but lower extremes yield more repetitive replies. Higher values are more creative, but higher extremes result in incoherent responses.", 0.0, 1.0)
             #response_length = st.slider("Response Length. Recommended range is 75-150 for general questions, 150-250 for rationale questions, and 25-50 for haikus.", 25, 250)
             #submission_text = st.text_area("Enter your questions and comments below to Francis Bacon in this space. Be patient as he considers your statement.", max_chars=1000)
-            submit_button_1 = st.form_submit_button(label='Submit Question')
+            #submit_button_1 = st.form_submit_button(label='Submit Question')
 
             if submit_button_1:
                 os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
