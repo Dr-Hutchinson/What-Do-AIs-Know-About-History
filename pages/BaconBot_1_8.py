@@ -66,9 +66,9 @@ def app():
 
             #model selection for OpenAI query
             if model_choice == "GPT-3: Davinci Engine":
-                    model_select = 'text-davinci-002'
-                else:
-                    model_select = st.secrets['novum_organum_model']
+                model_select = 'text-davinci-002'
+            else:
+                model_select = st.secrets['novum_organum_model']
 
                 prompt_boost_haiku_1 = "Compose a haiku on the events in London during the spring of 1610."
                 prompt_boost_haiku_2 = "Haiku: The taverns are full of talk, Of the moons of Jupiter and of the Prince’s ship."
