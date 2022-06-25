@@ -15,6 +15,21 @@ st.set_page_config(
 )
 # Title of the main page
 with st.sidebar:
+    st.markdown(
+    """
+    <style>
+    [data-testid="stSidebar"][aria-expanded="true"] > div:first-child {
+        width: 500px;
+    }
+    [data-testid="stSidebar"][aria-expanded="false"] > div:first-child {
+        width: 500px;
+        margin-left: -500px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+    )
+
     st.title("Can AIs Accurately Interpret History? A Digital History Experiment")
     st.subheader("Created by Daniel Hutchinson")
 
