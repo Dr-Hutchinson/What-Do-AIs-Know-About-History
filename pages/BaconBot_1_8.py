@@ -68,10 +68,10 @@ def app():
                 now = dt.now()
 
             #model selection for OpenAI query
-            if model_choice == "GPT-3: Davinci Engine":
-                model_select = 'text-davinci-002'
-            else:
-                model_select = st.secrets['novum_organum_model']
+                if model_choice == "GPT-3: Davinci Engine":
+                    model_select = 'text-davinci-002'
+                else:
+                    model_select = st.secrets['novum_organum_model']
 
                 prompt_boost_haiku_1 = "Compose a haiku on the events in London during the spring of 1610."
                 prompt_boost_haiku_2 = "Haiku: The taverns are full of talk, Of the moons of Jupiter and of the Prince’s ship."
@@ -91,8 +91,8 @@ def app():
                     prompt_text = prompt_choice + "\n\nQ:"
                 elif prompt_booster == "Rationale Booster":
                     prompt_text = prompt_choice + "\n\n" + prompt_boost_rationale_1 + "\n\n" + prompt_boost_rationale_2 + "\n\n" + prompt_boost_rationale_3 + "\n\n" + prompt_boost_rationale_4 + "\n\n" + prompt_boost_rationale_5 + "\n\n" + prompt_boost_rationale_6 + "\n\n" + "Question:"
-                elif prompt_booster == "Haiku Booster":
-                    prompt_text = prompt_choice + "\n\n" + prompt_boost_haiku_1 + "\n\n" + prompt_boost_haiku_2 + "\n\n" + prompt_boost_haiku_3 + "\n\n" + prompt_boost_haiku_4
+                #elif prompt_booster == "Haiku Booster":
+                    #prompt_text = prompt_choice + "\n\n" + prompt_boost_haiku_1 + "\n\n" + prompt_boost_haiku_2 + "\n\n" + prompt_boost_haiku_3 + "\n\n" + prompt_boost_haiku_4
                 else:
                     prompt_text = prompt_choice + "\n\n" + prompt_boost_question_1 + "\n\n" + prompt_boost_question_2 + "\n\n" + "Question:"
 
