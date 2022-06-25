@@ -43,7 +43,7 @@ def app():
 
     st.header("What Do AI's Know About History?")
     st.write("While intense debate defines the field of generative AI, it is possible to assess GPT-3’s capacities for a form of historical knowledge, and document the remarkable advances of those capacities. The first major assessment came from a [January 2021 study](https://arxiv.org/pdf/2008.02275.pdf) by a team of machine learning researchers led by [Dan Hendryks](https://people.eecs.berkeley.edu/~hendrycks/). Their study established a set of benchmarks for assessing GPT-3 on collections of multiple-choice questions in fifty-seven academic disciplines at varying difficulty levels. History was included in this assessment in the form of hundreds of questions drawn from the Advanced Placement (A.P.) curriculums for U.S., European, and World history. You can see the results from the most recent replication of study [here](https://github.com/Dr-Hutchinson/gpt-3_history_benchmark_results).")
-    st.write("This app permits you to test both GPT-3's accuracy and your own historical knowledge. Choose one of the A.P. categories on the left to load a random question. Then compare your answer with an AI response.")
+    st.write("This app permits you to test both GPT-3's accuracy and your own historical knowledge. Choose one of the A.P. categories on the left to load a random question. Then compare your answer aganist the AI response.")
 
     with st.sidebar.form(key ='Form2'):
         field_choice = st.radio("Choose the subject:", ["U.S. History", "European History", "World History"])
