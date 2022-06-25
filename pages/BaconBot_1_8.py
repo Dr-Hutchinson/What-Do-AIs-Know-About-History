@@ -145,7 +145,7 @@ def app():
                         prompt= "<|endoftext|>"+output+"\n--\nLabel:",
                         temperature=0,
                         max_tokens=1,
-                        user=user_id,
+                        user=user,
                         top_p=0,
                         logprobs=10)
 
