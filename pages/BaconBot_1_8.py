@@ -130,7 +130,7 @@ def app():
 
                 summon = openai.Completion.create(
                     model=model_select,
-                    prompt= prompt_text + " " + question,
+                    prompt= prompt_text + " " + st.session_state.question
                     temperature=50,
                     user=0,
                     max_tokens=150)
