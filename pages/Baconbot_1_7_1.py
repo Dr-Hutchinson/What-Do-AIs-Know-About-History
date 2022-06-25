@@ -18,7 +18,11 @@ import ssl
 
 def app():
 
-    st.write("test")
+    st.title("BaconBot: An AI Imitation of Francis Bacon")
+    st.header("Open Interface")
+    st.subheader("Access to the open interface for BaconBot is currently limited to researchers. Click here to apply for access.")
+
+    st.write("The following version of BaconBot permits users to compose their own questions and customize the question parameters.")
     #pygsheets credentials for Google Sheets API
     scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
