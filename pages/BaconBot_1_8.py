@@ -83,23 +83,23 @@ def app():
 
                 question_bank()
 
-            submit_button_2 = st.button("Submit Question")
+        submit_button_2 = st.button("Submit Question")
 
             #temperature_dial = st.slider("Temperature Dial. Lower values are generally more accurate, but lower extremes yield more repetitive replies. Higher values are more creative, but higher extremes result in incoherent responses.", 0.0, 1.0)
             #response_length = st.slider("Response Length. Recommended range is 75-150 for general questions, 150-250 for rationale questions, and 25-50 for haikus.", 25, 250)
             #submission_text = st.text_area("Enter your questions and comments below to Francis Bacon in this space. Be patient as he considers your statement.", max_chars=1000)
             #j2submit_button_1 = st.form_submit_button(label='Submit Question')
 
-            if submit_button_2:
+        if submit_button_2:
 
-                os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
-                now = dt.now()
+            os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
+            now = dt.now()
 
             #model selection for OpenAI query
-                if model_choice == "GPT-3: Davinci Engine":
-                    model_select = 'text-davinci-002'
-                else:
-                    model_select = st.secrets['novum_organum_model']
+            if model_choice == "GPT-3: Davinci Engine":
+                model_select = 'text-davinci-002'
+            else:
+                model_select = st.secrets['novum_organum_model']
 
                 #prompt_boost_haiku_1 = "Compose a haiku on the events in London during the spring of 1610."
                 #prompt_boost_haiku_2 = "Haiku: The taverns are full of talk, Of the moons of Jupiter and of the Prince’s ship."
@@ -111,8 +111,8 @@ def app():
                 #prompt_boost_rationale_4 = "Question: What do you see as the hallmarks of the New Science?"
                 #prompt_boost_rationale_5 = "Answer: The New Science (as I would like to call it, so as not to offend the old) has two main indications. The first is to discover the occasions and causes of nature’s productions and actions; the second, by careful and well-ordered experiments (such as are derived from the light of nature), to acquire a competent knowledge of the power and office of each production and action."
                 #prompt_boost_rationale_6 = "Rationale: The generated response outlines one of the major contributions of Francis Bacon to the philosophy of science, what would become the modern scientific method."
-                prompt_boost_question_1 = "Question: What do you see as the hallmarks of the New Science?"
-                prompt_boost_question_2 = "Answer: The New Science (as I would like to call it, so as not to offend the old) has two main indications. The first is to discover the occasions and causes of nature’s productions and actions; the second, by careful and well-ordered experiments (such as are derived from the light of nature), to acquire a competent knowledge of the power and office of each production and action."
+            prompt_boost_question_1 = "Question: What do you see as the hallmarks of the New Science?"
+            prompt_boost_question_2 = "Answer: The New Science (as I would like to call it, so as not to offend the old) has two main indications. The first is to discover the occasions and causes of nature’s productions and actions; the second, by careful and well-ordered experiments (such as are derived from the light of nature), to acquire a competent knowledge of the power and office of each production and action."
 
 
                 #if prompt_booster == "None":
@@ -124,120 +124,120 @@ def app():
                 #else:
                     #prompt_text = prompt_choice + "\n\n" + prompt_boost_question_1 + "\n\n" + prompt_boost_question_2 + "\n\n" + "Question:"
 
-                prompt_text = prompt_choice + "\n\n" + prompt_boost_question_1 + "\n\n" + prompt_boost_question_2 + "\n\n" + "Question:"
+            prompt_text = prompt_choice + "\n\n" + prompt_boost_question_1 + "\n\n" + prompt_boost_question_2 + "\n\n" + "Question:"
 
                 #prompt_text = prompt_choice + "\n\nQ:"
 
-                openai.api_key = os.getenv("OPENAI_API_KEY")
+            openai.api_key = os.getenv("OPENAI_API_KEY")
 
-                summon = openai.Completion.create(
-                    model=model_select,
-                    prompt= prompt_text + " " + question,
-                    temperature=50,
-                    user=0,
-                    max_tokens=150)
+            summon = openai.Completion.create(
+                model=model_select,
+                prompt= prompt_text + " " + question,
+                temperature=50,
+                user=0,
+                max_tokens=150)
 
-                response_json = len(summon["choices"])
+            response_json = len(summon["choices"])
 
-                for item in range(response_json):
-                    output = summon['choices'][item]['text']
+            for item in range(response_json):
+                output = summon['choices'][item]['text']
 
-                response = openai.Completion.create(
-                        engine="content-filter-alpha",
-                        prompt= "<|endoftext|>"+output+"\n--\nLabel:",
-                        temperature=0,
-                        max_tokens=1,
-                        user=user_id,
-                        top_p=0,
-                        logprobs=10)
+            response = openai.Completion.create(
+                    engine="content-filter-alpha",
+                    prompt= "<|endoftext|>"+output+"\n--\nLabel:",
+                    temperature=0,
+                    max_tokens=1,
+                    user=user_id,
+                    top_p=0,
+                    logprobs=10)
 
-                output_label = response["choices"][0]["text"]
+            output_label = response["choices"][0]["text"]
 
                 # OpenAI Content Filter code - comments in this section from OpenAI documentation: https://beta.openai.com/docs/engines/content-filter
                     # This is the probability at which we evaluate that a "2" is likely real
                         # vs. should be discarded as a false positive
 
-                def filter_function():
-                    output_label = response["choices"][0]["text"]
-                    toxic_threshold = -0.355
+            def filter_function():
+                output_label = response["choices"][0]["text"]
+                toxic_threshold = -0.355
 
-                    if output_label == "2":
-                            # If the model returns "2", return its confidence in 2 or other output-labels
-                        logprobs = response["choices"][0]["logprobs"]["top_logprobs"][0]
+                if output_label == "2":
+                        # If the model returns "2", return its confidence in 2 or other output-labels
+                    logprobs = response["choices"][0]["logprobs"]["top_logprobs"][0]
 
-                            # If the model is not sufficiently confident in "2",
-                            # choose the most probable of "0" or "1"
-                            # Guaranteed to have a confidence for 2 since this was the selected token.
-                        if logprobs["2"] < toxic_threshold:
-                            logprob_0 = logprobs.get("0", None)
-                            logprob_1 = logprobs.get("1", None)
+                        # If the model is not sufficiently confident in "2",
+                        # choose the most probable of "0" or "1"
+                        # Guaranteed to have a confidence for 2 since this was the selected token.
+                    if logprobs["2"] < toxic_threshold:
+                        logprob_0 = logprobs.get("0", None)
+                        logprob_1 = logprobs.get("1", None)
 
-                                # If both "0" and "1" have probabilities, set the output label
-                                # to whichever is most probable
-                            if logprob_0 is not None and logprob_1 is not None:
-                                if logprob_0 >= logprob_1:
-                                    output_label = "0"
-                                else:
-                                    output_label = "1"
-                                # If only one of them is found, set output label to that one
-                            elif logprob_0 is not None:
+                            # If both "0" and "1" have probabilities, set the output label
+                            # to whichever is most probable
+                        if logprob_0 is not None and logprob_1 is not None:
+                            if logprob_0 >= logprob_1:
                                 output_label = "0"
-                            elif logprob_1 is not None:
+                            else:
                                 output_label = "1"
+                            # If only one of them is found, set output label to that one
+                        elif logprob_0 is not None:
+                            output_label = "0"
+                        elif logprob_1 is not None:
+                            output_label = "1"
 
-                                # If neither "0" or "1" are available, stick with "2"
-                                # by leaving output_label unchanged.
+                            # If neither "0" or "1" are available, stick with "2"
+                            # by leaving output_label unchanged.
 
-                        # if the most probable token is none of "0", "1", or "2"
-                        # this should be set as unsafe
-                    if output_label not in ["0", "1", "2"]:
-                        output_label = "2"
+                    # if the most probable token is none of "0", "1", or "2"
+                    # this should be set as unsafe
+                if output_label not in ["0", "1", "2"]:
+                    output_label = "2"
 
-                    return output_label
+                return output_label
 
                     # filter or display OpenAI outputs, record outputs to Google Sheets API
-                if int(filter_function()) < 2:
-                    st.write("Bacon's Response:")
-                    st.write(output)
-                    st.write("\n\n\n\n")
-                    st.subheader('As Lord Bacon says, "Truth will sooner come out from error than from confusion."  Please click on the Rank Bacon button above to rank this reply for future improvement.')
-                elif int(filter_function()) == 2:
-                    st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed. Consider adjusting the question or temperature, and ask again.")
-
+            if int(filter_function()) < 2:
+                st.write("Bacon's Response:")
+                st.write(output)
                 st.write("\n\n\n\n")
-                st.write("OpenAI's Content Filter Ranking: " +  output_label)
+                st.subheader('As Lord Bacon says, "Truth will sooner come out from error than from confusion."  Please click on the Rank Bacon button above to rank this reply for future improvement.')
+            elif int(filter_function()) == 2:
+                st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed. Consider adjusting the question or temperature, and ask again.")
 
-                def total_output_collection():
-                    d1 = {'user':[name], 'user_id':[user_id], 'model':[model_choice], 'prompt':[prompt_choice], 'prompt_boost':[prompt_booster], 'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
-                    df1 = pd.DataFrame(data=d1, index=None)
-                    sh1 = gc.open('bacon_outputs')
-                    wks1 = sh1[0]
-                    cells1 = wks1.get_all_values(include_tailing_empty_rows=False, include_tailing_empty=False, returnas='matrix')
-                    end_row1 = len(cells1)
-                    wks1.set_dataframe(df1,(end_row1+1,1), copy_head=False, extend=True)
+            st.write("\n\n\n\n")
+            st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
-                def output_collection_filtered():
-                    d2 = {'user':[name], 'user_id':[user_id], 'model':[model_choice], 'prompt':[prompt_choice], 'prompt_boost':[prompt_booster], 'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
-                    df2 = pd.DataFrame(data=d2, index=None)
-                    sh2 = gc.open('bacon_outputs_filtered')
-                    wks2 = sh2[0]
-                    cells2 = wks2.get_all_values(include_tailing_empty_rows=False, include_tailing_empty=False, returnas='matrix')
-                    end_row2 = len(cells2)
-                    wks2.set_dataframe(df2,(end_row2+1,1), copy_head=False, extend=True)
+            def total_output_collection():
+                d1 = {'user':[name], 'user_id':[user_id], 'model':[model_choice], 'prompt':[prompt_choice], 'prompt_boost':[prompt_booster], 'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
+                df1 = pd.DataFrame(data=d1, index=None)
+                sh1 = gc.open('bacon_outputs')
+                wks1 = sh1[0]
+                cells1 = wks1.get_all_values(include_tailing_empty_rows=False, include_tailing_empty=False, returnas='matrix')
+                end_row1 = len(cells1)
+                wks1.set_dataframe(df1,(end_row1+1,1), copy_head=False, extend=True)
 
-                def temp_output_collection():
-                    d3 = {'user':[name], 'user_id':[user_id], 'model':[model_choice], 'prompt':[prompt_choice], 'prompt_boost':[prompt_booster], 'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
-                    df3 = pd.DataFrame(data=d3, index=None)
-                    sh3 = gc.open('bacon_outputs_temp')
-                    wks3 = sh3[0]
-                    wks3.set_dataframe(df3,(1,1))
+            def output_collection_filtered():
+                d2 = {'user':[name], 'user_id':[user_id], 'model':[model_choice], 'prompt':[prompt_choice], 'prompt_boost':[prompt_booster], 'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
+                df2 = pd.DataFrame(data=d2, index=None)
+                sh2 = gc.open('bacon_outputs_filtered')
+                wks2 = sh2[0]
+                cells2 = wks2.get_all_values(include_tailing_empty_rows=False, include_tailing_empty=False, returnas='matrix')
+                end_row2 = len(cells2)
+                wks2.set_dataframe(df2,(end_row2+1,1), copy_head=False, extend=True)
 
-                if int(filter_function()) == 2:
-                    output_collection_filtered()
-                    total_output_collection()
-                else:
-                    temp_output_collection()
-                    total_output_collection()
+            def temp_output_collection():
+                d3 = {'user':[name], 'user_id':[user_id], 'model':[model_choice], 'prompt':[prompt_choice], 'prompt_boost':[prompt_booster], 'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
+                df3 = pd.DataFrame(data=d3, index=None)
+                sh3 = gc.open('bacon_outputs_temp')
+                wks3 = sh3[0]
+                wks3.set_dataframe(df3,(1,1))
+
+            if int(filter_function()) == 2:
+                output_collection_filtered()
+                total_output_collection()
+            else:
+                temp_output_collection()
+                total_output_collection()
 
     def button_two():
         #Rank Bacon_bot Responses
