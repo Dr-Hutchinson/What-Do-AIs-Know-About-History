@@ -22,7 +22,7 @@ def app():
     st.header("Open Interface")
     st.subheader("Access to the open interface for BaconBot is currently limited to researchers. Click here to apply for access.")
 
-    st.write("The following version of BaconBot permits users to compose their own questions and customize the question parameters.")
+    st.write("The following version of BaconBot permits users to compose their own questions and customize the question parameters. The login panel will load in a moment.")
     #pygsheets credentials for Google Sheets API
     scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
