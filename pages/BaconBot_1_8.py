@@ -56,7 +56,7 @@ def app():
                 #prompt_booster = st.radio("Zero Shot vs. Few Shot Prompting. If you chose one of the prompt boosters below, the AI model will be given pre-selected examples of the type of prompt you want to submit, increasing the chance of a better reply. However, this will also increase the chance the reply will repeat the booster choice. Choose 'None' to field questions without a booster.", ["None", "Question Booster", "Rationale Booster", "Haiku Booster"])
 
             with st.expander("Biographical Questions:"):
-                prompt_booster = st.radio(".", ["Describe your early life and education.", "How would you describe your career in government?", "What contributions did you make in the field of science?"])
+                prompt_booster = st.radio(["Describe your early life and education.", "How would you describe your career in government?", "What contributions did you make in the field of science?"])
 
             #temperature_dial = st.slider("Temperature Dial. Lower values are generally more accurate, but lower extremes yield more repetitive replies. Higher values are more creative, but higher extremes result in incoherent responses.", 0.0, 1.0)
             #response_length = st.slider("Response Length. Recommended range is 75-150 for general questions, 150-250 for rationale questions, and 25-50 for haikus.", 25, 250)
