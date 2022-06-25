@@ -20,7 +20,7 @@ def app():
 
     st.title("BaconBot: An AI Imitation of Francis Bacon")
     st.header("Open Interface")
-    st.subheader("Access to the open interface for BaconBot is currently limited to researchers. Click here to apply for access.")
+    st.subheader("Access to the Open Interface for BaconBot is currently limited. Click here to apply for access.")
 
     st.write("The following version of BaconBot permits users to compose their own questions and customize the question parameters. The login panel will load in a moment.")
     #pygsheets credentials for Google Sheets API
