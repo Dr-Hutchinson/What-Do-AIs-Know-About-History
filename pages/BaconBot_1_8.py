@@ -132,7 +132,7 @@ def app():
                     model=model_select,
                     prompt= prompt_text + " " + st.session_state.question,
                     temperature=.5,
-                    user=0,
+                    user="0",
                     max_tokens=150)
 
                 response_json = len(summon["choices"])
