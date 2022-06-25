@@ -15,7 +15,8 @@ st.set_page_config(
 )
 # Title of the main page
 with st.sidebar:
-    st.title("Can AI's Accuratrely Interpret History? A Digital History Experiment")
+    st.title("Can AI's Accurately Interpret History? A Digital History Experiment")
+    st.write("Created by Daniel Hutchinson")
 
 # Add all your applications (pages) here
 app.add_page("1. What Do AIs Know about History?", benchmarks_results.app)
