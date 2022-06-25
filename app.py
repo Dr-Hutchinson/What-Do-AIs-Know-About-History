@@ -9,17 +9,17 @@ from pages import benchmarks_results, Baconbot_1_7_1
 app = MultiPage()
 
 st.set_page_config(
-    page_title=" Can AI's Accurately Interpret History? A Digital History Experiment",
+    page_title="Can AI's Accurately Interpret History? A Digital History Experiment",
     layout='wide',
     page_icon='🔍'
 )
 # Title of the main page
 with st.sidebar:
-    st.title("Can AI's Accurately Interpret History? A Digital History Experiment")
+    st.title("Can AIs Accurately Interpret History? A Digital History Experiment")
     st.subheader("Created by Daniel Hutchinson")
 
 # Add all your applications (pages) here
-app.add_page("1. What Do AIs Know about History?", benchmarks_results.app)
+app.add_page('1. What Does an AI "Know" About History?', benchmarks_results.app)
 app.add_page("2. BaconBot: Open Interface", Baconbot_1_7_1.app)
 #app.add_page("Y-Parameter Optimization",redundant.app)
 
