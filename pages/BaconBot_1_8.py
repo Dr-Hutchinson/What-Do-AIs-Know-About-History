@@ -55,7 +55,7 @@ def app():
             #with st.expander("Advanced Settings:"):
                 #prompt_booster = st.radio("Zero Shot vs. Few Shot Prompting. If you chose one of the prompt boosters below, the AI model will be given pre-selected examples of the type of prompt you want to submit, increasing the chance of a better reply. However, this will also increase the chance the reply will repeat the booster choice. Choose 'None' to field questions without a booster.", ["None", "Question Booster", "Rationale Booster", "Haiku Booster"])
 
-            option = st.selectbox("Question Bank:", ("Biographical, Philosophy of Science")):
+            option = st.selectbox("Question Bank:", ("Biographical, Philosophy of Science"))
 
             if option == "Biographical":
                 with st.expander("Biographical Questions:"):
