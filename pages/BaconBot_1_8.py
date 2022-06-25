@@ -78,6 +78,9 @@ def app():
 
             question_bank_display()
 
+            if 'question' not in st.session_state:
+                st.session_state.question = question
+
             submit_button_2 = st.form_submit_button("Click here to submit question")
 
             #temperature_dial = st.slider("Temperature Dial. Lower values are generally more accurate, but lower extremes yield more repetitive replies. Higher values are more creative, but higher extremes result in incoherent responses.", 0.0, 1.0)
@@ -86,9 +89,6 @@ def app():
             #j2submit_button_1 = st.form_submit_button(label='Submit Question')
 
             if submit_button_2:
-
-                if 'question' not in st.session_state:
-                    st.session_state.question = question
 
                 os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
                 now = dt.now()
