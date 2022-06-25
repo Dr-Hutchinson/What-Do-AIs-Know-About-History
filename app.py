@@ -20,7 +20,7 @@ with st.sidebar:
 
 # Add all your applications (pages) here
 app.add_page("1. What Do AIs Know about History?", benchmarks_results.app)
-app.add_page("2. BaconBot [closed-access]", Baconbot_1_7_1.app)
+app.add_page("2. BaconBot: Open Interface", Baconbot_1_7_1.app)
 #app.add_page("Y-Parameter Optimization",redundant.app)
 
 # The main app
