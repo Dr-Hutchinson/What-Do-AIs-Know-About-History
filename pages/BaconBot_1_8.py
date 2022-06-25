@@ -45,18 +45,23 @@ def app():
 
         with st.form('form2'):
 
-            prompt_choice_freeform = "I am a representation of Francis Bacon, a key figure in the Scientific Revolution. You can ask me questions and I will answer in the style of Bacon's Novum Organum."
-            prompt_choice_rationale = "I am an AI representation of Francis Bacon, a key figure in the early modern period. I will reply to your questions, and provide a historical rationale for my response."
+            #prompt_choice_freeform = "I am a representation of Francis Bacon, a key figure in the Scientific Revolution. You can ask me questions and I will answer in the style of Bacon's Novum Organum."
+            #prompt_choice_rationale = "I am an AI representation of Francis Bacon, a key figure in the early modern period. I will reply to your questions, and provide a historical rationale for my response."
             #prompt_choice_haiku = "I am Lord Francis Bacon, a key figure in reign of King James I of England. I will answer your questions in the form of a haiku in a 5-7-5 syllabic structure."
 
             model_choice = st.radio("Select AI model. GPT-3 is the general purpose AI model. The Novum Organum model is a GPT-3 fine-tuned on Bacon's classic work of scientific theory.", ["GPT-3: Davinci Engine model", "Novum Organum model"])
-            prompt_choice = st.radio('Select Prompt. This will guide the frame of reference in which GPT-3 will respond.', [prompt_choice_freeform, prompt_choice_rationale])
+            #prompt_choice = st.radio('Select Prompt. This will guide the frame of reference in which GPT-3 will respond.', [prompt_choice_freeform, prompt_choice_rationale])
 
             #with st.expander("Advanced Settings:"):
                 #prompt_booster = st.radio("Zero Shot vs. Few Shot Prompting. If you chose one of the prompt boosters below, the AI model will be given pre-selected examples of the type of prompt you want to submit, increasing the chance of a better reply. However, this will also increase the chance the reply will repeat the booster choice. Choose 'None' to field questions without a booster.", ["None", "Question Booster", "Rationale Booster", "Haiku Booster"])
 
-            with st.expander("Biographical Questions:"):
-                prompt_booster = st.radio("Questions concerning Bacon's life and career.", ["Describe your early life and education.", "How would you describe your career in government?", "What contributions did you make in the field of science?"])
+            with st.container("Question Bank:")
+
+                with st.expander("Biographical Questions:"):
+                    bio_question = st.radio("Questions concerning Bacon's life and career.", ["Describe your early life and education.", "How would you describe your career in government?", "What contributions did you make in the field of science?"])
+
+                with st.expander("Test:"):
+                    test = st.radio("Test",["test1", "test2"])
 
             #temperature_dial = st.slider("Temperature Dial. Lower values are generally more accurate, but lower extremes yield more repetitive replies. Higher values are more creative, but higher extremes result in incoherent responses.", 0.0, 1.0)
             #response_length = st.slider("Response Length. Recommended range is 75-150 for general questions, 150-250 for rationale questions, and 25-50 for haikus.", 25, 250)
@@ -73,28 +78,30 @@ def app():
                 else:
                     model_select = st.secrets['novum_organum_model']
 
-                prompt_boost_haiku_1 = "Compose a haiku on the events in London during the spring of 1610."
-                prompt_boost_haiku_2 = "Haiku: The taverns are full of talk, Of the moons of Jupiter and of the Prince’s ship."
-                prompt_boost_haiku_3 = "Compose a haiku in the style of Basho."
-                prompt_boost_haiku_4 = "Haiku: On a withered branch, A crow has alighted, Nightfall in autumn."
-                prompt_boost_rationale_1 = "Question: Could you describe your impression of the scientific investigation of figures from antiquity like Galen?"
-                prompt_boost_rationale_2 = "Answer: Galen was a great man, but he had not the advantage of a good method. His idols of the market place, as I have called them, were his errors and fancies, which have misled some and perverted others. He trusted too much to authority and to received systems, and too little to the examination of particulars. He was a practitioner and not a philosopher, and was therefore more intent upon practice than upon theory; and yet he was not a mere empiric. He was a great observer, and a man of clear sense and great experience, but he was a slave to the logic and philosophy of his age, and therefore was very deficient in the true principles of induction."
-                prompt_boost_rationale_3 = "Rationale: The critique of an ancient authority in medicine on the basis of his inadequate method is keeping with an important theme in Novum Organum and Bacon’s larger scientific philosophy. The specific mention of the “Idols of the Marketplace” is an important concept in the Novum Organum."
-                prompt_boost_rationale_4 = "Question: What do you see as the hallmarks of the New Science?"
-                prompt_boost_rationale_5 = "Answer: The New Science (as I would like to call it, so as not to offend the old) has two main indications. The first is to discover the occasions and causes of nature’s productions and actions; the second, by careful and well-ordered experiments (such as are derived from the light of nature), to acquire a competent knowledge of the power and office of each production and action."
-                prompt_boost_rationale_6 = "Rationale: The generated response outlines one of the major contributions of Francis Bacon to the philosophy of science, what would become the modern scientific method."
+                #prompt_boost_haiku_1 = "Compose a haiku on the events in London during the spring of 1610."
+                #prompt_boost_haiku_2 = "Haiku: The taverns are full of talk, Of the moons of Jupiter and of the Prince’s ship."
+                #prompt_boost_haiku_3 = "Compose a haiku in the style of Basho."
+                #prompt_boost_haiku_4 = "Haiku: On a withered branch, A crow has alighted, Nightfall in autumn."
+                #prompt_boost_rationale_1 = "Question: Could you describe your impression of the scientific investigation of figures from antiquity like Galen?"
+                #prompt_boost_rationale_2 = "Answer: Galen was a great man, but he had not the advantage of a good method. His idols of the market place, as I have called them, were his errors and fancies, which have misled some and perverted others. He trusted too much to authority and to received systems, and too little to the examination of particulars. He was a practitioner and not a philosopher, and was therefore more intent upon practice than upon theory; and yet he was not a mere empiric. He was a great observer, and a man of clear sense and great experience, but he was a slave to the logic and philosophy of his age, and therefore was very deficient in the true principles of induction."
+                #prompt_boost_rationale_3 = "Rationale: The critique of an ancient authority in medicine on the basis of his inadequate method is keeping with an important theme in Novum Organum and Bacon’s larger scientific philosophy. The specific mention of the “Idols of the Marketplace” is an important concept in the Novum Organum."
+                #prompt_boost_rationale_4 = "Question: What do you see as the hallmarks of the New Science?"
+                #prompt_boost_rationale_5 = "Answer: The New Science (as I would like to call it, so as not to offend the old) has two main indications. The first is to discover the occasions and causes of nature’s productions and actions; the second, by careful and well-ordered experiments (such as are derived from the light of nature), to acquire a competent knowledge of the power and office of each production and action."
+                #prompt_boost_rationale_6 = "Rationale: The generated response outlines one of the major contributions of Francis Bacon to the philosophy of science, what would become the modern scientific method."
                 prompt_boost_question_1 = "Question: What do you see as the hallmarks of the New Science?"
                 prompt_boost_question_2 = "Answer: The New Science (as I would like to call it, so as not to offend the old) has two main indications. The first is to discover the occasions and causes of nature’s productions and actions; the second, by careful and well-ordered experiments (such as are derived from the light of nature), to acquire a competent knowledge of the power and office of each production and action."
 
 
-                if prompt_booster == "None":
-                    prompt_text = prompt_choice + "\n\nQ:"
-                elif prompt_booster == "Rationale Booster":
-                    prompt_text = prompt_choice + "\n\n" + prompt_boost_rationale_1 + "\n\n" + prompt_boost_rationale_2 + "\n\n" + prompt_boost_rationale_3 + "\n\n" + prompt_boost_rationale_4 + "\n\n" + prompt_boost_rationale_5 + "\n\n" + prompt_boost_rationale_6 + "\n\n" + "Question:"
+                #if prompt_booster == "None":
+                    #prompt_text = prompt_choice + "\n\nQ:"
+                #elif prompt_booster == "Rationale Booster":
+                    #prompt_text = prompt_choice + "\n\n" + prompt_boost_rationale_1 + "\n\n" + prompt_boost_rationale_2 + "\n\n" + prompt_boost_rationale_3 + "\n\n" + prompt_boost_rationale_4 + "\n\n" + prompt_boost_rationale_5 + "\n\n" + prompt_boost_rationale_6 + "\n\n" + "Question:"
                 #elif prompt_booster == "Haiku Booster":
                     #prompt_text = prompt_choice + "\n\n" + prompt_boost_haiku_1 + "\n\n" + prompt_boost_haiku_2 + "\n\n" + prompt_boost_haiku_3 + "\n\n" + prompt_boost_haiku_4
-                else:
-                    prompt_text = prompt_choice + "\n\n" + prompt_boost_question_1 + "\n\n" + prompt_boost_question_2 + "\n\n" + "Question:"
+                #else:
+                    #prompt_text = prompt_choice + "\n\n" + prompt_boost_question_1 + "\n\n" + prompt_boost_question_2 + "\n\n" + "Question:"
+
+                prompt_text = prompt_choice + "\n\n" + prompt_boost_question_1 + "\n\n" + prompt_boost_question_2 + "\n\n" + "Question:"
 
                 #prompt_text = prompt_choice + "\n\nQ:"
 
