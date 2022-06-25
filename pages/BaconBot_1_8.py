@@ -57,16 +57,6 @@ def app():
 
             option = st.radio("Question Bank:", ("Biographical", "Philosophy of Science"))
 
-            def question_bank():
-                if option == "Biographical":
-                    with st.expander("Biographical Questions:"):
-                        bio_question = st.radio("Questions concerning Bacon's life and career.", ["Describe your early life and education.", "How would you describe your career in government?", "What contributions did you make in the field of science?"])
-                else:
-                    with st.expander("Philosophy of Science Questions:"):
-                        science_question = st.radio("Questions concerning Bacon's Philosophy of Science.", ["option 1", "option 2"])
-
-            question_bank()
-
             submit_button_1 = st.form_submit_button(label='Choose Question')
                 #with st.expander("Test:"):
                     #test = st.radio("Test",["test1", "test2"])
