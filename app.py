@@ -19,7 +19,7 @@ with st.sidebar:
     """
     <style>
     [data-testid="stSidebar"][aria-expanded="true"] > div:first-child {
-        width: 350px;
+        width: 375px;
     }
     [data-testid="stSidebar"][aria-expanded="false"] > div:first-child {
         width: 500px;
