@@ -2,7 +2,7 @@ import streamlit as st
 
 # Custom imports
 from multipage import MultiPage
-from pages import benchmarks_results, Baconbot_1_7_1
+from pages import benchmarks_results, Baconbot_1_7_1, BaconBot_1_8
 #from pages import data_upload, machine_learning, metadata, data_visualize, redundant, inference # import your pages here
 
 # Create an instance of the app
@@ -36,6 +36,7 @@ with st.sidebar:
 # Add all your applications (pages) here
 app.add_page('1. What Does an AI "Know" About History?', benchmarks_results.app)
 app.add_page("2. BaconBot: An AI Simulation of Francis Bacon (Limited)", Baconbot_1_7_1.app)
+app.add_page("3. Baconbot: An AI Simulation of Francis Bacon (Open)", Baconbot_1_8.app)
 #app.add_page("Y-Parameter Optimization",redundant.app)
 
 # The main app
