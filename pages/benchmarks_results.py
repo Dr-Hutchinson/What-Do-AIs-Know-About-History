@@ -201,7 +201,7 @@ def app():
 
             incorrect_data = field_data[field_data['correct_status'] == 'incorrect']
 
-            st.write('In May 20222, GPT-3 has correctly answered {} out of {} U.S. History questions, for a {:.2f}% accuracy rate. Click [here](https://github.com/Dr-Hutchinson/gpt-3_history_benchmark_results/blob/main/us_history_benchmark_results.csv) to see the results.'.format(len(correct_data), len(field_data), len(correct_data)/len(field_data)*100))
+            st.write('In May 2022, GPT-3 correctly answered {} out of {} U.S. History questions, for a {:.2f}% accuracy rate. Click [here](https://github.com/Dr-Hutchinson/gpt-3_history_benchmark_results/blob/main/us_history_benchmark_results.csv) to see the results.'.format(len(correct_data), len(field_data), len(correct_data)/len(field_data)*100))
             st.write("Below is GPT-3's total accuracy on all questions to date.")
             st.bar_chart(data['correct_status'].value_counts())
 
@@ -222,7 +222,7 @@ def app():
 
             incorrect_data = field_data[field_data['correct_status'] == 'incorrect']
 
-            st.write('GPT-3 has correctly answered {} out of {} European history questions, for a {:.2f}% accuracy rate. Click [here](https://github.com/Dr-Hutchinson/gpt-3_history_benchmark_results/blob/main/european_history_benchmark_results.csv) to see the results.'.format(len(correct_data), len(field_data), len(correct_data)/len(field_data)*100))
+            st.write('In May 2022, GPT-3  correctly answered {} out of {} European history questions, for a {:.2f}% accuracy rate. Click [here](https://github.com/Dr-Hutchinson/gpt-3_history_benchmark_results/blob/main/european_history_benchmark_results.csv) to see the results.'.format(len(correct_data), len(field_data), len(correct_data)/len(field_data)*100))
             st.write("Below is GPT-3's total accuracy rate to date.")
             st.bar_chart(data['correct_status'].value_counts())
 
@@ -243,7 +243,7 @@ def app():
 
             incorrect_data = field_data[field_data['correct_status'] == 'incorrect']
 
-            st.write('GPT-3 has correctly answered {} out of {} World history questions, for a {:.2f}% accuracy rate. Click [here](https://github.com/Dr-Hutchinson/gpt-3_history_benchmark_results/blob/main/world_history_benchmark_results.csv) to see the results.'.format(len(correct_data), len(field_data), len(correct_data)/len(field_data)*100))
+            st.write('In May 2022, GPT-3 correctly answered {} out of {} World history questions, for a {:.2f}% accuracy rate. Click [here](https://github.com/Dr-Hutchinson/gpt-3_history_benchmark_results/blob/main/world_history_benchmark_results.csv) to see the results.'.format(len(correct_data), len(field_data), len(correct_data)/len(field_data)*100))
             st.write("Below is GPT-3's total accuracy rate to date.")
             st.bar_chart(data['correct_status'].value_counts())
 
