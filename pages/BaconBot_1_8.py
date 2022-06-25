@@ -43,52 +43,55 @@ def app():
     def button_one():
         st.write("Choose the settings below, and then pose questions to Francis Bacon. See this link for more information on these settings.")
 
-        with st.form('form1'):
+        topic_choice = st.radio("Choose Question Topic:", ("Biographical Questions", "Philosophy of Science Questions"))
 
-            prompt_choice_freeform = "I am a representation of Francis Bacon, a key figure in the Scientific Revolution. You can ask me questions and I will answer in the style of Bacon's Novum Organum."
-            #prompt_choice_rationale = "I am an AI representation of Francis Bacon, a key figure in the early modern period. I will reply to your questions, and provide a historical rationale for my response."
-            #prompt_choice_haiku = "I am Lord Francis Bacon, a key figure in reign of King James I of England. I will answer your questions in the form of a haiku in a 5-7-5 syllabic structure."
+        button1 = st.button("Load Questions")
+        if button1:
 
-            model_choice = st.radio("Select AI model. GPT-3 is the general purpose AI model. The Novum Organum model is a GPT-3 fine-tuned on Bacon's classic work of scientific theory.", ["GPT-3: Davinci Engine model", "Novum Organum model"])
-            #prompt_choice = st.radio('Select Prompt. This will guide the frame of reference in which GPT-3 will respond.', [prompt_choice_freeform, prompt_choice_rationale])
+            def bio_questions():
+                with st.form('Biographical Questions'):
 
-            #with st.expander("Advanced Settings:"):
-                #prompt_booster = st.radio("Zero Shot vs. Few Shot Prompting. If you chose one of the prompt boosters below, the AI model will be given pre-selected examples of the type of prompt you want to submit, increasing the chance of a better reply. However, this will also increase the chance the reply will repeat the booster choice. Choose 'None' to field questions without a booster.", ["None", "Question Booster", "Rationale Booster", "Haiku Booster"])
+                prompt_choice_freeform = "I am a representation of Francis Bacon, a key figure in the Scientific Revolution. You can ask me questions and I will answer in the style of Bacon's Novum Organum."
+                #prompt_choice_rationale = "I am an AI representation of Francis Bacon, a key figure in the early modern period. I will reply to your questions, and provide a historical rationale for my response."
+                #prompt_choice_haiku = "I am Lord Francis Bacon, a key figure in reign of King James I of England. I will answer your questions in the form of a haiku in a 5-7-5 syllabic structure."
 
-            option = st.radio("Question Bank:", ("Biographical", "Philosophy of Science"))
+                model_choice = st.radio("Select AI model. GPT-3 is the general purpose AI model. The Novum Organum model is a GPT-3 fine-tuned on Bacon's classic work of scientific theory.", ["GPT-3: Davinci Engine model", "Novum Organum model"])
+                #prompt_choice = st.radio('Select Prompt. This will guide the frame of reference in which GPT-3 will respond.', [prompt_choice_freeform, prompt_choice_rationale])
 
-            submit_button_1 = st.form_submit_button(label='Choose Model')
-                #with st.expander("Test:"):
-                    #test = st.radio("Test",["test1", "test2"])
+                #with st.expander("Advanced Settings:"):
+                    #prompt_booster = st.radio("Zero Shot vs. Few Shot Prompting. If you chose one of the prompt boosters below, the AI model will be given pre-selected examples of the type of prompt you want to submit, increasing the chance of a better reply. However, this will also increase the chance the reply will repeat the booster choice. Choose 'None' to field questions without a booster.", ["None", "Question Booster", "Rationale Booster", "Haiku Booster"])
+
+                question = st.radio("Questions concerning Bacon's life and career.", ["Describe your early life and education.", "How would you describe your career in government?", "What contributions did you make in the field of science?"])
+
+                submit_button_1 = st.form_submit_button(label='Submit Question')
+                    #with st.expander("Test:"):
+                        #test = st.radio("Test",["test1", "test2"])
+
+            def philosophy_questions():
+                with st.form('Philosophy of Science Questions'):
+
+                prompt_choice_freeform = "I am a representation of Francis Bacon, a key figure in the Scientific Revolution. You can ask me questions and I will answer in the style of Bacon's Novum Organum."
+                #prompt_choice_rationale = "I am an AI representation of Francis Bacon, a key figure in the early modern period. I will reply to your questions, and provide a historical rationale for my response."
+                #prompt_choice_haiku = "I am Lord Francis Bacon, a key figure in reign of King James I of England. I will answer your questions in the form of a haiku in a 5-7-5 syllabic structure."
+
+                model_choice = st.radio("Select AI model. GPT-3 is the general purpose AI model. The Novum Organum model is a GPT-3 fine-tuned on Bacon's classic work of scientific theory.", ["GPT-3: Davinci Engine model", "Novum Organum model"])
+                #prompt_choice = st.radio('Select Prompt. This will guide the frame of reference in which GPT-3 will respond.', [prompt_choice_freeform, prompt_choice_rationale])
+
+                #with st.expander("Advanced Settings:"):
+                    #prompt_booster = st.radio("Zero Shot vs. Few Shot Prompting. If you chose one of the prompt boosters below, the AI model will be given pre-selected examples of the type of prompt you want to submit, increasing the chance of a better reply. However, this will also increase the chance the reply will repeat the booster choice. Choose 'None' to field questions without a booster.", ["None", "Question Booster", "Rationale Booster", "Haiku Booster"])
+
+                question = st.radio("Questions concerning Bacon's life and career.", ["Describe your early life and education.", "How would you describe your career in government?", "What contributions did you make in the field of science?"])
+
+                submit_button_1 = st.form_submit_button(label='Submit Question')
+                    #with st.expander("Test:"):
+                        #test = st.radio("Test",["test1", "test2"])
+
+            if topic_choice == "Biographical Questions":
+                bio_questions()
+            else:
+                philosophy_questions()
+
             if submit_button_1:
-                st.write("Model and Question Bank loaded.")
-                if 'model_choice' not in st.session_state:
-                    st.session_state.model_choice = model_choice
-
-                if 'option' not in st.session_state:
-                    st.session_state.option = option
-
-        with st.form('form2'):
-
-            def question_bank_display():
-                if option == "Biographical":
-                    question = st.radio("Questions concerning Bacon's life and career.", ["Describe your early life and education.", "How would you describe your career in government?", "What contributions did you make in the field of science?"])
-                else:
-                    question = st.radio("Questions concerning Bacon's Philosophy of Science.", ["option 1", "option 2"])
-
-            question_bank_display()
-
-            submit_button_2 = st.form_submit_button("Click here to submit question")
-
-            #temperature_dial = st.slider("Temperature Dial. Lower values are generally more accurate, but lower extremes yield more repetitive replies. Higher values are more creative, but higher extremes result in incoherent responses.", 0.0, 1.0)
-            #response_length = st.slider("Response Length. Recommended range is 75-150 for general questions, 150-250 for rationale questions, and 25-50 for haikus.", 25, 250)
-            #submission_text = st.text_area("Enter your questions and comments below to Francis Bacon in this space. Be patient as he considers your statement.", max_chars=1000)
-            #j2submit_button_1 = st.form_submit_button(label='Submit Question')
-
-            if submit_button_2:
-
-                if 'question' not in st.session_state:
-                    st.session_state.question = question
 
                 os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
                 now = dt.now()
@@ -130,7 +133,7 @@ def app():
 
                 summon = openai.Completion.create(
                     model=model_select,
-                    prompt= prompt_text + " " + st.session_state.question,
+                    prompt= prompt_text + " " + question,
                     temperature=.5,
                     user="0",
                     max_tokens=150)
