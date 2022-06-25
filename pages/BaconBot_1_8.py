@@ -82,7 +82,7 @@ def app():
 
                     question = st.radio("Questions concerning Bacon's life and career.", ["Describe your early life and education.", "How would you describe your career in government?", "What contributions did you make in the field of science?"])
 
-                    submit_button_1 = st.form_submit_button(label='Submit Question')
+                    submit_button_2 = st.form_submit_button(label='Submit Question')
                         #with st.expander("Test:"):
                             #test = st.radio("Test",["test1", "test2"])
 
