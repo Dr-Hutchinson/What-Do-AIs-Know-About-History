@@ -49,6 +49,7 @@ def app():
 
     hashed_passwords = stauth.Hasher(passwords).generate()
 
+    st.write("test")
     authenticator = stauth.Authenticate(names, usernames, hashed_passwords,
         'some_cookie_name', 'some_signature_key', cookie_expiry_days=300)
 
