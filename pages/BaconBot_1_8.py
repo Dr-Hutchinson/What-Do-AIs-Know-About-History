@@ -68,7 +68,7 @@ def app():
                 if 'option' not in st.session_state:
                     st.session_state.option = option
 
-        with st.form('form2')
+        with st.form('form2'):
 
             def question_bank_display():
                 if option == "Biographical":
