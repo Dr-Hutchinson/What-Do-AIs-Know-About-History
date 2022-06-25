@@ -71,6 +71,9 @@ def app():
                         with st.expander("Philosophy of Science Questions:"):
                             question = st.radio("Questions concerning Bacon's Philosophy of Science.", ["option 1", "option 2"])
 
+                    if 'question' not in st.session_state:
+                        st.session_state.question = question
+
                 question_bank()
 
         submit_button_2 = st.button("Submit Question")
