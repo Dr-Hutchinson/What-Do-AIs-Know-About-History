@@ -22,7 +22,7 @@ def app():
     st.header("Public Demo")
 
 
-    st.write("The following version of BaconBot permits users to compose their own questions and customize the question parameters. The login panel will load in a moment.")
+    st.write("The following version of BaconBot permits users to pose a range of questions about the life and times of Francis Bacon to a fine-tuned model of GPT-3. To learn more about this model, click here.")
     #pygsheets credentials for Google Sheets API
     scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
@@ -32,8 +32,8 @@ def app():
         st.write('[Jürgen Klein and Guido Giglioni, "Francis Bacon", The Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/francis-bacon/)')
         st.write('[Richard S. Westfall, "Francis Bacon", The Galileo Project, Rice University](http://galileo.rice.edu/Catalog/NewFiles/bacon.html)')
 
-        #Begin Baconbot code
-    st.title('Simulated Conversations with Francis Bacon')
+    #Begin Baconbot code
+
     col1, col2 = st.columns([3.0,3.5])
     with col2:
         bacon_pic = st.image(image='./bacon.png', caption="Portrait of Francis Bacon. National Portrait Gallery, London.")
@@ -47,17 +47,20 @@ def app():
 
             prompt_choice_freeform = "I am a representation of Francis Bacon, a key figure in the Scientific Revolution. You can ask me questions and I will answer in the style of Bacon's Novum Organum."
             prompt_choice_rationale = "I am an AI representation of Francis Bacon, a key figure in the early modern period. I will reply to your questions, and provide a historical rationale for my response."
-            prompt_choice_haiku = "I am Lord Francis Bacon, a key figure in reign of King James I of England. I will answer your questions in the form of a haiku in a 5-7-5 syllabic structure."
+            #prompt_choice_haiku = "I am Lord Francis Bacon, a key figure in reign of King James I of England. I will answer your questions in the form of a haiku in a 5-7-5 syllabic structure."
 
             model_choice = st.radio("Select AI model. GPT-3 is the general purpose AI model. The Novum Organum model is a GPT-3 fine-tuned on Bacon's classic work of scientific theory.", ["GPT-3: Davinci Engine model", "Novum Organum model"])
-            prompt_choice = st.radio('Select Prompt.', [prompt_choice_freeform, prompt_choice_rationale, prompt_choice_haiku])
+            prompt_choice = st.radio('Select Prompt. This will guide the frame of reference in which GPT-3 will respond.', [prompt_choice_freeform, prompt_choice_rationale, prompt_choice_haiku])
 
-            with st.expander("Advanced Settings:"):
-                prompt_booster = st.radio("Zero Shot vs. Few Shot Prompting. If you chose one of the prompt boosters below, the AI model will be given pre-selected examples of the type of prompt you want to submit, increasing the chance of a better reply. However, this will also increase the chance the reply will repeat the booster choice. Choose 'None' to field questions without a booster.", ["None", "Question Booster", "Rationale Booster", "Haiku Booster"])
+            #with st.expander("Advanced Settings:"):
+                #prompt_booster = st.radio("Zero Shot vs. Few Shot Prompting. If you chose one of the prompt boosters below, the AI model will be given pre-selected examples of the type of prompt you want to submit, increasing the chance of a better reply. However, this will also increase the chance the reply will repeat the booster choice. Choose 'None' to field questions without a booster.", ["None", "Question Booster", "Rationale Booster", "Haiku Booster"])
 
-            temperature_dial = st.slider("Temperature Dial. Lower values are generally more accurate, but lower extremes yield more repetitive replies. Higher values are more creative, but higher extremes result in incoherent responses.", 0.0, 1.0)
-            response_length = st.slider("Response Length. Recommended range is 75-150 for general questions, 150-250 for rationale questions, and 25-50 for haikus.", 25, 250)
-            submission_text = st.text_area("Enter your questions and comments below to Francis Bacon in this space. Be patient as he considers your statement.", max_chars=1000)
+            with st.expander("Biographical Questions:"):
+                prompt_booster = st.radio(".", ["Describe your early life and education.", "How would you describe your career in government?", "What contributions did you make in the field of science?"])
+
+            #temperature_dial = st.slider("Temperature Dial. Lower values are generally more accurate, but lower extremes yield more repetitive replies. Higher values are more creative, but higher extremes result in incoherent responses.", 0.0, 1.0)
+            #response_length = st.slider("Response Length. Recommended range is 75-150 for general questions, 150-250 for rationale questions, and 25-50 for haikus.", 25, 250)
+            #submission_text = st.text_area("Enter your questions and comments below to Francis Bacon in this space. Be patient as he considers your statement.", max_chars=1000)
             submit_button_1 = st.form_submit_button(label='Submit Question')
 
             if submit_button_1:
