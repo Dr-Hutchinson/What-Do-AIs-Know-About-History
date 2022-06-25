@@ -87,6 +87,9 @@ def app():
 
             if submit_button_2:
 
+                if 'question' not in st.session_state:
+                    st.session_state.question = question
+
                 os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
                 now = dt.now()
 
