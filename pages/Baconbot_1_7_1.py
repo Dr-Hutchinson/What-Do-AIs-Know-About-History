@@ -18,6 +18,7 @@ import ssl
 
 def app():
 
+    st.write("test")
     #pygsheets credentials for Google Sheets API
     scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
@@ -49,7 +50,7 @@ def app():
 
     hashed_passwords = stauth.Hasher(passwords).generate()
 
-    st.write("test")
+
     authenticator = stauth.Authenticate(names, usernames, hashed_passwords,
         'some_cookie_name', 'some_signature_key', cookie_expiry_days=300)
 
