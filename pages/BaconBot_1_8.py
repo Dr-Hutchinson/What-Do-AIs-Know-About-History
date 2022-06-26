@@ -32,7 +32,7 @@ def app():
 
     def button_one():
 
-        st.write("The following version of BaconBot permits users to pose a range of questions about the life and times of Francis Bacon to a fine-tuned model of GPT-3. To learn more about this model, click here.")
+        st.write("The following version of BaconBot permits users to pose a range of questions about the life and times of Francis Bacon to a fine-tuned model of GPT-3.")
 
         def bio_questions():
             with col1:
