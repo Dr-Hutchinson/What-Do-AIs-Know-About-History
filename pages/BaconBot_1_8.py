@@ -162,7 +162,7 @@ def app():
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
                         def total_output_collection():
-                            d1 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice], 'prompt_boost':[prompt_booster], 'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
+                            d1 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform], 'prompt_boost':[prompt_booster], 'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
                             df1 = pd.DataFrame(data=d1, index=None)
                             sh1 = gc.open('bacon_outputs')
                             wks1 = sh1[0]
@@ -171,7 +171,7 @@ def app():
                             wks1.set_dataframe(df1,(end_row1+1,1), copy_head=False, extend=True)
 
                         def output_collection_filtered():
-                            d2 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice], 'prompt_boost':[prompt_booster], 'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
+                            d2 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform], 'prompt_boost':[prompt_booster], 'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
                             df2 = pd.DataFrame(data=d2, index=None)
                             sh2 = gc.open('bacon_outputs_filtered')
                             wks2 = sh2[0]
@@ -180,7 +180,7 @@ def app():
                             wks2.set_dataframe(df2,(end_row2+1,1), copy_head=False, extend=True)
 
                         def temp_output_collection():
-                            d3 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice], 'prompt_boost':[prompt_booster], 'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
+                            d3 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform], 'prompt_boost':[prompt_booster], 'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
                             df3 = pd.DataFrame(data=d3, index=None)
                             sh3 = gc.open('bacon_outputs_temp')
                             wks3 = sh3[0]
@@ -331,7 +331,7 @@ def app():
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
                         def total_output_collection():
-                            d1 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice], 'prompt_boost':[prompt_booster], 'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
+                            d1 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform], 'prompt_boost':[prompt_booster], 'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
                             df1 = pd.DataFrame(data=d1, index=None)
                             sh1 = gc.open('bacon_outputs')
                             wks1 = sh1[0]
@@ -340,7 +340,7 @@ def app():
                             wks1.set_dataframe(df1,(end_row1+1,1), copy_head=False, extend=True)
 
                         def output_collection_filtered():
-                            d2 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice], 'prompt_boost':[prompt_booster], 'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
+                            d2 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform], 'prompt_boost':[prompt_booster], 'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
                             df2 = pd.DataFrame(data=d2, index=None)
                             sh2 = gc.open('bacon_outputs_filtered')
                             wks2 = sh2[0]
@@ -349,7 +349,7 @@ def app():
                             wks2.set_dataframe(df2,(end_row2+1,1), copy_head=False, extend=True)
 
                         def temp_output_collection():
-                            d3 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice], 'prompt_boost':[prompt_booster], 'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
+                            d3 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform, 'prompt_boost':[prompt_booster], 'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
                             df3 = pd.DataFrame(data=d3, index=None)
                             sh3 = gc.open('bacon_outputs_temp')
                             wks3 = sh3[0]
