@@ -32,6 +32,8 @@ def app():
 
     def button_one():
 
+        st.write("The following version of BaconBot permits users to pose a range of questions about the life and times of Francis Bacon to a fine-tuned model of GPT-3. To learn more about this model, click here.")
+
         def bio_questions():
             with col1:
                 with st.form('Biographical Questions'):
@@ -388,18 +390,8 @@ def app():
             st.write('[Jürgen Klein and Guido Giglioni, "Francis Bacon", The Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/francis-bacon/)')
             st.write('[Richard S. Westfall, "Francis Bacon", The Galileo Project, Rice University](http://galileo.rice.edu/Catalog/NewFiles/bacon.html)')
 
-        st.write("The following version of BaconBot permits users to pose a range of questions about the life and times of Francis Bacon to a fine-tuned model of GPT-3. To learn more about this model, click here.")
+
         #pygsheets credentials for Google Sheets API
-        scope = ['https://spreadsheets.google.com/feeds',
-                 'https://www.googleapis.com/auth/drive']
-
-
-        #if field_choice == "Biographical":
-            #bio_questions()
-        #elif field_choice == "Philosophy of Science":
-            #philosophy_questions()
-
-        #Begin Baconbot code
 
 
         with col2:
