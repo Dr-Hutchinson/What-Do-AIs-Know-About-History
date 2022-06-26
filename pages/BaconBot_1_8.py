@@ -64,11 +64,11 @@ def app():
                             model_select = st.secrets['novum_organum_model']
 
                         if temperature_choice == "Low":
-                            temperature_choice == 0
+                            temperature_dial == 0
                         elif temperature_choice == "Medium":
-                            temperature_chouce == .5
+                            temperature_dial == .5
                         else:
-                            temperature_choice == 1
+                            temperature_dial == 1
 
                         prompt_boost_question_1 = "Question: What do you see as the hallmarks of the New Science?"
                         prompt_boost_question_2 = "Answer: The New Science (as I would like to call it, so as not to offend the old) has two main indications. The first is to discover the occasions and causes of nature’s productions and actions; the second, by careful and well-ordered experiments (such as are derived from the light of nature), to acquire a competent knowledge of the power and office of each production and action."
@@ -84,7 +84,7 @@ def app():
                         summon = openai.Completion.create(
                             model=model_select,
                             prompt= prompt_text + " " + question,
-                            temperature=temperature_choice,
+                            temperature=temperature_dial,
                             user="0",
                             max_tokens=response_length)
 
@@ -159,7 +159,7 @@ def app():
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
                         def total_output_collection():
-                            d1 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform], 'prompt_boost':[prompt_boost_question_1 + "\n\n" + prompt_boost_question_2], 'question':[question], 'output':[output], 'temperature':[temperature_choice], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
+                            d1 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform], 'prompt_boost':[prompt_boost_question_1 + "\n\n" + prompt_boost_question_2], 'question':[question], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
                             df1 = pd.DataFrame(data=d1, index=None)
                             sh1 = gc.open('bacon_outputs')
                             wks1 = sh1[0]
@@ -168,7 +168,7 @@ def app():
                             wks1.set_dataframe(df1,(end_row1+1,1), copy_head=False, extend=True)
 
                         def output_collection_filtered():
-                            d2 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform], 'prompt_boost':[prompt_boost_question_1 + "\n\n" + prompt_boost_question_2], 'question':[question], 'output':[output], 'temperature':[temperature_choice], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
+                            d2 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform], 'prompt_boost':[prompt_boost_question_1 + "\n\n" + prompt_boost_question_2], 'question':[question], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
                             df2 = pd.DataFrame(data=d2, index=None)
                             sh2 = gc.open('bacon_outputs_filtered')
                             wks2 = sh2[0]
@@ -177,7 +177,7 @@ def app():
                             wks2.set_dataframe(df2,(end_row2+1,1), copy_head=False, extend=True)
 
                         def temp_output_collection():
-                            d3 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform], 'prompt_boost':[prompt_boost_question_1 + "\n\n" + prompt_boost_question_2], 'question':[question], 'output':[output], 'temperature':[temperature_choice], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
+                            d3 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform], 'prompt_boost':[prompt_boost_question_1 + "\n\n" + prompt_boost_question_2], 'question':[question], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
                             df3 = pd.DataFrame(data=d3, index=None)
                             sh3 = gc.open('bacon_outputs_temp')
                             wks3 = sh3[0]
