@@ -371,16 +371,16 @@ def app():
 
         with st.sidebar.form(key ='Form2'):
             field_choice = st.radio("Choose a Question Category:", ["Biographical", "Philosophy of Science"])
-            def delete_sessions():
-                for key in st.session_state.keys():
-                    del st.session_state[key]
 
-            button2 = st.form_submit_button("Click here to load another question")
+            button2 = st.form_submit_button("Click here to load question bank.")
 
             if button2:
-                delete_sessions()
-                st.experimental_rerun()
 
+                if field_choice == "Biographical":
+                    bio_questions()
+                elif field_choice == "Philosophy of Science":
+                    philosophy_questions()
+        
         with st.sidebar:
             st.write('Explore more about the life and times of Francis Bacon:')
             st.write('[Six Degrees of Francis Bacon](http://www.sixdegreesoffrancisbacon.com/), Carnegie Mellon University')
