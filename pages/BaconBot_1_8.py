@@ -18,6 +18,14 @@ import ssl
 
 def app():
 
+    scope = ['https://spreadsheets.google.com/feeds',
+             'https://www.googleapis.com/auth/drive']
+
+    credentials = service_account.Credentials.from_service_account_info(
+                    st.secrets["gcp_service_account"], scopes = scope)
+
+    gc = pygsheets.authorize(custom_credentials=credentials)
+
     st.title("BaconBot: An AI Imitation of Francis Bacon")
     st.header("Public Demo")
     col1, col2 = st.columns([3.0,3.5])
