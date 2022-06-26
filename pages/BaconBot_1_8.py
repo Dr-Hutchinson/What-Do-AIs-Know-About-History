@@ -20,6 +20,7 @@ def app():
 
     st.title("BaconBot: An AI Imitation of Francis Bacon")
     st.header("Public Demo")
+    col1, col2 = st.columns([3.0,3.5])
 
     def bio_questions():
         with col1:
@@ -391,7 +392,7 @@ def app():
 
     #Begin Baconbot code
 
-    col1, col2 = st.columns([3.0,3.5])
+
     with col2:
         bacon_pic = st.image(image='./bacon.png', caption="Portrait of Francis Bacon. National Portrait Gallery, London.")
 
