@@ -374,8 +374,6 @@ def app():
 
             button2 = st.form_submit_button("Click here to load question bank.")
 
-            if button2:
-
             def delete_sessions():
                 for key in st.session_state.keys():
                     del st.session_state[key]
