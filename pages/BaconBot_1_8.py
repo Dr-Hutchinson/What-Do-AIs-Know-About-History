@@ -374,14 +374,10 @@ def app():
 
             button2 = st.form_submit_button("Click here to load question bank.")
 
-            def delete_sessions():
-                for key in st.session_state.keys():
-                    del st.session_state[key]
-
-            if button2:
-                delete_sessions()
-                st.experimental_rerun()
-
+            if field_choice == "Biographical":
+                field_choice = bio_questions()
+            elif field_choice == "Philosophy of Science":
+                field_choice = philosophy_questions()
 
         with st.sidebar:
             st.write('Explore more about the life and times of Francis Bacon:')
@@ -395,10 +391,10 @@ def app():
                  'https://www.googleapis.com/auth/drive']
 
 
-        if field_choice == "Biographical":
-            bio_questions()
-        elif field_choice == "Philosophy of Science":
-            philosophy_questions()
+        #if field_choice == "Biographical":
+            #bio_questions()
+        #elif field_choice == "Philosophy of Science":
+            #philosophy_questions()
 
         #Begin Baconbot code
 
