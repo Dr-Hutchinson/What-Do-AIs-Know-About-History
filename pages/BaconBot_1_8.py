@@ -22,7 +22,7 @@ def app():
     st.header("Public Demo")
     col1, col2 = st.columns([3.0,3.5])
 
-    def button_1():
+    def button_one():
 
         def bio_questions():
             with col1:
