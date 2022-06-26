@@ -349,7 +349,7 @@ def app():
                             wks2.set_dataframe(df2,(end_row2+1,1), copy_head=False, extend=True)
 
                         def temp_output_collection():
-                            d3 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform, 'prompt_boost':[prompt_booster], 'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
+                            d3 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform], 'prompt_boost':[prompt_booster], 'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
                             df3 = pd.DataFrame(data=d3, index=None)
                             sh3 = gc.open('bacon_outputs_temp')
                             wks3 = sh3[0]
