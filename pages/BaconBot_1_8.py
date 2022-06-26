@@ -207,6 +207,8 @@ def app():
                     #with st.expander("Advanced Settings:"):
                         #prompt_booster = st.radio("Zero Shot vs. Few Shot Prompting. If you chose one of the prompt boosters below, the AI model will be given pre-selected examples of the type of prompt you want to submit, increasing the chance of a better reply. However, this will also increase the chance the reply will repeat the booster choice. Choose 'None' to field questions without a booster.", ["None", "Question Booster", "Rationale Booster", "Haiku Booster"])
 
+                    temperature_choice = st.radio("Select the temperature of the AI's response. Low tends to produce more factually correct responses, but also more repetitive replies. High tends to produce more creative responses, but less coherent.", ["Low", "Medium", "High"])
+
                     question = st.radio("Questions concerning Bacon's life and career.", ["Describe your early life and education.", "How would you describe your career in government?", "What contributions did you make in the field of science?"])
 
                     submit_button_1 = st.form_submit_button(label='Submit Question')
@@ -251,12 +253,19 @@ def app():
 
                                 #prompt_text = prompt_choice + "\n\nQ:"
 
+                        if temperature_choice == "Low":
+                            temperature_dial == 0
+                        elif temperature_choice == "Medium":
+                            temperature_dial == .5
+                        else:
+                            temperature_dial == 1
+
                         openai.api_key = os.getenv("OPENAI_API_KEY")
 
                         summon = openai.Completion.create(
                             model=model_select,
                             prompt= prompt_text + " " + question,
-                            temperature=.5,
+                            temperature=temperature_dial,
                             user="0",
                             max_tokens=150)
 
