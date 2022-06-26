@@ -57,6 +57,13 @@ def app():
                         else:
                             model_select = st.secrets['novum_organum_model']
 
+                        if temperature_choice == "Low":
+                            temperature_dial == 0
+                        elif temperature_choice == "Medium":
+                            temperature_dial == .5
+                        else:
+                            temperature_dial == 1
+
                             #prompt_boost_haiku_1 = "Compose a haiku on the events in London during the spring of 1610."
                             #prompt_boost_haiku_2 = "Haiku: The taverns are full of talk, Of the moons of Jupiter and of the Prince’s ship."
                             #prompt_boost_haiku_3 = "Compose a haiku in the style of Basho."
