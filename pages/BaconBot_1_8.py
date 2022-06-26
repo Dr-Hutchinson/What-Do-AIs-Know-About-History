@@ -257,6 +257,9 @@ def app():
                         else:
                             temperature_dial = 1
 
+                        response_length = 150
+
+
                         openai.api_key = os.getenv("OPENAI_API_KEY")
 
                         summon = openai.Completion.create(
@@ -264,7 +267,7 @@ def app():
                             prompt= prompt_text + " " + question,
                             temperature=temperature_dial,
                             user="0",
-                            max_tokens=150)
+                            max_tokens=response_length)
 
                         response_json = len(summon["choices"])
 
