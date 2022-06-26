@@ -380,7 +380,7 @@ def app():
                     bio_questions()
                 elif field_choice == "Philosophy of Science":
                     philosophy_questions()
-        
+
         with st.sidebar:
             st.write('Explore more about the life and times of Francis Bacon:')
             st.write('[Six Degrees of Francis Bacon](http://www.sixdegreesoffrancisbacon.com/), Carnegie Mellon University')
@@ -392,11 +392,6 @@ def app():
         scope = ['https://spreadsheets.google.com/feeds',
                  'https://www.googleapis.com/auth/drive']
 
-
-        if field_choice == "Biographical":
-            bio_questions()
-        elif field_choice == "Philosophy of Science":
-            philosophy_questions()
 
         #Begin Baconbot code
 
