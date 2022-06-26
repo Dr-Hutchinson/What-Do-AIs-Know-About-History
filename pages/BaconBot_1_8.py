@@ -378,8 +378,6 @@ def app():
                 for key in st.session_state.keys():
                     del st.session_state[key]
 
-            button2 = st.form_submit_button("Click here to load another question")
-
             if button2:
                 delete_sessions()
                 st.experimental_rerun()
