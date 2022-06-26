@@ -393,10 +393,10 @@ def app():
                  'https://www.googleapis.com/auth/drive']
 
 
-        if field_choice == "Biographical":
-            bio_questions()
-        elif field_choice == "Philosophy of Science":
-            philosophy_questions()
+        #if field_choice == "Biographical":
+            #bio_questions()
+        #elif field_choice == "Philosophy of Science":
+            #philosophy_questions()
 
         #Begin Baconbot code
 
