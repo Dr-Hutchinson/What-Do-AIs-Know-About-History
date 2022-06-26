@@ -84,7 +84,7 @@ def app():
                         summon = openai.Completion.create(
                             model=model_select,
                             prompt= prompt_text + " " + question,
-                            temperature=temperature_dial,
+                            temperature=temperature_choice,
                             user="0",
                             max_tokens=response_length)
 
