@@ -64,11 +64,11 @@ def app():
                             model_select = st.secrets['novum_organum_model']
 
                         if temperature_choice == "Low":
-                            temperature_dial == 0
+                            temperature_dial = 0
                         elif temperature_choice == "Medium":
-                            temperature_dial == .5
+                            temperature_dial = .5
                         else:
-                            temperature_dial == 1
+                            temperature_dial = 1
 
                         prompt_boost_question_1 = "Question: What do you see as the hallmarks of the New Science?"
                         prompt_boost_question_2 = "Answer: The New Science (as I would like to call it, so as not to offend the old) has two main indications. The first is to discover the occasions and causes of nature’s productions and actions; the second, by careful and well-ordered experiments (such as are derived from the light of nature), to acquire a competent knowledge of the power and office of each production and action."
