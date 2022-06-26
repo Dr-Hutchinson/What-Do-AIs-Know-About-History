@@ -399,58 +399,62 @@ def app():
 
     def button_two():
         #Rank Bacon_bot Responses
-        st.write("Rank Bacon's Reply:")
-        sh1 = gc.open('bacon_outputs_temp')
 
-        wks1 = sh1[0]
-        submission_text = wks1.get_value('F2')
-        output = wks1.get_value('G2')
-        prompt_text = wks1.get_value('D2')
-        st.subheader('Prompt:')
-        st.write(prompt_text)
-        st.subheader('Your Question')
-        st.write(submission_text)
-        st.subheader("Bacon's Reply:")
-        st.write(output)
+        with col1:
+            st.write("Rank Bacon's Reply:")
+            sh1 = gc.open('bacon_outputs_temp')
 
+            wks1 = sh1[0]
+            submission_text = wks1.get_value('F2')
+            output = wks1.get_value('G2')
+            prompt_text = wks1.get_value('D2')
+            st.subheader('Prompt:')
+            st.write(prompt_text)
+            st.subheader('Your Question')
+            st.write(submission_text)
+            st.subheader("Bacon's Reply:")
+            st.write(output)
 
-        with st.form('form2'):
-            bacon_score = st.slider("How much does the reply resemble the style of Francis Bacon?", 0, 10, key='bacon')
-            worldview_score = st.slider("Is the reply consistent with Bacon's worldview?", 0, 10, key='worldview')
-            accuracy_rank = st.slider("Does the reply appear factually accurate?", 0, 10, key='accuracy')
-            coherence_rank = st.slider("How coherent and well-written is the reply?", 0,10, key='coherence')
-            st.write("Transmitting the rankings takes a few moments. Thank you for your patience.")
-            submit_button_2 = st.form_submit_button(label='Submit Ranking')
+            with st.form('form2'):
+                bacon_score = st.slider("How much does the reply resemble the style of Francis Bacon?", 0, 10, key='bacon')
+                worldview_score = st.slider("Is the reply consistent with Bacon's worldview?", 0, 10, key='worldview')
+                accuracy_rank = st.slider("Does the reply appear factually accurate?", 0, 10, key='accuracy')
+                coherence_rank = st.slider("How coherent and well-written is the reply?", 0,10, key='coherence')
+                st.write("Transmitting the rankings takes a few moments. Thank you for your patience.")
+                submit_button_2 = st.form_submit_button(label='Submit Ranking')
 
-            if submit_button_2:
-                sh1 = gc.open('bacon_outputs_temp')
-                wks1 = sh1[0]
-                df = wks1.get_as_df(has_header=True, index_column=None, start='A1', end=('K2'), numerize=False)
-                name = df['user'][0]
-                user_id = df['user_id'][0]
-                model_choice = df['model'][0]
-                prompt_choice = df['prompt'][0]
-                prompt_boost = df['prompt_boost'][0]
-                submission_text = df['question'][0]
-                output = df['output'][0]
-                temperature_dial = df['temperature'][0]
-                response_length = df['response_length'][0]
-                output_label = df['filter_ranking'][0]
-                now = dt.now()
-                ranking_score = [bacon_score, worldview_score, accuracy_rank, coherence_rank]
-                ranking_average = mean(ranking_score)
+                if submit_button_2:
+                    sh1 = gc.open('bacon_outputs_temp')
+                    wks1 = sh1[0]
+                    df = wks1.get_as_df(has_header=True, index_column=None, start='A1', end=('K2'), numerize=False)
+                    name = df['user'][0]
+                    user_id = df['user_id'][0]
+                    model_choice = df['model'][0]
+                    prompt_choice = df['prompt'][0]
+                    prompt_boost = df['prompt_boost'][0]
+                    submission_text = df['question'][0]
+                    output = df['output'][0]
+                    temperature_dial = df['temperature'][0]
+                    response_length = df['response_length'][0]
+                    output_label = df['filter_ranking'][0]
+                    now = dt.now()
+                    ranking_score = [bacon_score, worldview_score, accuracy_rank, coherence_rank]
+                    ranking_average = mean(ranking_score)
 
-                def ranking_collection():
-                    d4 = {'user':["0"], 'user_id':[user_id],'model':[model_choice], 'prompt':[prompt_choice], 'prompt_boost':[prompt_boost],'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'bacon_score':[bacon_score], 'worldview_score':[worldview_score],'accuracy_rank':[accuracy_rank], 'coherence':[coherence_rank], 'overall_ranking':[ranking_average], 'date':[now]}
-                    df4 = pd.DataFrame(data=d4, index=None)
-                    sh4 = gc.open('bacon_rankings')
-                    wks4 = sh4[0]
-                    cells4 = wks4.get_all_values(include_tailing_empty_rows=False, include_tailing_empty=False, returnas='matrix')
-                    end_row4 = len(cells4)
-                    wks4.set_dataframe(df4,(end_row4+1,1), copy_head=False, extend=True)
+                    def ranking_collection():
+                        d4 = {'user':["0"], 'user_id':[user_id],'model':[model_choice], 'prompt':[prompt_choice], 'prompt_boost':[prompt_boost],'question':[submission_text], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'bacon_score':[bacon_score], 'worldview_score':[worldview_score],'accuracy_rank':[accuracy_rank], 'coherence':[coherence_rank], 'overall_ranking':[ranking_average], 'date':[now]}
+                        df4 = pd.DataFrame(data=d4, index=None)
+                        sh4 = gc.open('bacon_rankings')
+                        wks4 = sh4[0]
+                        cells4 = wks4.get_all_values(include_tailing_empty_rows=False, include_tailing_empty=False, returnas='matrix')
+                        end_row4 = len(cells4)
+                        wks4.set_dataframe(df4,(end_row4+1,1), copy_head=False, extend=True)
 
-                ranking_collection()
-                st.write('Rankings recorded - thank you! Feel free to continue your conversation with Francis Bacon.')
+                    ranking_collection()
+                    st.write('Rankings recorded - thank you! Feel free to continue your conversation with Francis Bacon.')
+
+        with col2:
+            bacon_pic = st.image(image='./bacon.png', caption="Portrait of Francis Bacon. National Portrait Gallery, London.")
 
     with col1:
 
