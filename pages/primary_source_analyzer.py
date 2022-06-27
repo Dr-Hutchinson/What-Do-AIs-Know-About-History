@@ -199,6 +199,7 @@ def app():
 
                     st.image(image='./household_management.png')
                     st.write("Isabella Beeton, Book of Household Management (S.O. Beeton: London, 1861), 46. Avaliable via the Internet Archive, [link.](https://archive.org/details/b20392758/page/n45/mode/2up)")
+                    st.write(hayseed_lyrics)
                     st.write(source_information)
 
                     submit_button_1 = st.form_submit_button(label='Analyze Source')
