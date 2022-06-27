@@ -28,7 +28,7 @@ def app():
 
     st.title('How does an AI "Interpret" a Primary Source?')
     st.header("Public Demo")
-    col1, col2 = st.columns([1,1])
+    col1, col2 = st.columns([3,1])
 
     def button_one():
 
