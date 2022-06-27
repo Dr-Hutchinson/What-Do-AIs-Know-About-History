@@ -35,120 +35,119 @@ def app():
         st.write("The following app prompts GPT-3 to simulate historical analysis of selected primary sources through a specific historical method.")
 
         def hayseed_question():
-            with col1:
-                with st.form('Hayseed Question'):
+            with st.form('Hayseed Question'):
 
-                    prompt = "You are an AI historian specializing in primary source analysis and historiographical interpretation. When given a Primary Source, you will provide a detailed and substantive analysis of that source based on the Historical Method and Source Information below."
-                    historical_method = "Step 1 -  Contextualization: Apply the Source Information to provide a lengthy, detailed, and substantive analysis of how the Primary Source reflects the larger historical period in which it was created. In composing this lengthy, detailed, and substantive analysis, note specific events, personalities, and ideologies that shaped the the period noted in the Source Information.\nStep 2 - Purpose : Offer a substantive exploration of the purpose of the Primary Source, interpreting the author’s arguments through the Contextualization offered in Step 1.\nStep 3 - Audience: Compose a substantive assessment of the intended audience of the Primary Source. Note how this audience would shape the Primary Source's reception and historical impact in light of the Contextualization offered in Step 1.\nStep 4 - Historiographical Interpretation: Provide a substantive and incisive interpretation of how at least three specific schools of historiographical thought would interpret this source. Compare and contrast how this source could be interpreted by three different academic historiographical schools.  Different historiographical approaches could include the Progressive, Consensus, Annales, microhistory, Marxist, postmodern, post-colonial, Structuralist, gender history, and the cultural turn."
-                    instructions = "Instructions: Based on the Historical Method outlined above, provide a substantive and detailed analysis of the Primary Source in the manner of an academic historian. Let's take this step by step."
+                prompt = "You are an AI historian specializing in primary source analysis and historiographical interpretation. When given a Primary Source, you will provide a detailed and substantive analysis of that source based on the Historical Method and Source Information below."
+                historical_method = "Step 1 -  Contextualization: Apply the Source Information to provide a lengthy, detailed, and substantive analysis of how the Primary Source reflects the larger historical period in which it was created. In composing this lengthy, detailed, and substantive analysis, note specific events, personalities, and ideologies that shaped the the period noted in the Source Information.\nStep 2 - Purpose : Offer a substantive exploration of the purpose of the Primary Source, interpreting the author’s arguments through the Contextualization offered in Step 1.\nStep 3 - Audience: Compose a substantive assessment of the intended audience of the Primary Source. Note how this audience would shape the Primary Source's reception and historical impact in light of the Contextualization offered in Step 1.\nStep 4 - Historiographical Interpretation: Provide a substantive and incisive interpretation of how at least three specific schools of historiographical thought would interpret this source. Compare and contrast how this source could be interpreted by three different academic historiographical schools.  Different historiographical approaches could include the Progressive, Consensus, Annales, microhistory, Marxist, postmodern, post-colonial, Structuralist, gender history, and the cultural turn."
+                instructions = "Instructions: Based on the Historical Method outlined above, provide a substantive and detailed analysis of the Primary Source in the manner of an academic historian. Let's take this step by step."
 
-                    st.header('Primary Source - "The Hayseed" (1890)')
+                st.header('Primary Source - "The Hayseed" (1890)')
 
-                    hayseed_lyrics = '"The Hayseed"\n"I was once a tool of oppression\nAnd as green as a sucker could be\nAnd monopolies banded together\nTo beat a poor hayseed like me.\n"The railroads and old party bosses\nTogether did sweetly agree;\nAnd they thought there would be little trouble\nIn working a hayseed like me. . . ."'
-                    source_information = "Source Information: The Primary Source is an American political campaign song popularized in 1890, and published by a Nebraska newspaper known as the Farmer's Alliance."
+                hayseed_lyrics = '"The Hayseed"\n"I was once a tool of oppression\nAnd as green as a sucker could be\nAnd monopolies banded together\nTo beat a poor hayseed like me.\n"The railroads and old party bosses\nTogether did sweetly agree;\nAnd they thought there would be little trouble\nIn working a hayseed like me. . . ."'
+                source_information = "Source Information: The Primary Source is an American political campaign song popularized in 1890, and published by a Nebraska newspaper known as the Farmer's Alliance."
 
-                    st.image(image='./hayseed.png')
-                    st.write("Arthur L. Kellog, “The Hayseed,” Farmers Alliance (4 October 1890). Nebraska Newspapers (University of Nebraska Libraries), [link](https://nebnewspapers.unl.edu/lccn/2017270209/1890-10-04/ed-1/seq-1/)")
-                    st.write(source_information)
+                st.image(image='./hayseed.png')
+                st.write("Arthur L. Kellog, “The Hayseed,” Farmers Alliance (4 October 1890). Nebraska Newspapers (University of Nebraska Libraries), [link](https://nebnewspapers.unl.edu/lccn/2017270209/1890-10-04/ed-1/seq-1/)")
+                st.write(source_information)
 
-                    submit_button_1 = st.form_submit_button(label='Analyze Source')
+                submit_button_1 = st.form_submit_button(label='Analyze Source')
                         #with st.expander("Test:"):
                             #test = st.radio("Test",["test1", "test2"])
 
-                    if submit_button_1:
+                if submit_button_1:
 
-                        os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
-                        now = dt.now()
+                    os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
+                    now = dt.now()
 
                         #model selection for OpenAI query
 
 
-                        primary_source_analysis = prompt + "\n" + historical_method + "\n\n" + "Primary Source: " + "\n" + hayseed_lyrics + "\n" + source_information + "\n" + instructions + "\n"
+                    primary_source_analysis = prompt + "\n" + historical_method + "\n\n" + "Primary Source: " + "\n" + hayseed_lyrics + "\n" + source_information + "\n" + instructions + "\n"
 
                             #prompt_text = prompt_choice + "\n\nQ:"
 
-                        response_length = 1500
+                    response_length = 1500
 
-                        openai.api_key = os.getenv("OPENAI_API_KEY")
+                    openai.api_key = os.getenv("OPENAI_API_KEY")
 
-                        summon = openai.Completion.create(
-                            model="text-davinci-002",
-                            prompt=primary_source_analysis,
+                    summon = openai.Completion.create(
+                        model="text-davinci-002",
+                        prompt=primary_source_analysis,
+                        temperature=0,
+                        user="0",
+                        max_tokens=response_length,
+                        frequency_penalty=0.35,
+                        presence_penalty=0.25)
+
+                    response_json = len(summon["choices"])
+
+                    for item in range(response_json):
+                        output = summon['choices'][item]['text']
+
+                    response = openai.Completion.create(
+                            engine="content-filter-alpha",
+                            prompt= "<|endoftext|>"+output+"\n--\nLabel:",
                             temperature=0,
+                            max_tokens=1,
                             user="0",
-                            max_tokens=response_length,
-                            frequency_penalty=0.35,
-                            presence_penalty=0.25)
+                            top_p=0,
+                            logprobs=10)
 
-                        response_json = len(summon["choices"])
-
-                        for item in range(response_json):
-                            output = summon['choices'][item]['text']
-
-                        response = openai.Completion.create(
-                                engine="content-filter-alpha",
-                                prompt= "<|endoftext|>"+output+"\n--\nLabel:",
-                                temperature=0,
-                                max_tokens=1,
-                                user="0",
-                                top_p=0,
-                                logprobs=10)
-
-                        output_label = response["choices"][0]["text"]
+                    output_label = response["choices"][0]["text"]
 
                             # OpenAI Content Filter code - comments in this section from OpenAI documentation: https://beta.openai.com/docs/engines/content-filter
                                 # This is the probability at which we evaluate that a "2" is likely real
                                     # vs. should be discarded as a false positive
 
-                        def filter_function():
-                            output_label = response["choices"][0]["text"]
-                            toxic_threshold = -0.355
+                    def filter_function():
+                        output_label = response["choices"][0]["text"]
+                        toxic_threshold = -0.355
 
-                            if output_label == "2":
+                        if output_label == "2":
                                     # If the model returns "2", return its confidence in 2 or other output-labels
-                                logprobs = response["choices"][0]["logprobs"]["top_logprobs"][0]
+                            logprobs = response["choices"][0]["logprobs"]["top_logprobs"][0]
 
                                     # If the model is not sufficiently confident in "2",
                                     # choose the most probable of "0" or "1"
                                     # Guaranteed to have a confidence for 2 since this was the selected token.
-                                if logprobs["2"] < toxic_threshold:
-                                    logprob_0 = logprobs.get("0", None)
-                                    logprob_1 = logprobs.get("1", None)
+                            if logprobs["2"] < toxic_threshold:
+                                logprob_0 = logprobs.get("0", None)
+                                logprob_1 = logprobs.get("1", None)
 
                                         # If both "0" and "1" have probabilities, set the output label
                                         # to whichever is most probable
-                                    if logprob_0 is not None and logprob_1 is not None:
-                                        if logprob_0 >= logprob_1:
-                                            output_label = "0"
-                                        else:
-                                            output_label = "1"
-                                        # If only one of them is found, set output label to that one
-                                    elif logprob_0 is not None:
+                                if logprob_0 is not None and logprob_1 is not None:
+                                    if logprob_0 >= logprob_1:
                                         output_label = "0"
-                                    elif logprob_1 is not None:
+                                    else:
                                         output_label = "1"
+                                        # If only one of them is found, set output label to that one
+                                elif logprob_0 is not None:
+                                    output_label = "0"
+                                elif logprob_1 is not None:
+                                    output_label = "1"
 
                                         # If neither "0" or "1" are available, stick with "2"
                                         # by leaving output_label unchanged.
 
                                 # if the most probable token is none of "0", "1", or "2"
                                 # this should be set as unsafe
-                            if output_label not in ["0", "1", "2"]:
-                                output_label = "2"
+                        if output_label not in ["0", "1", "2"]:
+                            output_label = "2"
 
-                            return output_label
+                        return output_label
 
                                 # filter or display OpenAI outputs, record outputs to Google Sheets API
-                        if int(filter_function()) < 2:
-                            st.write("GPT's Analysis:")
-                            st.write(output)
+                    if int(filter_function()) < 2:
+                        st.write("GPT's Analysis:")
+                        st.write(output)
                             #st.write("\n\n\n\n")
                             #st.subheader('As Lord Bacon says, "Truth will sooner come out from error than from confusion."  Please click on the Rank Bacon button above to rank this reply for future improvement.')
-                        elif int(filter_function()) == 2:
-                            st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed.")
+                    elif int(filter_function()) == 2:
+                        st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed.")
 
-                        st.write("\n\n\n\n")
-                        st.write("OpenAI's Content Filter Ranking: " +  output_label)
+                    st.write("\n\n\n\n")
+                    st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
 
                         #def total_output_collection():
