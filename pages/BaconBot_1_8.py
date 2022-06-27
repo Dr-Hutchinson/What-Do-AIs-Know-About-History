@@ -48,7 +48,7 @@ def app():
                     #with st.expander("Advanced Settings:"):
                         #prompt_booster = st.radio("Zero Shot vs. Few Shot Prompting. If you chose one of the prompt boosters below, the AI model will be given pre-selected examples of the type of prompt you want to submit, increasing the chance of a better reply. However, this will also increase the chance the reply will repeat the booster choice. Choose 'None' to field questions without a booster.", ["None", "Question Booster", "Rationale Booster", "Haiku Booster"])
 
-                    question = st.radio("Questions concerning Bacon's life and career.", ["Describe your early life and family.", "How would you describe your career in government?"])
+                    question = st.radio("Questions concerning Bacon's life and career.", ["Describe your youth and family.", "How did your education shape your later career?", "How would you describe your career in government?", "Can you elaborate on the circumstances on your death?"])
 
                     submit_button_1 = st.form_submit_button(label='Submit Question')
                         #with st.expander("Test:"):
@@ -209,7 +209,7 @@ def app():
 
                     temperature_choice = st.radio("Select the temperature of the AI's response. Low tends to produce more factually correct responses, but also more repetitive replies. High tends to produce more creative responses, but less coherent.", ["Low", "Medium", "High"])
 
-                    question = st.radio("Questions concerning Bacon's life and career.", ["What contributions did you make in the field of science?", "How much influence should the wisdom of the ancients shape scientific inquiry?", "What is the proper method for scientific discovery?", "Is alchemy a legitimate form of science?"])
+                    question = st.radio("Questions concerning Bacon's life and career.", ["What contributions did you make in the field of science?", "How much influence should the wisdom of the ancients have in guiding scientific inquiry?", "What is the proper method for scientific discovery?", "Is alchemy a legitimate form of science?", "What are the major arguments of your work the Novum Organum?"])
 
                     submit_button_1 = st.form_submit_button(label='Submit Question')
                         #with st.expander("Test:"):
@@ -385,7 +385,7 @@ def app():
                 field_choice = bio_questions()
             elif field_choice == "Philosophy of Science":
                 field_choice = philosophy_questions()
-        
+
         with st.sidebar:
             st.write('Explore more about the life and times of Francis Bacon:')
             st.write('[Six Degrees of Francis Bacon](http://www.sixdegreesoffrancisbacon.com/), Carnegie Mellon University')
