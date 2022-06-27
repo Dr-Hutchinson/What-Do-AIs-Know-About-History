@@ -161,7 +161,7 @@ def app():
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
                         with col2:
-                            #bacon_pic = st.image(image='./bacon.png', caption="Portrait of Francis Bacon. National Portrait Gallery, London.")
+                            bacon_pic = st.image(image='./bacon.png', caption="Portrait of Francis Bacon. National Portrait Gallery, London.")
                             st.write("Test explainer test.")
 
                         def total_output_collection():
@@ -346,7 +346,7 @@ def app():
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
                         with col2:
-                            bacon_pic = st.image(image='./bacon.png', caption="Portrait of Francis Bacon. National Portrait Gallery, London.")
+                            #bacon_pic = st.image(image='./bacon.png', caption="Portrait of Francis Bacon. National Portrait Gallery, London.")
                             st.write("Test explainer test.")
 
                         def total_output_collection():
