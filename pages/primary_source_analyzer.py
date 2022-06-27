@@ -32,7 +32,7 @@ def app():
 
     def button_one():
 
-        st.write("The following version of BaconBot permits users to pose a range of questions about the life and times of Francis Bacon to a fine-tuned model of GPT-3.")
+        st.write("The following app prompts GPT-3 to simulate historical analysis of selected primary sources through a specific historical method.")
 
         def hayseed_question():
             with col1:
@@ -185,7 +185,7 @@ def app():
         with st.sidebar.form(key ='Form2'):
             field_choice = st.radio("Choose a Primary Source:", ['"The Hayseed" (U.S. History)'])
 
-            button2 = st.form_submit_button("Click here to load question bank.")
+            button2 = st.form_submit_button("Click here to load the Primary Source.")
 
             if field_choice == '"The Hayseed" (U.S. History)':
                 field_choice = hayseed_question()
@@ -209,7 +209,7 @@ def app():
         #Rank Bacon_bot Responses
 
         with col1:
-            st.write("Rank Bacon's Reply:")
+            st.write("Rank GPT-3's Interpretations:")
             sh1 = gc.open('bacon_outputs_temp')
 
             wks1 = sh1[0]
@@ -272,7 +272,7 @@ def app():
 
     with col1:
 
-        st.write("Select the 'Ask Bacon' button to ask the AI questions. Select 'Rank Bacon' to note your impressions of his responses.")
+        st.write("Select the 'Analyze Sources' button to explore how GPT-3 simulates historical analysis. Select 'Rank Responses' to note your impressions of these interpretations.")
 
 
         pages = {
