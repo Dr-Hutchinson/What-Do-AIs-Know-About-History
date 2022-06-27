@@ -284,9 +284,9 @@ def app():
 
             st.session_state.current = None
 
-        if st.button("Ask Bacon"):
+        if st.button("Analyze Sources"):
             st.session_state.current = 0
-        if st.button("Rank Bacon"):
+        if st.button("Rank Interpretations"):
             st.session_state.current = 1
 
         if st.session_state.current != None:
