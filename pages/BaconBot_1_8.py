@@ -568,7 +568,7 @@ def app():
                 field_choice = bio_questions()
             elif field_choice == "Philosophy of Science":
                 field_choice = philosophy_questions()
-            elif field_choice == "The Courts of Queen Elizabeth & King James"
+            elif field_choice == "The Courts of Queen Elizabeth & King James":
                 field_choice = court_questions()
 
         with st.sidebar:
