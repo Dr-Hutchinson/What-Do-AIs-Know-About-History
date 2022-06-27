@@ -45,8 +45,10 @@ def app():
                     st.header('Primary Source - "The Hayseed" (1890)')
 
                     hayseed_lyrics = '"The Hayseed"\n"I was once a tool of oppression\nAnd as green as a sucker could be\nAnd monopolies banded together\nTo beat a poor hayseed like me.\n"The railroads and old party bosses\nTogether did sweetly agree;\nAnd they thought there would be little trouble\nIn working a hayseed like me. . . ."'
+                    source_information = "Source Information: The Primary Source is an American political campaign song popularized in 1890, and published by a Nebraska newspaper known as the Farmer's Alliance."
+
                     st.write(hayseed_lyrics)
-                    st.write("Source Information: The Primary Source is an American political campaign song popularized in 1890, and published by a Nebraska newspaper known as the Farmer's Alliance.")
+                    st.write(source_information)
 
                     submit_button_1 = st.form_submit_button(label='Analyze Source')
                         #with st.expander("Test:"):
@@ -60,7 +62,7 @@ def app():
                         #model selection for OpenAI query
 
 
-                        primary_source_analysis = prompt + "\n" + historical_method + "\n\n" + instructions + "\n\n" + "Question:"
+                        primary_source_analysis = prompt + "\n" + historical_method + "\n\n" + "Primary Source: " + "\n" + hayseed_lyrics + "\n" source_information + "\n" + instructions + "\n"
 
                             #prompt_text = prompt_choice + "\n\nQ:"
 
