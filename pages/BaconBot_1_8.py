@@ -386,6 +386,17 @@ def app():
             elif field_choice == "Philosophy of Science":
                 field_choice = philosophy_questions()
 
+            with col2:
+
+                bacon_pic = st.image(image='./bacon.png', caption="Portrait of Francis Bacon. National Portrait Gallery, London.")
+
+                if field_choice == "Biographical":
+                    st.write("test - bio")
+                if field_choice == "Philosophy of Science":
+                    st.write("test - philo")
+
+
+
         with st.sidebar:
             st.write('Explore more about the life and times of Francis Bacon:')
             st.write('[Six Degrees of Francis Bacon](http://www.sixdegreesoffrancisbacon.com/), Carnegie Mellon University')
@@ -396,8 +407,8 @@ def app():
         #pygsheets credentials for Google Sheets API
 
 
-        with col2:
-            bacon_pic = st.image(image='./bacon.png', caption="Portrait of Francis Bacon. National Portrait Gallery, London.")
+        #with col2:
+            #bacon_pic = st.image(image='./bacon.png', caption="Portrait of Francis Bacon. National Portrait Gallery, London.")
 
     def button_two():
         #Rank Bacon_bot Responses
@@ -467,11 +478,6 @@ def app():
     with col1:
 
         st.write("Select the 'Ask Bacon' button to ask the AI questions. Select 'Rank Bacon' to note your impressions of his responses.")
-
-        if field_choice == "Biographical":
-            st.write("test - bio")
-        if field_choice == "Philosophy of Science":
-            st.write("test - philo")
 
 
         pages = {
