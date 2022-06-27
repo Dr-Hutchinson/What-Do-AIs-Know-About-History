@@ -75,7 +75,7 @@ def app():
                             user="0",
                             max_tokens=response_length,
                             frequency_penalty=0.35,
-                            presence_penalty=0.25)                           )
+                            presence_penalty=0.25)                           
 
                         response_json = len(summon["choices"])
 
