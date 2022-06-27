@@ -286,7 +286,7 @@ def app():
 
         if st.button("Analyze Sources"):
             st.session_state.current = 0
-        if st.button("Rank Interpretations"):
+        if st.button("Rank Responses"):
             st.session_state.current = 1
 
         if st.session_state.current != None:
