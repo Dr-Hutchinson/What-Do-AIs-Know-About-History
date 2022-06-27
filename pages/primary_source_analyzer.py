@@ -48,7 +48,7 @@ def app():
                     source_information = "Source Information: The Primary Source is an American political campaign song popularized in 1890, and published by a Nebraska newspaper known as the Farmer's Alliance."
 
                     st.image(image='./hayseed.png')
-                    st.write("Arthur L. Kellog, “The Hayseed,” Farmers Alliance (4 October 1890). Nebraska Newspapers (University of Nebraska Libraries), [link](https://nebnewspapers.unl.edu/lccn/2017270209/1890-10-04/ed-1/seq-1/)")
+                    st.write("Arthur L. Kellog, “The Hayseed,” Farmers Alliance (4 October 1890). Nebraska Newspapers (University of Nebraska Libraries), [link.](https://nebnewspapers.unl.edu/lccn/2017270209/1890-10-04/ed-1/seq-1/)")
                     st.write(source_information)
 
                     submit_button_1 = st.form_submit_button(label='Analyze Source')
