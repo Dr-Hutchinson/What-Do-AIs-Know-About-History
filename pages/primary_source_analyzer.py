@@ -182,13 +182,13 @@ def app():
                                 #temp_output_collection()
                                 #total_output_collection()
 
-        with st.sidebar.form(key ='Form2'):
-            field_choice = st.radio("Choose a Primary Source:", ['"The Hayseed" (U.S. History)'])
+    with st.sidebar.form(key ='Form2'):
+        field_choice = st.radio("Choose a Primary Source:", ['"The Hayseed" (U.S. History)'])
 
-            button2 = st.form_submit_button("Click here to load the Primary Source.")
+        button2 = st.form_submit_button("Click here to load the Primary Source.")
 
-            if field_choice == '"The Hayseed" (U.S. History)':
-                field_choice = hayseed_question()
+        if field_choice == '"The Hayseed" (U.S. History)':
+            field_choice = hayseed_question()
             #elif field_choice == "Philosophy of Science":
                 #field_choice = philosophy_questions()
 
@@ -205,7 +205,7 @@ def app():
         with col2:
             st.image(image='./hayseed.png')
             st.write("Arthur L. Kellog, “The Hayseed,” Farmers Alliance (4 October 1890). Nebraska Newspapers (University of Nebraska Libraries), [link](https://nebnewspapers.unl.edu/lccn/2017270209/1890-10-04/ed-1/seq-1/)")
-            
+
 
     def button_two():
         #Rank Bacon_bot Responses
