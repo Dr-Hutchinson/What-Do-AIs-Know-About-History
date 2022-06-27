@@ -75,7 +75,7 @@ def app():
                             user="0",
                             max_tokens=response_length,
                             frequency_penalty=0.35,
-                            presence_penalty=0.25)                           
+                            presence_penalty=0.25)
 
                         response_json = len(summon["choices"])
 
@@ -203,7 +203,7 @@ def app():
         #with col2:
             #bacon_pic = st.image(image='./bacon.png', caption="Portrait of Francis Bacon. National Portrait Gallery, London.")
 
-    #def button_two():
+    def button_two():
         #Rank Bacon_bot Responses
 
         with col1:
