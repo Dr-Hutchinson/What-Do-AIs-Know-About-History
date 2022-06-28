@@ -636,7 +636,7 @@ def app():
 
 
         with st.sidebar.form(key ='Form2'):
-            field_choice = st.radio("Choose a Primary Source from the A.P. Curriculum:", ['"The Hayseed" (U.S. History)', '"The Book of Household Management" (European History)', 'Translation of a letter from Lin Zexu to Queen Victoria (World History)'])
+            field_choice = st.radio("Choose a Primary Source from the A.P. Curriculum:", ['"The Hayseed" (U.S. History)', '"The Book of Household Management" (European History)', 'Translation of a letter from Lin Zexu to Queen Victoria (World History)', 'Mary Lease, "Women in the Farmers Alliance" (Non-A.P. U.S. History)'])
 
             button2 = st.form_submit_button("Click here to load the Primary Source.")
 
