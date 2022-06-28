@@ -26,7 +26,7 @@ def app():
 
     gc = pygsheets.authorize(custom_credentials=credentials)
 
-    st.title('How does an AI "Interpret" a Primary Source?')
+    st.title('Can an AI "Interpret" a Primary Source?')
     st.header("Public Demo")
     col1, col2 = st.columns([5,.5])
 
