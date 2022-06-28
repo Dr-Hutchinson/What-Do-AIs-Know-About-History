@@ -197,7 +197,7 @@ def app():
                     hayseed_lyrics = '"As with a Commander of the Army, or leader of any enterprise, so it is with the mistress of the house. Her spirit will be seen through the whole establishment; and just in proportion as she performs her duties intelligently and thoroughly, so will her domestics follow in her path. Of all of those acquirements, which more particularly belong to the feminine character, there are none which take a higher rank, in our estimation, than such as enter into a knowledge of household duties; for on these are perpetually dependent the happiness, comfort, and well-being of the family.'
                     source_information = "Source Information: The Primary Source is The Book of Household Management, published in London in 1861 and written by Isabella Beeton."
 
-                    st.image(image='./household_management.png',  use_column_width='auto')
+                    st.image(image='./household_management.png',  use_column_width='never')
                     st.write("Isabella Beeton, Book of Household Management (S.O. Beeton: London, 1861), 46. Avaliable via the Internet Archive, [link.](https://archive.org/details/b20392758/page/n45/mode/2up)")
                     st.write(hayseed_lyrics)
                     st.write(source_information)
