@@ -483,11 +483,160 @@ def app():
                         #else:
                             #temp_output_collection()
                             #total_output_collection()
+        def mary_lease():
+            with col1:
+                with st.form('lease_speech'):
+
+                    prompt = "You are an AI historian specializing in primary source analysis and historiographical interpretation. When given a Primary Source, you will provide a detailed and substantive analysis of that source based on the Historical Method and Source Information below."
+                    historical_method = "Step 1 -  Contextualization: Apply the Source Information to provide a lengthy, detailed, and substantive analysis of how the Primary Source reflects the larger historical period in which it was created. In composing this lengthy, detailed, and substantive analysis, note specific events, personalities, and ideologies that shaped the the period noted in the Source Information.\nStep 2 - Purpose : Offer a substantive exploration of the purpose of the Primary Source, interpreting the author’s arguments through the Contextualization offered in Step 1.\nStep 3 - Audience: Compose a substantive assessment of the intended audience of the Primary Source. Note how this audience would shape the Primary Source's reception and historical impact in light of the Contextualization offered in Step 1.\nStep 4 - Historiographical Interpretation: Provide a substantive and incisive interpretation of how at least three specific schools of historiographical thought would interpret this source. Compare and contrast how this source could be interpreted by three different academic historiographical schools.  Different historiographical approaches could include the Progressive, Consensus, Marxist, gender history, social history, religious history, women's history, and southern history."
+                    instructions = "Instructions: Based on the Historical Method outlined above, provide a substantive and detailed analysis of the Primary Source in the manner of an academic historian. Let's take this step by step."
+
+                    st.header('Primary Source - Mary Lease, "Women in the Farmers Alliance" (1891')
+
+                    hayseed_lyrics = '"Madame President and Fellow Citizens:— If God were to give me my choice to live in any age of the world that has flown, or in any age of the world yet to be, I would say, O God, let me live here and now, in this day and age of the world’s history. For we are living in a grand and wonderful time—a time when old ideas, traditions and customs have broken loose from their moorings and are hopelessly adrift on the great shoreless, boundless sea of human thought—a time when the gray old world begins to dimly comprehend that there is no difference between the brain of an intelligent woman and the brain of an intelligent man; no difference between the soul-power or brainpower that nerved the arm of Charlotte Corday to deeds of heroic patriotism and the soul-power or brain-power that swayed old John Brown behind his death dealing barricade at Ossawattomie. We are living in an age of thought. The mighty dynamite of thought is upheaving the social and political structure and stirring the hearts of men from centre to circumference. Men, women and children are in commotion, discussing the mighty problems of the day. The agricultural classes, loyal and patriotic, slow to act and slow to think, are to-day thinking for themselves; and their thought has crystallized into action."'
+                    source_information = "Source Information: The Primary Source is a speech given by Mary Lease to the National Council of Women National Meeting in Washington D.C. (1891)"
+
+                    st.image(image='./lease.png')
+                    st.write("Source: National Council of Women of the United States, Transactions of the National Council of Women of the United States: Assembled in Washington, D.C., February 22 to 25, 1891. Avaliable via Google Books, [link.](https://books.google.com/books?id=bpU0xGnVETsC&newbks=1&newbks_redir=0&dq=If%20God%20were%20to%20give%20me%20my%20choice%20to%20live%20in%20any%20age%20of%20the%20world%20that%20has%20flown%2C%20or%20in%20any%20age%20of%20the%20world%20yet%20to%20be%2C%20I%20would%20say%2C%20O%20God%2C%20let%20me%20live%20here%20and%20now%2C%20in%20this%20day%20and%20age%20of%20the%20world%E2%80%99s%20history.&pg=PA214#v=onepage&q&f=false)")
+                    st.write(hayseed_lyrics)
+                    st.write(source_information)
+
+                    submit_button_1 = st.form_submit_button(label='Analyze Source')
+                        #with st.expander("Test:"):
+                            #test = st.radio("Test",["test1", "test2"])
+
+                    if submit_button_1:
+
+                        os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
+                        now = dt.now()
+
+                        #model selection for OpenAI query
+
+
+                        primary_source_analysis = prompt + "\n" + historical_method + "\n\n" + "Primary Source: " + "\n" + hayseed_lyrics + "\n" + source_information + "\n" + instructions + "\n"
+
+                            #prompt_text = prompt_choice + "\n\nQ:"
+
+                        response_length = 1500
+
+                        openai.api_key = os.getenv("OPENAI_API_KEY")
+
+                        summon = openai.Completion.create(
+                            model="text-davinci-002",
+                            prompt=primary_source_analysis,
+                            temperature=0,
+                            user="0",
+                            max_tokens=response_length,
+                            frequency_penalty=0.35,
+                            presence_penalty=0.25)
+
+                        response_json = len(summon["choices"])
+
+                        for item in range(response_json):
+                            output = summon['choices'][item]['text']
+
+                        response = openai.Completion.create(
+                                engine="content-filter-alpha",
+                                prompt= "<|endoftext|>"+output+"\n--\nLabel:",
+                                temperature=0,
+                                max_tokens=1,
+                                user="0",
+                                top_p=0,
+                                logprobs=10)
+
+                        output_label = response["choices"][0]["text"]
+
+                            # OpenAI Content Filter code - comments in this section from OpenAI documentation: https://beta.openai.com/docs/engines/content-filter
+                                # This is the probability at which we evaluate that a "2" is likely real
+                                    # vs. should be discarded as a false positive
+
+                        def filter_function():
+                            output_label = response["choices"][0]["text"]
+                            toxic_threshold = -0.355
+
+                            if output_label == "2":
+                                    # If the model returns "2", return its confidence in 2 or other output-labels
+                                logprobs = response["choices"][0]["logprobs"]["top_logprobs"][0]
+
+                                    # If the model is not sufficiently confident in "2",
+                                    # choose the most probable of "0" or "1"
+                                    # Guaranteed to have a confidence for 2 since this was the selected token.
+                                if logprobs["2"] < toxic_threshold:
+                                    logprob_0 = logprobs.get("0", None)
+                                    logprob_1 = logprobs.get("1", None)
+
+                                        # If both "0" and "1" have probabilities, set the output label
+                                        # to whichever is most probable
+                                    if logprob_0 is not None and logprob_1 is not None:
+                                        if logprob_0 >= logprob_1:
+                                            output_label = "0"
+                                        else:
+                                            output_label = "1"
+                                        # If only one of them is found, set output label to that one
+                                    elif logprob_0 is not None:
+                                        output_label = "0"
+                                    elif logprob_1 is not None:
+                                        output_label = "1"
+
+                                        # If neither "0" or "1" are available, stick with "2"
+                                        # by leaving output_label unchanged.
+
+                                # if the most probable token is none of "0", "1", or "2"
+                                # this should be set as unsafe
+                            if output_label not in ["0", "1", "2"]:
+                                output_label = "2"
+
+                            return output_label
+
+                                # filter or display OpenAI outputs, record outputs to Google Sheets API
+                        if int(filter_function()) < 2:
+                            st.write("GPT-3's Analysis:")
+                            st.write(output)
+                            #st.write("\n\n\n\n")
+                            #st.subheader('As Lord Bacon says, "Truth will sooner come out from error than from confusion."  Please click on the Rank Bacon button above to rank this reply for future improvement.')
+                        elif int(filter_function()) == 2:
+                            st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed.")
+
+                        st.write("\n\n\n\n")
+                        st.write("OpenAI's Content Filter Ranking: " +  output_label)
+
+
+                        #def total_output_collection():
+                            #d1 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform], 'prompt_boost':[prompt_boost_question_1 + "\n\n" + prompt_boost_question_2], 'question':[question], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
+                            #df1 = pd.DataFrame(data=d1, index=None)
+                            #sh1 = gc.open('bacon_outputs')
+                            #wks1 = sh1[0]
+                            #cells1 = wks1.get_all_values(include_tailing_empty_rows=False, include_tailing_empty=False, returnas='matrix')
+                            #end_row1 = len(cells1)
+                            #wks1.set_dataframe(df1,(end_row1+1,1), copy_head=False, extend=True)
+
+                        #def output_collection_filtered():
+                            #d2 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform], 'prompt_boost':[prompt_boost_question_1 + "\n\n" + prompt_boost_question_2], 'question':[question], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
+                            #df2 = pd.DataFrame(data=d2, index=None)
+                            #sh2 = gc.open('bacon_outputs_filtered')
+                            #wks2 = sh2[0]
+                            #cells2 = wks2.get_all_values(include_tailing_empty_rows=False, include_tailing_empty=False, returnas='matrix')
+                            #end_row2 = len(cells2)
+                            #wks2.set_dataframe(df2,(end_row2+1,1), copy_head=False, extend=True)
+
+                        #def temp_output_collection():
+                            #d3 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform], 'prompt_boost':[prompt_boost_question_1 + "\n\n" + prompt_boost_question_2], 'question':[question], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
+                            #df3 = pd.DataFrame(data=d3, index=None)
+                            #sh3 = gc.open('bacon_outputs_temp')
+                            #wks3 = sh3[0]
+                            #wks3.set_dataframe(df3,(1,1))
+
+                        #if int(filter_function()) == 2:
+                            #output_collection_filtered()
+                            #total_output_collection()
+                        #else:
+                            #temp_output_collection()
+                            #total_output_collection()
 
 
 
         with st.sidebar.form(key ='Form2'):
-            field_choice = st.radio("Choose a Primary Source:", ['"The Hayseed" (U.S. History)', '"The Book of Household Management" (European History)', 'Translation of a letter from Lin Zexu to Queen Victoria (World History)'])
+            field_choice = st.radio("Choose a Primary Source from the A.P. Curriculum:", ['"The Hayseed" (U.S. History)', '"The Book of Household Management" (European History)', 'Translation of a letter from Lin Zexu to Queen Victoria (World History)'])
 
             button2 = st.form_submit_button("Click here to load the Primary Source.")
 
@@ -497,6 +646,18 @@ def app():
                 field_choice = household_question()
             elif field_choice == 'Translation of a letter from Lin Zexu to Queen Victoria (World History)':
                 field_choice = lin_zexu()
+
+        with st.sidebar.form(key ='Form3'):
+            field_choice = st.radio("Choose a Primary Source outside the A.P. Curriculum:", ['Mary Lease, "Women in the Farmers Alliance" (U.S. History)', '"The Book of Household Management" (European History)', 'Translation of a letter from Lin Zexu to Queen Victoria (World History)'])
+
+            button3 = st.form_submit_button("Click here to load the Primary Source.")
+
+            if field_choice == 'Mary Lease, "Women in the Farmers Alliance" (U.S. History)':
+                field_choice = mary_lease()
+            #elif field_choice == '"The Book of Household Management" (European History)':
+                #field_choice = household_question()
+            #elif field_choice == 'Translation of a letter from Lin Zexu to Queen Victoria (World History)':
+                #field_choice = lin_zexu()
 
         #with st.sidebar:
             #st.write('Explore more about the life and times of Francis Bacon:')
