@@ -640,26 +640,16 @@ def app():
 
             button2 = st.form_submit_button("Click here to load the Primary Source.")
 
-            if field_choice == '"The Hayseed" (U.S. History)':
+            if field_choice == '"The Hayseed" (A.P. U.S. History)':
                 field_choice = hayseed_question()
             elif field_choice == '"The Book of Household Management" (European History)':
                 field_choice = household_question()
             elif field_choice == 'Translation of a letter from Lin Zexu to Queen Victoria (World History)':
                 field_choice = lin_zexu()
+            elif field_choice == 'Mary Lease, "Women in the Farmers Alliance" (Non-A.P. U.S. History)':
+                    field_choice = mary_lease()
 
-        with st.sidebar.form(key ='Form3'):
-            field_choice = st.radio("Choose a Primary Source outside the A.P. Curriculum:", ['Mary Lease, "Women in the Farmers Alliance" (U.S. History)'])
-
-            button3 = st.form_submit_button("Click here to load the Primary Source.")
-
-            if field_choice == 'Mary Lease, "Women in the Farmers Alliance" (U.S. History)':
-                field_choice = mary_lease()
-            #elif field_choice == '"The Book of Household Management" (European History)':
-                #field_choice = household_question()
-            #elif field_choice == 'Translation of a letter from Lin Zexu to Queen Victoria (World History)':
-                #field_choice = lin_zexu()
-
-        #with st.sidebar:
+            #with st.sidebar:
             #st.write('Explore more about the life and times of Francis Bacon:')
             #st.write('[Six Degrees of Francis Bacon](http://www.sixdegreesoffrancisbacon.com/), Carnegie Mellon University')
             #st.write('[Jürgen Klein and Guido Giglioni, "Francis Bacon", The Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/francis-bacon/)')
