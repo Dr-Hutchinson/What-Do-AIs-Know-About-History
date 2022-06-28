@@ -648,7 +648,7 @@ def app():
                 field_choice = lin_zexu()
 
         with st.sidebar.form(key ='Form3'):
-            field_choice = st.radio("Choose a Primary Source outside the A.P. Curriculum:", ['Mary Lease, "Women in the Farmers Alliance"'])
+            field_choice = st.radio("Choose a Primary Source outside the A.P. Curriculum:", ['Mary Lease, "Women in the Farmers Alliance" (U.S. History)'])
 
             button3 = st.form_submit_button("Click here to load the Primary Source.")
 
