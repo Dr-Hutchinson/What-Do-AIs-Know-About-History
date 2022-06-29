@@ -787,17 +787,19 @@ def app():
 
         with st.sidebar.form(key ='Form2'):
             st.write("The following experiment pairs topically similar primary sources, one drawn from the A.P. curriculum and outside it. You are invited to rank GPT-3's responses. The rankings will help provide research data on GPT-3 performance.")
-            field_choice = st.radio("Choose a Primary Source:", ['"The Hayseed" (U.S. History)', 'Mary Lease, "Women in the Farmers Alliance" (U.S. History)', '"The Book of Household Management" (European History)', 'Translation of a letter from Lin Zexu to Queen Victoria (World History)'])
+            field_choice = st.radio("Choose a Primary Source:", ['"The Hayseed" (U.S. History)', '"Women in the Farmers Alliance" (U.S. History)', '"The Book of Household Management" (European History)', '"Practical Housekeeping" (European History)', 'A letter from Lin Zexu to Queen Victoria (World History)'])
 
             button2 = st.form_submit_button("Click here to load the Primary Source.")
 
             if field_choice == '"The Hayseed" (U.S. History)':
                 field_choice = hayseed_question()
-            elif field_choice == 'Mary Lease, "Women in the Farmers Alliance" (U.S. History)':
-                    field_choice = mary_lease()
+            elif field_choice == '"Women in the Farmers Alliance" (U.S. History)':
+                field_choice = mary_lease()
             elif field_choice == '"The Book of Household Management" (European History)':
                 field_choice = household_question()
-            elif field_choice == 'Translation of a letter from Lin Zexu to Queen Victoria (World History)':
+            elif field_choice == '"Practical Housekeeping" (European History)':
+                field_choice = practical_housekeeping()
+            elif field_choice == 'A letter from Lin Zexu to Queen Victoria (World History)':
                 field_choice = lin_zexu()
 
 
