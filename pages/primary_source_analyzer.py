@@ -797,7 +797,7 @@ def app():
 
                     hayseed_lyrics = "In 1839, Lin Zexu arrived as Governor-general of Liangguang, and discovered that Western merchants held opium stores of 20,283 chests. He burnt them all on the beach. Later other foreign ships secretly stole into port with more opium. Lin took advantage of a dark night when the tide was low to send crack troops to capture them. He burnt 23 ships at Changsha bay. Subsequently, because these actions caused a diplomatic incident, opium imports kept on growing. Now the British government agrees that we must eliminate the poison of opium. Reflecting on past events, we have turned our misfortunes into a happy outcome."
 
-                    source_information = "Source Information: The Primary Source is a translation of “Portraits of the Achievements of Our Dynasty’s Illustrious Officials,” published in the Shanghai newspaper Shishibao Tuhua in 1909."
+                    source_information = "Source Information: The Primary Source is a translation of “Portraits of the Achievements of Our Dynasty’s Illustrious Officials,” an illustrated print published in the Shanghai newspaper Shishibao Tuhua in 1909."
 
                     st.image(image='./lin_print.jpg')
                     st.write('Source: Peter Perdue, “Production and Consumption", The First Opium War: The Anglo-Chinese War of 1839-1942. Visualizing Cultures (MIT, 2010), [link](https://visualizingcultures.mit.edu/opium_wars_01/ow1_essay02.html)')
