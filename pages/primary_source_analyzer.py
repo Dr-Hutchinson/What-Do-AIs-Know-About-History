@@ -44,8 +44,8 @@ def app():
 
                     st.header('Primary Source - "The Hayseed" (1890)')
 
-                    hayseed_lyrics = '"The Hayseed"\n"I was once a tool of oppression\nAnd as green as a sucker could be\nAnd monopolies banded together\nTo beat a poor hayseed like me.\n"The railroads and old party bosses\nTogether did sweetly agree;\nAnd they thought there would be little trouble\nIn working a hayseed like me. . . ."'
-                    source_information = "Source Information: The Primary Source is an American political campaign song popularized in 1890, and published by a Nebraska newspaper known as the Farmer's Alliance."
+                    hayseed_lyrics = 'I was once a tool of oppression\nAnd as green as a sucker could be\nAnd monopolies banded together\nTo beat a poor hayseed like me.\n"The railroads and old party bosses\nTogether did sweetly agree;\nAnd they thought there would be little trouble\nIn working a hayseed like me. . . ."'
+                    source_information = "Source Information: The Primary Source is an American political campaign song called 'The Hayseed' and published in 1890 by a Nebraska newspaper known as the Farmer's Alliance."
 
                     st.image(image='./hayseed.png')
                     st.write("Arthur L. Kellog, “The Hayseed,” Farmers Alliance (4 October 1890). Nebraska Newspapers (University of Nebraska Libraries), [link.](https://nebnewspapers.unl.edu/lccn/2017270209/1890-10-04/ed-1/seq-1/)")
