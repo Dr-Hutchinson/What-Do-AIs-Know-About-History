@@ -335,12 +335,12 @@ def app():
                             #temp_output_collection()
                             #total_output_collection()
 
-        def lin_zexu():
+        def lin_zexu_1():
             with col1:
                 with st.form('lin_letter'):
 
                     prompt = "You are an AI historian specializing in primary source analysis and historiographical interpretation. When given a Primary Source, you will provide a detailed and substantive analysis of that source based on the Historical Method and Source Information below."
-                    historical_method = "Step 1 -  Contextualization: Apply the Source Information to provide a lengthy, detailed, and substantive analysis of how the Primary Source reflects the larger historical period in which it was created. In composing this lengthy, detailed, and substantive analysis, note specific events, personalities, and ideologies that shaped the the period noted in the Source Information.\nStep 2 - Purpose : Offer a substantive exploration of the purpose of the Primary Source, interpreting the author’s arguments through the Contextualization offered in Step 1.\nStep 3 - Audience: Compose a substantive assessment of the intended audience of the Primary Source. Note how this audience would shape the Primary Source's reception and historical impact in light of the Contextualization offered in Step 1.\nStep 4 - Historiographical Interpretation: Provide a substantive and incisive interpretation of how at least three specific schools of historiographical thought would interpret this source. Compare and contrast how this source could be interpreted by three different academic historiographical schools.  Different historiographical approaches could include the Annales, microhistory, Marxist, post-colonial, gender history, social history, diplomatic history, military history, the history of medicine, and the cultural turn."
+                    historical_method = "Step 1 -  Contextualization: Apply the Source Information to provide a lengthy, detailed, and substantive analysis of how the Primary Source reflects the larger historical period in which it was created. In composing this lengthy, detailed, and substantive analysis, note specific events, personalities, and ideologies that shaped the the period noted in the Source Information.\nStep 2 - Purpose : Offer a substantive exploration of the purpose of the Primary Source, interpreting the author’s arguments through the Contextualization offered in Step 1.\nStep 3 - Audience: Compose a substantive assessment of the intended audience of the Primary Source. Note how this audience would shape the Primary Source's reception and historical impact in light of the Contextualization offered in Step 1.\nStep 4 - Historiographical Interpretation: Provide a substantive and incisive interpretation of how at least three specific schools of historiographical thought would interpret this source. Compare and contrast how this source could be interpreted by three different academic historiographical schools.  Different historiographical approaches could include the diplomatic history, Chinese history, World history, Marxist history, social history, cultural history, military history, the history of medicine, and postcolonial history."
                     instructions = "Instructions: Based on the Historical Method outlined above, provide a substantive and detailed analysis of the Primary Source in the manner of an academic historian. Let's take this step by step."
 
                     st.header('Primary Source - Translation of a letter from Lin Zexu to Queen Victoria (1839)')
@@ -785,6 +785,159 @@ def app():
                             #temp_output_collection()
                             #total_output_collection()
 
+        def lin_letter_2():
+            with col1:
+                with st.form('lin_letter_2'):
+
+                    prompt = "You are an AI historian specializing in primary source analysis and historiographical interpretation. When given a Primary Source, you will provide a detailed and substantive analysis of that source based on the Historical Method and Source Information below."
+                    historical_method = "Step 1 -  Contextualization: Apply the Source Information to provide a lengthy, detailed, and substantive analysis of how the Primary Source reflects the larger historical period in which it was created. In composing this lengthy, detailed, and substantive analysis, note specific events, personalities, and ideologies that shaped the the period noted in the Source Information.\nStep 2 - Purpose : Offer a substantive exploration of the purpose of the Primary Source, interpreting the author’s arguments through the Contextualization offered in Step 1.\nStep 3 - Audience: Compose a substantive assessment of the intended audience of the Primary Source. Note how this audience would shape the Primary Source's reception and historical impact in light of the Contextualization offered in Step 1.\nStep 4 - Historiographical Interpretation: Provide a substantive and incisive interpretation of how at least three specific schools of historiographical thought would interpret this source. Compare and contrast how this source could be interpreted by three different academic historiographical schools.  Different historiographical approaches could include diplomatic history, Chinese history, World history, Marxist history, social history, cultural history, military history, the history of medicine, and postcolonial history."
+                    instructions = "Instructions: Based on the Historical Method outlined above, provide a substantive and detailed analysis of the Primary Source in the manner of an academic historian. Let's take this step by step."
+
+                    st.header('Primary Source - Lin Zexu Burns the Opium (1909)')
+
+                    hayseed_lyrics = "In 1839, Lin Zexu arrived as Governor-general of Liangguang, and discovered that Western merchants held opium stores of 20,283 chests. He burnt them all on the beach. Later other foreign ships secretly stole into port with more opium. Lin took advantage of a dark night when the tide was low to send crack troops to capture them. He burnt 23 ships at Changsha bay. Subsequently, because these actions caused a diplomatic incident, opium imports kept on growing. Now the British government agrees that we must eliminate the poison of opium. Reflecting on past events, we have turned our misfortunes into a happy outcome."
+
+                    source_information = "Source Information: The Primary Source is a translation of “Portraits of the Achievements of Our Dynasty’s Illustrious Officials,” published in the Shanghai newspaper Shishibao Tuhua in 1909."
+
+                    st.image(image='./practical_housekeeping.png')
+                    st.write('Source: eter Perdue, “Production and Consumption", The First Opium War: The Anglo-Chinese War of 1839-1942. Visualizing Cultures (MIT, 2010), [link](https://visualizingcultures.mit.edu/opium_wars_01/ow1_essay02.html)'
+                    st.write(hayseed_lyrics)
+                    st.write(source_information)
+
+                    submit_button_1 = st.form_submit_button(label='Analyze Source')
+                        #with st.expander("Test:"):
+                            #test = st.radio("Test",["test1", "test2"])
+
+                    if submit_button_1:
+
+                        os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
+                        now = dt.now()
+
+                        #model selection for OpenAI query
+
+
+                        primary_source_analysis = prompt + "\n" + historical_method + "\n\n" + "Primary Source: " + "\n" + hayseed_lyrics + "\n" + source_information + "\n" + instructions + "\n"
+
+                            #prompt_text = prompt_choice + "\n\nQ:"
+
+                        response_length = 1500
+
+                        openai.api_key = os.getenv("OPENAI_API_KEY")
+
+                        summon = openai.Completion.create(
+                            model="text-davinci-002",
+                            prompt=primary_source_analysis,
+                            temperature=0,
+                            user="0",
+                            max_tokens=response_length,
+                            frequency_penalty=0.15,
+                            presence_penalty=0.60) # baseline = 60
+
+                        response_json = len(summon["choices"])
+
+                        for item in range(response_json):
+                            output = summon['choices'][item]['text']
+
+                        response = openai.Completion.create(
+                                engine="content-filter-alpha",
+                                prompt= "<|endoftext|>"+output+"\n--\nLabel:",
+                                temperature=0,
+                                max_tokens=1,
+                                user="0",
+                                top_p=0,
+                                logprobs=10)
+
+                        output_label = response["choices"][0]["text"]
+
+                            # OpenAI Content Filter code - comments in this section from OpenAI documentation: https://beta.openai.com/docs/engines/content-filter
+                                # This is the probability at which we evaluate that a "2" is likely real
+                                    # vs. should be discarded as a false positive
+
+                        def filter_function():
+                            output_label = response["choices"][0]["text"]
+                            toxic_threshold = -0.355
+
+                            if output_label == "2":
+                                    # If the model returns "2", return its confidence in 2 or other output-labels
+                                logprobs = response["choices"][0]["logprobs"]["top_logprobs"][0]
+
+                                    # If the model is not sufficiently confident in "2",
+                                    # choose the most probable of "0" or "1"
+                                    # Guaranteed to have a confidence for 2 since this was the selected token.
+                                if logprobs["2"] < toxic_threshold:
+                                    logprob_0 = logprobs.get("0", None)
+                                    logprob_1 = logprobs.get("1", None)
+
+                                        # If both "0" and "1" have probabilities, set the output label
+                                        # to whichever is most probable
+                                    if logprob_0 is not None and logprob_1 is not None:
+                                        if logprob_0 >= logprob_1:
+                                            output_label = "0"
+                                        else:
+                                            output_label = "1"
+                                        # If only one of them is found, set output label to that one
+                                    elif logprob_0 is not None:
+                                        output_label = "0"
+                                    elif logprob_1 is not None:
+                                        output_label = "1"
+
+                                        # If neither "0" or "1" are available, stick with "2"
+                                        # by leaving output_label unchanged.
+
+                                # if the most probable token is none of "0", "1", or "2"
+                                # this should be set as unsafe
+                            if output_label not in ["0", "1", "2"]:
+                                output_label = "2"
+
+                            return output_label
+
+                                # filter or display OpenAI outputs, record outputs to Google Sheets API
+                        if int(filter_function()) < 2:
+                            st.write("GPT-3's Analysis:")
+                            st.write(output)
+                            #st.write("\n\n\n\n")
+                            #st.subheader('As Lord Bacon says, "Truth will sooner come out from error than from confusion."  Please click on the Rank Bacon button above to rank this reply for future improvement.')
+                        elif int(filter_function()) == 2:
+                            st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed.")
+
+                        st.write("\n\n\n\n")
+                        st.write("OpenAI's Content Filter Ranking: " +  output_label)
+
+
+                        #def total_output_collection():
+                            #d1 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform], 'prompt_boost':[prompt_boost_question_1 + "\n\n" + prompt_boost_question_2], 'question':[question], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
+                            #df1 = pd.DataFrame(data=d1, index=None)
+                            #sh1 = gc.open('bacon_outputs')
+                            #wks1 = sh1[0]
+                            #cells1 = wks1.get_all_values(include_tailing_empty_rows=False, include_tailing_empty=False, returnas='matrix')
+                            #end_row1 = len(cells1)
+                            #wks1.set_dataframe(df1,(end_row1+1,1), copy_head=False, extend=True)
+
+                        #def output_collection_filtered():
+                            #d2 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform], 'prompt_boost':[prompt_boost_question_1 + "\n\n" + prompt_boost_question_2], 'question':[question], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
+                            #df2 = pd.DataFrame(data=d2, index=None)
+                            #sh2 = gc.open('bacon_outputs_filtered')
+                            #wks2 = sh2[0]
+                            #cells2 = wks2.get_all_values(include_tailing_empty_rows=False, include_tailing_empty=False, returnas='matrix')
+                            #end_row2 = len(cells2)
+                            #wks2.set_dataframe(df2,(end_row2+1,1), copy_head=False, extend=True)
+
+                        #def temp_output_collection():
+                            #d3 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform], 'prompt_boost':[prompt_boost_question_1 + "\n\n" + prompt_boost_question_2], 'question':[question], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
+                            #df3 = pd.DataFrame(data=d3, index=None)
+                            #sh3 = gc.open('bacon_outputs_temp')
+                            #wks3 = sh3[0]
+                            #wks3.set_dataframe(df3,(1,1))
+
+                        #if int(filter_function()) == 2:
+                            #output_collection_filtered()
+                            #total_output_collection()
+                        #else:
+                            #temp_output_collection()
+                            #total_output_collection()
+
+
+
 
         with st.sidebar.form(key ='Form2'):
             st.write("The following experiment pairs topically similar primary sources, one drawn from the A.P. curriculum and one from outside it. You are invited to rank GPT-3's responses. The rankings will help provide research data on GPT-3 performance.")
@@ -801,7 +954,7 @@ def app():
             elif field_choice == '"Practical Housekeeping" (European History)':
                 field_choice = practical_housekeeping()
             elif field_choice == 'A letter from Lin Zexu to Queen Victoria (World History)':
-                field_choice = lin_zexu()
+                field_choice = lin_zexu_1()
 
 
             st.write("")
