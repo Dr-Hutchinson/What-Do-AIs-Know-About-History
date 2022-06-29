@@ -816,7 +816,7 @@ def app():
                         #model selection for OpenAI query
 
 
-                        primary_source_analysis = prompt + "\n" + historical_method + "\n\n" + "Primary Source: " + "\n" + hayseed_lyrics + "\n" + source_information + "\n" + instructions + "\n"
+                        primary_source_analysis = prompt + "\n" + historical_method + "\n\n" + "Primary Source: " + "\n" + hayseed_lyrics + "\n" + source_information + "\n" + instructions
 
                             #prompt_text = prompt_choice + "\n\nQ:"
 
