@@ -186,7 +186,7 @@ def app():
 
         def us_history_data():
             sh1 = gc.open('us_history_benchmark_results')
-            sh2 = gc.open('benchmark_results')
+            sh2 = gc.open('benchmark_tests')
             wks1 = sh1[0]
             wks2 = sh2[0]
             now = dt.now()
