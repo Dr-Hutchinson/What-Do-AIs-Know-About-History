@@ -799,7 +799,7 @@ def app():
 
                     source_information = "Source Information: The Primary Source is a translation of “Portraits of the Achievements of Our Dynasty’s Illustrious Officials,” published in the Shanghai newspaper Shishibao Tuhua in 1909."
 
-                    st.image(image='./practical_housekeeping.png')
+                    st.image(image='./lin_print.png')
                     st.write('Source: Peter Perdue, “Production and Consumption", The First Opium War: The Anglo-Chinese War of 1839-1942. Visualizing Cultures (MIT, 2010), [link](https://visualizingcultures.mit.edu/opium_wars_01/ow1_essay02.html)')
                     st.write(hayseed_lyrics)
                     st.write(source_information)
