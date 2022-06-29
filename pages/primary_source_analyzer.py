@@ -785,7 +785,7 @@ def app():
                             #temp_output_collection()
                             #total_output_collection()
 
-        def lin_letter_2():
+        def len_letter_2():
             with col1:
                 with st.form('lin_letter_2'):
 
@@ -800,7 +800,7 @@ def app():
                     source_information = "Source Information: The Primary Source is a translation of “Portraits of the Achievements of Our Dynasty’s Illustrious Officials,” published in the Shanghai newspaper Shishibao Tuhua in 1909."
 
                     st.image(image='./practical_housekeeping.png')
-                    st.write('Source: eter Perdue, “Production and Consumption", The First Opium War: The Anglo-Chinese War of 1839-1942. Visualizing Cultures (MIT, 2010), [link](https://visualizingcultures.mit.edu/opium_wars_01/ow1_essay02.html)'
+                    st.write('Source: Peter Perdue, “Production and Consumption", The First Opium War: The Anglo-Chinese War of 1839-1942. Visualizing Cultures (MIT, 2010), [link](https://visualizingcultures.mit.edu/opium_wars_01/ow1_essay02.html)')
                     st.write(hayseed_lyrics)
                     st.write(source_information)
 
