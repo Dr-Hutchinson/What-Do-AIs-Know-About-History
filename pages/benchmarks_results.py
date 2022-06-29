@@ -186,9 +186,12 @@ def app():
 
         def us_history_data():
             sh1 = gc.open('us_history_benchmark_results')
+            sh2 = gc.open('benchmark_results')
             wks1 = sh1[0]
+            wks2 = sh2[0]
             now = dt.now()
             data = wks1.get_as_df(has_header=True, index_col=None)
+            data2 = wks2.get_as_df(has_header=True, index_col=None)
             data['time'] = pd.to_datetime(data['time'])
             mask = (data['time'] > '5/11/2022 11:20:00') & (data['time'] <= now)
             data = data.loc[mask]
@@ -203,7 +206,7 @@ def app():
 
             st.write('In May 2022, GPT-3 correctly answered {} out of {} U.S. History questions, for a {:.2f}% accuracy rate. Click [here](https://github.com/Dr-Hutchinson/gpt-3_history_benchmark_results/blob/main/us_history_benchmark_results.csv) to see the results.'.format(len(correct_data), len(field_data), len(correct_data)/len(field_data)*100))
             st.write("Below is GPT-3's total accuracy on all questions to date.")
-            st.bar_chart(data['correct_status'].value_counts())
+            st.bar_chart(data2['correct_status'].value_counts())
 
         def euro_history_data():
             sh1 = gc.open('european_history_benchmark_results')
