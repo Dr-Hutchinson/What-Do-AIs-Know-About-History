@@ -679,7 +679,7 @@ def app():
                             user="0",
                             max_tokens=response_length,
                             frequency_penalty=0.15,
-                            presence_penalty=0.60)
+                            presence_penalty=0.75) # baseline = 60
 
                         response_json = len(summon["choices"])
 
