@@ -678,8 +678,8 @@ def app():
                             temperature=0,
                             user="0",
                             max_tokens=response_length,
-                            frequency_penalty=0.25,
-                            presence_penalty=0.40)
+                            frequency_penalty=0.15,
+                            presence_penalty=0.60)
 
                         response_json = len(summon["choices"])
 
