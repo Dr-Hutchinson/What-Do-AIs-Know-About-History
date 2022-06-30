@@ -35,8 +35,6 @@ def app():
         os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
         now = dt.now()
 
-        primary_source_analysis = prompt + "\n" + historical_method + "\n\n" + "Primary Source: " + "\n" + hayseed_lyrics + "\n" + source_information + "\n" + instructions + "\n"
-
         response_length = 1500
 
         openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -179,6 +177,8 @@ def app():
                             #test = st.radio("Test",["test1", "test2"])
 
                     if submit_button_1:
+
+                        primary_source_analysis = prompt + "\n" + historical_method + "\n\n" + "Primary Source: " + "\n" + hayseed_lyrics + "\n" + source_information + "\n" + instructions + "\n"
 
                         submit_prompt()
 
