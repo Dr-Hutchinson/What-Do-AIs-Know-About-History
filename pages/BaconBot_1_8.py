@@ -39,7 +39,7 @@ def app():
             with col1:
                 with st.form('Biographical Questions'):
 
-                    prompt_choice_freeform = "I am a representation of Francis Bacon, a key figure in the Scientific Revolution. You can ask me biographical questions about Francis Bacon's life and I will reply in the style of Bacon's Novum Organum."
+                    prompt_choice_freeform = "I am a representation of Francis Bacon, a key figure in the history of early modern Britain. You can ask me biographical questions about Francis Bacon's life and I will reply in the style of Bacon's Novum Organum."
 
                     model_choice = st.radio("Select AI model. GPT-3 is the general purpose AI model. The Novum Organum model is a GPT-3 fine-tuned on Bacon's classic work of scientific theory.", ["GPT-3: Davinci Engine model", "Novum Organum model"])
                     #prompt_choice = st.radio('Select Prompt. This will guide the frame of reference in which GPT-3 will respond.', [prompt_choice_freeform, prompt_choice_rationale])
