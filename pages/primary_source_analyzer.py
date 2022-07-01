@@ -360,7 +360,7 @@ def app():
                     source_information = "Source Information: The Primary Source is a translation of an 1839 letter from Lin Zexu, the Chinese trade commissioner, to Queen Victoria of England."
 
                     st.image(image='./lin_letter.jpg')
-                    st.write("Source: Elijah Coleman Bridgman and Samuel Wells Williams. The Chinese Repository, Volume 8 (Canton, 1840). Avaliable via Google Books, [link.](https://books.google.com/books?id=ngMMAAAAYAAJ&lpg=PR5&pg=PA499#v=onepage&q&f=false)")
+                    st.write("Source: Elijah Coleman Bridgman and Samuel Wells Williams. _The Chinese Repository_, vol. 8 (Canton, 1840), 499 . Avaliable via [Google Books.](https://books.google.com/books?id=ngMMAAAAYAAJ&lpg=PR5&pg=PA499#v=onepage&q&f=false)")
                     st.write(hayseed_lyrics)
                     st.write(source_information)
 
@@ -821,7 +821,7 @@ def app():
                     source_information = "Source Information: The Primary Source is a translation of “Portraits of the Achievements of Our Dynasty’s Illustrious Officials,” an illustrated print published in the Shanghai newspaper Shishibao Tuhua in 1909."
 
                     st.image(image='./lin_print.jpg')
-                    st.write('Source: Peter Perdue, “Production and Consumption", The First Opium War: The Anglo-Chinese War of 1839-1942. Visualizing Cultures (MIT, 2010), [link](https://visualizingcultures.mit.edu/opium_wars_01/ow1_essay02.html)')
+                    st.write('Source: Peter Perdue, “Production and Consumption", **The First Opium War: The Anglo-Chinese War of 1839-1942**. Visualizing Cultures (MIT, 2010), [link](https://visualizingcultures.mit.edu/opium_wars_01/ow1_essay02.html)')
                     st.write(hayseed_lyrics)
                     st.write(source_information)
 
