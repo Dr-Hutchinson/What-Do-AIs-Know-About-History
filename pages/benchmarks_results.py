@@ -124,11 +124,11 @@ def app():
         with st.form('form1'):
             st.subheader("Human Interface:")
 
-            st.write('Read the question below, and select the best answer. Click on the "Click here to submit your answer" button to see if you answered correctly.')
+            st.write('Read the question below, and select the best answer. Click on the "Submit Your Answer" button to see if you answered correctly.')
 
             st.write("Question #" + st.session_state.question_number1 + ":" + "\n\n" + st.session_state.question)
             submit_answer = st.radio("Choose from the following options:", ["A: " + st.session_state.option_a, "B: " + st.session_state.option_b, "C: " + st.session_state.option_c, "D: " + st.session_state.option_d])
-            button1 = st.form_submit_button("Click here to submit your Answer")
+            button1 = st.form_submit_button("Submit your Answer")
 
             if button1:
 
