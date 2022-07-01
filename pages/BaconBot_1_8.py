@@ -27,8 +27,8 @@ def app():
     gc = pygsheets.authorize(custom_credentials=credentials)
 
     st.title("Can an AI Simulate a Historical Worldview?")
-    st.subheader("BaconBot: An AI Imitation of Francis Bacon")
-    st.header("Public Demo")
+    st.header("BaconBot: An AI Imitation of Francis Bacon")
+    st.subheader("Public Demo")
     col1, col2 = st.columns([3.0,3.5])
 
     def button_one():
