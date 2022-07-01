@@ -31,7 +31,7 @@ def app():
 
     def button_one():
 
-        st.subheader("App Instructions:")
+        st.subheader("Instructions:")
         st.write('Select one of the Primary Sources on the left. Then click on the "Analyze Source" button to see GPT-3 Interpretation.')
 
         st.subheader("App Description:")
@@ -1040,7 +1040,6 @@ def app():
 
     with col1:
 
-        st.subheader("Instructions:")
         st.write("Select the 'Analyze Sources' button to explore how GPT-3 simulates analysis of primary sources. Select the 'Rank Responses' button to note your impressions of these interpretations.")
 
 
