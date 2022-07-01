@@ -514,7 +514,7 @@ def app():
                     source_information = 'Source Information: The Primary Source is a speech entitled "Women in the Farmers Alliance," given by Mary Lease to the National Council of Women National Meeting in Washington D.C. in 1891.'
 
                     st.image(image='./lease.png')
-                    st.write("Source: National Council of Women of the United States, _Transactions of the National Council of Women of the United States: Assembled in Washington, D.C., February 22 to 25, 1891_. Avaliable via Google Books, [link.](https://books.google.com/books?id=bpU0xGnVETsC&newbks=1&newbks_redir=0&dq=If%20God%20were%20to%20give%20me%20my%20choice%20to%20live%20in%20any%20age%20of%20the%20world%20that%20has%20flown%2C%20or%20in%20any%20age%20of%20the%20world%20yet%20to%20be%2C%20I%20would%20say%2C%20O%20God%2C%20let%20me%20live%20here%20and%20now%2C%20in%20this%20day%20and%20age%20of%20the%20world%E2%80%99s%20history.&pg=PA214#v=onepage&q&f=false)")
+                    st.write("Source: National Council of Women of the United States, _Transactions of the National Council of Women of the United States: Assembled in Washington, D.C., February 22 to 25, 1891_, 214. Avaliable via Google Books, [link.](https://books.google.com/books?id=bpU0xGnVETsC&newbks=1&newbks_redir=0&dq=If%20God%20were%20to%20give%20me%20my%20choice%20to%20live%20in%20any%20age%20of%20the%20world%20that%20has%20flown%2C%20or%20in%20any%20age%20of%20the%20world%20yet%20to%20be%2C%20I%20would%20say%2C%20O%20God%2C%20let%20me%20live%20here%20and%20now%2C%20in%20this%20day%20and%20age%20of%20the%20world%E2%80%99s%20history.&pg=PA214#v=onepage&q&f=false)")
                     st.write(hayseed_lyrics)
                     st.write(source_information)
 
