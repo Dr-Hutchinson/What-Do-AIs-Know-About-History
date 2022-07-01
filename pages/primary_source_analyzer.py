@@ -61,7 +61,7 @@ def app():
 
                     st.header('Primary Source - "The Hayseed" (1890)')
 
-                    hayseed_lyrics = 'I was once a tool of oppression\nAnd as green as a sucker could be\nAnd monopolies banded together\nTo beat a poor hayseed like me.\n"The railroads and old party bosses\nTogether did sweetly agree;\nAnd they thought there would be little trouble\nIn working a hayseed like me. . . ."'
+                    hayseed_lyrics = 'I was once a tool of oppression\nAnd as green as a sucker could be\nAnd monopolies banded together\nTo beat a poor hayseed like me.\nThe railroads and old party bosses\nTogether did sweetly agree;\nAnd they thought there would be little trouble\nIn working a hayseed like me. . . .'
                     source_information = "Source Information: The Primary Source is an American political campaign song called 'The Hayseed,' published in 1890 by a Nebraska newspaper known as the Farmer's Alliance."
 
                     st.image(image='./hayseed.png')
