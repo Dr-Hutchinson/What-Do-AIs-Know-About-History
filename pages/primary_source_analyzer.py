@@ -337,8 +337,12 @@ def app():
             with col1:
                 with st.form('lin_letter'):
 
+                    question = "Lin Zexu to Victoria"
                     prompt = "You are an AI historian specializing in primary source analysis and historiographical interpretation. When given a Primary Source, you will provide a detailed and substantive analysis of that source based on the Historical Method and Source Information below."
-                    historical_method = "Step 1 -  Contextualization: Apply the Source Information to provide a lengthy, detailed, and substantive analysis of how the Primary Source reflects the larger historical period in which it was created. In composing this lengthy, detailed, and substantive analysis, note specific events, personalities, and ideologies that shaped the the period noted in the Source Information.\nStep 2 - Purpose : Offer a substantive exploration of the purpose of the Primary Source, interpreting the author’s arguments through the Contextualization offered in Step 1.\nStep 3 - Audience: Compose a substantive assessment of the intended audience of the Primary Source. Note how this audience would shape the Primary Source's reception and historical impact in light of the Contextualization offered in Step 1.\nStep 4 - Historiographical Interpretation: Provide a substantive and incisive interpretation of how at least three specific schools of historiographical thought would interpret this source. Compare and contrast how this source could be interpreted by three different academic historiographical schools.  Different historiographical approaches could include the diplomatic history, Chinese history, World history, Marxist history, social history, cultural history, military history, the history of medicine, and postcolonial history."
+                    historical_method = "Step 1 -  Contextualization: Apply the Source Information to provide a lengthy, detailed, and substantive analysis of how the Primary Source reflects the larger historical period in which it was created. In composing this lengthy, detailed, and substantive analysis, note specific events, personalities, and ideologies that shaped the the period noted in the Source Information.\nStep 2 - Purpose : Offer a substantive exploration of the purpose of the Primary Source, interpreting the author’s arguments through the Contextualization offered in Step 1.\nStep 3 - Audience: Compose a substantive assessment of the intended audience of the Primary Source. Note how this audience would shape the Primary Source's reception and historical impact in light of the Contextualization offered in Step 1.\nStep 4 - Historiographical Interpretation: Provide a substantive and incisive interpretation of how at least three specific schools of historiographical thought would interpret this source. Compare and contrast how this source could be interpreted by three different academic historiographical schools.  Different historiographical approaches could include: "
+
+                    histriography_options = "Marxist, postcolonial, World Systems Theory, social history, history of medicine, Diplomatic history, economic history."
+
                     instructions = "Instructions: Based on the Historical Method outlined above, provide a substantive and detailed analysis of the Primary Source in the manner of an academic historian. Let's take this step by step."
 
                     st.header('Primary Source - Translation of a letter from Lin Zexu to Queen Victoria (1839)')
@@ -360,12 +364,10 @@ def app():
                         os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
                         now = dt.now()
 
-                        #model selection for OpenAI query
+                        primary_source_analysis = prompt + "\n" + historical_method + "\n\n" + histriography_options + "Primary Source: " + "\n" + hayseed_lyrics + "\n" + source_information + "\n" + instructions
 
-
-                        primary_source_analysis = prompt + "\n" + historical_method + "\n\n" + "Primary Source: " + "\n" + hayseed_lyrics + "\n" + source_information + "\n" + instructions
-
-                            #prompt_text = prompt_choice + "\n\nQ:"
+                        os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
+                        now = dt.now()
 
                         response_length = 1500
 
@@ -379,6 +381,7 @@ def app():
                             max_tokens=response_length,
                             frequency_penalty=0.35,
                             presence_penalty=0.25)
+
 
                         response_json = len(summon["choices"])
 
@@ -450,38 +453,38 @@ def app():
                         st.write("\n\n\n\n")
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
+                        def total_output_collection():
+                            d1 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'date':[now]}
+                            df1 = pd.DataFrame(data=d1, index=None)
+                            sh1 = gc.open('total_outputs_primary_sources')
+                            wks1 = sh1[0]
+                            cells1 = wks1.get_all_values(include_tailing_empty_rows=False, include_tailing_empty=False, returnas='matrix')
+                            end_row1 = len(cells1)
+                            wks1.set_dataframe(df1,(end_row1+1,1), copy_head=False, extend=True)
 
-                        #def total_output_collection():
-                            #d1 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform], 'prompt_boost':[prompt_boost_question_1 + "\n\n" + prompt_boost_question_2], 'question':[question], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
-                            #df1 = pd.DataFrame(data=d1, index=None)
-                            #sh1 = gc.open('bacon_outputs')
-                            #wks1 = sh1[0]
-                            #cells1 = wks1.get_all_values(include_tailing_empty_rows=False, include_tailing_empty=False, returnas='matrix')
-                            #end_row1 = len(cells1)
-                            #wks1.set_dataframe(df1,(end_row1+1,1), copy_head=False, extend=True)
+                        def output_collection_filtered():
+                            d2 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'date':[now]}
+                            df2 = pd.DataFrame(data=d2, index=None)
+                            sh2 = gc.open('primary_source_outputs_filtered')
+                            wks2 = sh2[0]
+                            cells2 = wks2.get_all_values(include_tailing_empty_rows=False, include_tailing_empty=False, returnas='matrix')
+                            end_row2 = len(cells2)
+                            wks2.set_dataframe(df2,(end_row2+1,1), copy_head=False, extend=True)
 
-                        #def output_collection_filtered():
-                            #d2 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform], 'prompt_boost':[prompt_boost_question_1 + "\n\n" + prompt_boost_question_2], 'question':[question], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
-                            #df2 = pd.DataFrame(data=d2, index=None)
-                            #sh2 = gc.open('bacon_outputs_filtered')
-                            #wks2 = sh2[0]
-                            #cells2 = wks2.get_all_values(include_tailing_empty_rows=False, include_tailing_empty=False, returnas='matrix')
-                            #end_row2 = len(cells2)
-                            #wks2.set_dataframe(df2,(end_row2+1,1), copy_head=False, extend=True)
+                        def temp_output_collection():
+                            d3 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'date':[now]}
+                            df3 = pd.DataFrame(data=d3, index=None)
+                            sh3 = gc.open('primary_source_temp')
+                            wks3 = sh3[0]
+                            wks3.set_dataframe(df3,(1,1))
 
-                        #def temp_output_collection():
-                            #d3 = {'user':["0"], 'user_id':["0"], 'model':[model_choice], 'prompt':[prompt_choice_freeform], 'prompt_boost':[prompt_boost_question_1 + "\n\n" + prompt_boost_question_2], 'question':[question], 'output':[output], 'temperature':[temperature_dial], 'response_length':[response_length], 'filter_ranking':[output_label], 'date':[now]}
-                            #df3 = pd.DataFrame(data=d3, index=None)
-                            #sh3 = gc.open('bacon_outputs_temp')
-                            #wks3 = sh3[0]
-                            #wks3.set_dataframe(df3,(1,1))
+                        if int(filter_function()) == 2:
+                            output_collection_filtered()
+                            total_output_collection()
+                        else:
+                            temp_output_collection()
+                            total_output_collection()
 
-                        #if int(filter_function()) == 2:
-                            #output_collection_filtered()
-                            #total_output_collection()
-                        #else:
-                            #temp_output_collection()
-                            #total_output_collection()
         def mary_lease():
             with col1:
                 with st.form('lease_speech'):
