@@ -42,8 +42,13 @@ def app():
     world_random = df3.sample()
 
     st.header('What Does an AI "Know" About History?')
-    st.write("Recent advances in machine learning have resulted in the creation of AI models capable of accurate recall of historical knowledge. These capabilities have been measured through benchmarks of AI performance on a commonly assessed form of historical knowledge: the Advanced Placement (A.P.) curriculums for U.S., European, and World History. The first major assessment came from a [January 2021 study](https://arxiv.org/pdf/2008.02275.pdf) by machine learning researchers led by [Dan Hendryks](https://people.eecs.berkeley.edu/~hendrycks/), with GPT-3 performing at approximately 55% accuracy in these fields. But in January 2022, a new model of GPT-3 demonstrated a significant increase in accuracy, approaching near expert-level accuracy (80%) in two historical fields. You can see the full results from the most recent replication of the study [here](https://github.com/Dr-Hutchinson/gpt-3_history_benchmark_results).")
+
+    st.subheader("Instructions:")
     st.write("This app permits to test your historical knowledge against GPT-3. Choose one of the A.P. categories on the left to load a random question. Then compare your answer against GPT-3.")
+
+    st.subheader("Implications:")
+    st.write("Recent advances in machine learning have resulted in the creation of AI models capable of accurate recall of historical knowledge. These capabilities have been measured through benchmarks of AI performance on a commonly assessed form of historical knowledge: the Advanced Placement (A.P.) curriculums for U.S., European, and World History. The first major assessment came from a [January 2021 study](https://arxiv.org/pdf/2008.02275.pdf) by machine learning researchers led by [Dan Hendryks](https://people.eecs.berkeley.edu/~hendrycks/), with GPT-3 initially achieving over 50% accuracy in these fields. But by January 2022 a new model of GPT-3 demonstrated significant advances, approaching near expert-level accuracy (80%) in two historical fields. You can see the full results from the most recent replication of the Hendryks study [here.](https://github.com/Dr-Hutchinson/gpt-3_history_benchmark_results).")
+
 
     with st.sidebar.form(key ='Form2'):
         field_choice = st.radio("Choose the subject:", ["U.S. History", "European History", "World History"])
