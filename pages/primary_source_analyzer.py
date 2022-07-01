@@ -35,19 +35,8 @@ def app():
         st.write("Select one of the primary sources on the left. Then click on the **Analyze Source** button below to see GPT-3's interpretation.")
 
         st.subheader("App Description:")
-        st.write("This app prompts GPT-3 to simulate historical analysis of a primary source. GPT-3 is given the text of the source, the source information, and instructions to determine the following:")
-        st.write("1. Contextualization of the source")
-        st.write("2. Purpose of the source")
-        st.write("3. Intended audience of the source")
-        st.write("4. Possible histriographical interpretations of the source.")
-
-
-        #st.write("Step 1 -  Contextualization: Apply the Source Information to provide a lengthy, detailed, and substantive analysis of how the Primary Source reflects the larger historical period in which it was created. In composing this lengthy, detailed, and substantive analysis, note specific events, personalities, and ideologies that shaped the the period noted in the Source Information.")
-        #st.write("Step 2 - Purpose : Offer a substantive exploration of the purpose of the Primary Source, interpreting the author’s arguments through the Contextualization offered in Step 1.")
-        #st.write("Step 3 - Audience: Compose a substantive assessment of the intended audience of the Primary Source. Note how this audience would shape the Primary Source's reception and historical impact in light of the Contextualization offered in Step 1.")
-        #st.write("Step 4 - Historiographical Interpretation: Provide a substantive and incisive interpretation of how at least three specific schools of historiographical thought would interpret this source. Compare and contrast how this source could be interpreted by three different academic historiographical schools.")
-
-
+        st.write("This app prompts GPT-3 to simulate historical analysis of a primary source. GPT-3 is given the text of the source, the source information, and instructions to determine the: 1.) Contextualization of the source, 2.) Purpose of the source, 3.) Intended audience of the source, 4.) Possible histriographical interpretations of the source.")
+    
         def hayseed_question():
             with col1:
                 with st.form('Hayseed Question'):
