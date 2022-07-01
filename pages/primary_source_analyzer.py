@@ -985,7 +985,7 @@ def app():
 
             wks1 = sh1[0]
             question = wks1.get_value('A2')
-            histriographies = wks1.get_value('B2')
+            histriography_options = wks1.get_value('B2')
             output = wks1.get_value('C2')
             st.subheader('Primary Source:')
             st.write(question)
