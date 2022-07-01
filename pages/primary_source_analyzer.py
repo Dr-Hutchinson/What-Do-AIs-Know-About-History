@@ -1011,7 +1011,7 @@ def app():
                     ranking_average = mean(ranking_score)
 
                     def ranking_collection():
-                        d4 = {''question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'context_score':[context_score], 'purpose_score':[purpose_score],'audience_rank':[audience_rank], 'histriography_rank':[histriography_rank], 'overall_ranking':[ranking_average], 'date':[now]}
+                        d4 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'context_score':[context_score], 'purpose_score':[purpose_score],'audience_rank':[audience_rank], 'histriography_rank':[histriography_rank], 'overall_ranking':[ranking_average], 'date':[now]}
                         df4 = pd.DataFrame(data=d4, index=None)
                         sh4 = gc.open('primary_source_analyzer_rankings')
                         wks4 = sh4[0]
