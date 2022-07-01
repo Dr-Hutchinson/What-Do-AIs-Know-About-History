@@ -984,10 +984,10 @@ def app():
             sh1 = gc.open('primary_source_temp')
 
             wks1 = sh1[0]
-            source = wks1.get_value('A2')
+            question = wks1.get_value('A2')
             output = wks1.get_value('C2')
             st.subheader('Primary Source:')
-            st.write(source)
+            st.write(question)
             st.subheader("GPT-3's Interpretation")
             st.write(output)
 
