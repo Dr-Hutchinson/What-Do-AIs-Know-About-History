@@ -35,7 +35,7 @@ def app():
         st.write("Select one of the primary sources on the left. Then click on the **Analyze Source** button below to see GPT-3's interpretation.")
 
         st.subheader("App Description:")
-        st.write("The following app prompts GPT-3 to simulate historical analysis of a primary source. GPT-3 is given the text of the source, the source information, and instructions to determine the following:")
+        st.write("This app prompts GPT-3 to simulate historical analysis of a primary source. GPT-3 is given the text of the source, the source information, and instructions to determine the following:")
         st.write("1. Contextualization of the source")
         st.write("2. Purpose of the source")
         st.write("3. Intended audience of the source")
@@ -163,6 +163,8 @@ def app():
                         st.write("\n\n\n\n")
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
+                        st.subheader('Please click on the **Rank Resonses** button at the top of this screen to rank this reply for future improvement.')
+
                         def total_output_collection():
                             d1 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'date':[now]}
                             df1 = pd.DataFrame(data=d1, index=None)
@@ -194,6 +196,7 @@ def app():
                         else:
                             temp_output_collection()
                             total_output_collection()
+
 
 
         def household_question():
