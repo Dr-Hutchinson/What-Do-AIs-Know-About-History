@@ -35,8 +35,8 @@ with st.sidebar:
 
 # Add all your applications (pages) here
 app.add_page('1. What Does an AI "Know" About History?', benchmarks_results.app)
-app.add_page('2. Can an AI "Interpret" a Primary Source?', primary_source_analyzer.app)
-app.add_page("3. BaconBot: An AI Simulation of Francis Bacon (Demo)", BaconBot_1_8.app)
+app.add_page('2. How does an AI "Interpret" a Primary Source?', primary_source_analyzer.app)
+app.add_page("3. Can an AI Simulate a Historical Worldview?", BaconBot_1_8.app)
 app.add_page("4. BaconBot: An AI Simulation of Francis Bacon (Research)", Baconbot_1_7_1.app)
 
 #app.add_page("Y-Parameter Optimization",redundant.app)
