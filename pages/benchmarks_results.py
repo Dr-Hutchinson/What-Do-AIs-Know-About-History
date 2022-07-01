@@ -117,7 +117,10 @@ def app():
 
     with col1:
         with st.form('form1'):
-            st.header("Human Interface:")
+            st.subheader("Human Interface:")
+
+            st.write('Read the question below, and select the correct answer. Click on the "Submit Your Answer Here" button to see the correct answer.')
+
             st.write("Question #" + st.session_state.question_number1 + ":" + "\n\n" + st.session_state.question)
             submit_answer = st.radio("Choose from the following options:", ["A: " + st.session_state.option_a, "B: " + st.session_state.option_b, "C: " + st.session_state.option_c, "D: " + st.session_state.option_d])
             button1 = st.form_submit_button("Submit Your Answer Here:")
@@ -136,7 +139,7 @@ def app():
 
     with col2:
         with st.form('form3'):
-            st.header("GPT-3 Interface")
+            st.subheader("GPT-3 Interface")
             st.write("Click on the button below to pose the question to GPT-3")
             button3 = st.form_submit_button("Submit Question")
 
