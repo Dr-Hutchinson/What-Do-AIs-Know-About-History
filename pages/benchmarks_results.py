@@ -43,7 +43,7 @@ def app():
 
     st.header('What Does an AI "Know" About History?')
     st.write("Recent advances in establishing benchmarks for AI performance have enabled measurement of GPT-3’s capacities for a form of historical knowledge. The first major assessment came from a [January 2021 study](https://arxiv.org/pdf/2008.02275.pdf) by a team of machine learning researchers led by [Dan Hendryks](https://people.eecs.berkeley.edu/~hendrycks/). Their study established a set of benchmarks for assessing GPT-3 on collections of multiple-choice questions in fifty-seven academic disciplines. History was included in this assessment in the form of hundreds of questions drawn from the Advanced Placement (A.P.) curriculums for U.S., European, and World history. Based on a recent replication of this study, GPT-3 demonstrated near expert-level accuracy (80%) in two historical fields. You can see the full results from the most recent replication of the study [here](https://github.com/Dr-Hutchinson/gpt-3_history_benchmark_results).")
-    st.write("This app permits to test your historical knowledge against GPT-3. Choose one of the A.P. categories on the left to load a random question. Then supply your answer on the Then compare your answer aganist the AI response.")
+    st.write("This app permits to test your historical knowledge against GPT-3. Choose one of the A.P. categories on the left to load a random question. Then compare your answer against GPT-3.")
 
     with st.sidebar.form(key ='Form2'):
         field_choice = st.radio("Choose the subject:", ["U.S. History", "European History", "World History"])
@@ -119,11 +119,11 @@ def app():
         with st.form('form1'):
             st.subheader("Human Interface:")
 
-            st.write('Read the question below, and select the correct answer. Click on the "Submit Your Answer Here" button to see the correct answer.')
+            st.write('Read the question below, and select the correct answer. Click on the "Click here to submit your answer" button to see the correct answer.')
 
             st.write("Question #" + st.session_state.question_number1 + ":" + "\n\n" + st.session_state.question)
             submit_answer = st.radio("Choose from the following options:", ["A: " + st.session_state.option_a, "B: " + st.session_state.option_b, "C: " + st.session_state.option_c, "D: " + st.session_state.option_d])
-            button1 = st.form_submit_button("Submit Your Answer Here:")
+            button1 = st.form_submit_button("Click here to submit your Answer")
 
             if button1:
 
