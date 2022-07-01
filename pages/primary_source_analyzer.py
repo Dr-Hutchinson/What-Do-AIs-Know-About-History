@@ -27,12 +27,14 @@ def app():
     gc = pygsheets.authorize(custom_credentials=credentials)
 
     st.title('Can an AI "Interpret" a Primary Source?')
-    st.header("Public Demo")
     col1, col2 = st.columns([5.5,.5])
 
     def button_one():
 
-        st.write("The following app prompts GPT-3 to simulate historical analysis of selected primary sources through a specific historical method.")
+        st.subheader("App Description:")
+        st.write("The following app prompts GPT-3 to simulate historical analysis of primary sources. GPT-3 is given the text of the source, the source information, and instructions to perform analyssis via the following historical method:")
+        st.write("Step 1 -  Contextualization: Apply the Source Information to provide a lengthy, detailed, and substantive analysis of how the Primary Source reflects the larger historical period in which it was created. In composing this lengthy, detailed, and substantive analysis, note specific events, personalities, and ideologies that shaped the the period noted in the Source Information.\nStep 2 - Purpose : Offer a substantive exploration of the purpose of the Primary Source, interpreting the author’s arguments through the Contextualization offered in Step 1.\nStep 3 - Audience: Compose a substantive assessment of the intended audience of the Primary Source. Note how this audience would shape the Primary Source's reception and historical impact in light of the Contextualization offered in Step 1.\nStep 4 - Historiographical Interpretation: Provide a substantive and incisive interpretation of how at least three specific schools of historiographical thought would interpret this source. Compare and contrast how this source could be interpreted by three different academic historiographical schools.  Different historiographical approaches could include: ")
+
 
         def hayseed_question():
             with col1:
