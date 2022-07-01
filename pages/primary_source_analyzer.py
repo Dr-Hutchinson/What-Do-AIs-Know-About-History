@@ -32,7 +32,7 @@ def app():
     def button_one():
 
         st.subheader("Instructions:")
-        st.write('Select one of the Primary Sources on the left. Then click on the "Analyze Source" button to see GPT-3 Interpretation.')
+        st.write("Select one of the Primary Sources on the left. Then click on the _Analyze Source_ button below to see GPT-3's interpretation.")
 
         st.subheader("App Description:")
         st.write("The following app prompts GPT-3 to simulate historical analysis of primary sources. GPT-3 is given the text of the source, the source information, and instructions to determine the following:")
