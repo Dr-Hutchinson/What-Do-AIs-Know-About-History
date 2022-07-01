@@ -44,7 +44,7 @@ def app():
     st.header('What Does an AI "Know" About History?')
 
     st.subheader("Instructions:")
-    st.write("This app permits to test your historical knowledge against GPT-3. Choose one of the A.P. categories on the left to load a random question. Enter your question into the Human Interface to see the choose an answer. Then compare your answer against GPT-3 in the GPT-3 Interface.")
+    st.write("This app permits you to test your historical knowledge against GPT-3. Choose one of the A.P. categories on the left to load a random question. Enter your question into the Human Interface to see the choose an answer. Then compare your answer against GPT-3 in the GPT-3 Interface.")
 
     st.subheader("Implications:")
     st.write("Recent advances in machine learning have resulted in the creation of AI models capable of accurate recall of historical knowledge. These capabilities have been measured through benchmarks of AI performance on a commonly assessed form of historical knowledge: the Advanced Placement (A.P.) curriculums for U.S., European, and World History. The first major assessment came from a [January 2021 study](https://arxiv.org/pdf/2008.02275.pdf) by machine learning researchers led by [Dan Hendryks](https://people.eecs.berkeley.edu/~hendrycks/), with GPT-3 initially achieving over 50% accuracy in these fields. By January 2022 a new model of GPT-3 demonstrated significant advances in performance, approaching near expert-level accuracy (80%) in two historical fields. You can see the more information and the full results from the most recent replication of the Hendryks study [here.](https://github.com/Dr-Hutchinson/gpt-3_history_benchmark_results).")
