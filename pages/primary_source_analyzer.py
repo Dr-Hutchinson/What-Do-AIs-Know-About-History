@@ -207,7 +207,7 @@ def app():
                     source_information = "Source Information: The Primary Source is The Book of Household Management, published in London in 1861 and written by Isabella Beeton."
 
                     st.image(image='./household_management.png',  use_column_width='never')
-                    st.write("Isabella Beeton, Book of Household Management (S.O. Beeton: London, 1861), 46. Avaliable via the Internet Archive, [link.](https://archive.org/details/b20392758/page/n45/mode/2up)")
+                    st.write("Isabella Beeton, _Book of Household Management_ (S.O. Beeton: London, 1861), 46. Avaliable via the [Internet Archive].(https://archive.org/details/b20392758/page/n45/mode/2up)")
                     st.write(hayseed_lyrics)
                     st.write(source_information)
 
@@ -666,7 +666,7 @@ def app():
                     source_information = "Source Information: The Primary Source is the introduction to Practical Housekeeping, a book published in London in 1867 by Mrs. Frederick Pauley."
 
                     st.image(image='./practical_housekeeping.png')
-                    st.write("Source: Mrs. Frederick Pauley, Practical Housekeeping (Routledge: London, 1867), Google Books, [link](https://books.google.com/books?id=_z4CAAAAQAAJ&newbks=1&newbks_redir=0&dq=Routledge's%20manual%20of%20etiquette&pg=PA1#v=onepage&q&f=false)")
+                    st.write("Source: Mrs. Frederick Pauley, _Practical Housekeeping_ (Routledge: London, 1867), Google Books, [link](https://books.google.com/books?id=_z4CAAAAQAAJ&newbks=1&newbks_redir=0&dq=Routledge's%20manual%20of%20etiquette&pg=PA1#v=onepage&q&f=false)")
                     st.write(hayseed_lyrics)
                     st.write(source_information)
 
