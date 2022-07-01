@@ -207,7 +207,7 @@ def app():
                     source_information = "Source Information: The Primary Source is The Book of Household Management, published in London in 1861 and written by Isabella Beeton."
 
                     st.image(image='./household_management.png',  use_column_width='never')
-                    st.write("Isabella Beeton, _Book of Household Management_ (S.O. Beeton: London, 1861), 46. Avaliable via the [Internet Archive].(https://archive.org/details/b20392758/page/n45/mode/2up)")
+                    st.write("Isabella Beeton, _Book of Household Management_ (S.O. Beeton: London, 1861), 46. Avaliable via the [Internet Archive.](https://archive.org/details/b20392758/page/n45/mode/2up)")
                     st.write(hayseed_lyrics)
                     st.write(source_information)
 
