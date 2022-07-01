@@ -1043,7 +1043,7 @@ def app():
 
     with col1:
 
-        st.write("Select the 'Analyze Sources' button to explore how GPT-3 simulates analysis of primary sources. Select the 'Rank Responses' button to note your impressions of these interpretations.")
+        st.write("Select the 'Load Primary Sources' button to explore how GPT-3 simulates analysis of primary sources. Select the 'Rank Responses' button to note your impressions of these interpretations.")
 
 
         pages = {
@@ -1055,7 +1055,7 @@ def app():
 
             st.session_state.current = None
 
-        if st.button("Analyze Sources"):
+        if st.button("Load Primary Sources"):
             st.session_state.current = 0
         if st.button("Rank Responses"):
             st.session_state.current = 1
