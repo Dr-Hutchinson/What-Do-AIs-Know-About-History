@@ -575,7 +575,7 @@ def app():
 
                     temperature_choice = st.radio("Select the temperature of the AI's response. Low tends to produce more factually correct responses, but with greater repetition. High tends to produce more creative responses but which are less coherent.", ["Low", "Medium", "High"])
 
-                    question = st.radio("Questions concerning notable events during Bacon's lifetime.", ["How were the performances of William Shakespeare recieved at the royal court?", "How would you evaluate the initial founding of Jamestown in Virginia?", "Describe the public mood during the Spanish Armada's approach towards England.", "In 1620, a group known known as the Pilgrims departed England for the New World. What did you make of them and the purposes of their journey?"])
+                    question = st.radio("Questions concerning notable events during Bacon's lifetime.", ["Which performances of William Shakespeare recieved the most notable attention among your contemporaries?", "How would you evaluate the initial founding of Jamestown in Virginia?", "Describe the public mood during the Spanish Armada's approach towards England.", "In 1620, a group known known as the Pilgrims departed England for the New World. What did you make of them and the purposes of their journey?"])
 
                     submit_button_1 = st.form_submit_button(label='Submit Question')
                         #with st.expander("Test:"):
