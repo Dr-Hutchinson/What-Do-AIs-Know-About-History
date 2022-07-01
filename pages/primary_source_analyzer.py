@@ -1003,7 +1003,7 @@ def app():
                     sh1 = gc.open('primary_source_temp')
                     wks1 = sh1[0]
                     df = wks1.get_as_df(has_header=True, index_column=None, start='A1', end=('K2'), numerize=False)
-                    p_source = df['source'][0]
+                    p_source = df['question'][0]
                     p_output = df['output'][0]
                     output_label = df['filter_ranking'][0]
                     now = dt.now()
