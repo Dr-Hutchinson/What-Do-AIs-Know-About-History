@@ -32,14 +32,14 @@ def app():
     def button_one():
 
         st.subheader("Instructions:")
-        st.write("Select one of the Primary Sources on the left. Then click on the **Analyze Source** button below to see GPT-3's interpretation.")
+        st.write("Select one of the primary sources on the left. Then click on the **Analyze Source** button below to see GPT-3's interpretation.")
 
         st.subheader("App Description:")
-        st.write("The following app prompts GPT-3 to simulate historical analysis of primary sources. GPT-3 is given the text of the source, the source information, and instructions to determine the following:")
-        st.write("1. Provide Contextualization of the Source")
-        st.write("2. Describe the Purpose of the Source")
-        st.write("3. Evaluate the intended audience of the Source")
-        st.write("4. Provide histriographical interpretations of the Source.")
+        st.write("The following app prompts GPT-3 to simulate historical analysis of a primary source. GPT-3 is given the text of the source, the source information, and instructions to determine the following:")
+        st.write("1. Contextualization of the source")
+        st.write("2. Purpose of the source")
+        st.write("3. Intended audience of the source")
+        st.write("4. Possible histriographical interpretations of the source.")
 
 
         #st.write("Step 1 -  Contextualization: Apply the Source Information to provide a lengthy, detailed, and substantive analysis of how the Primary Source reflects the larger historical period in which it was created. In composing this lengthy, detailed, and substantive analysis, note specific events, personalities, and ideologies that shaped the the period noted in the Source Information.")
