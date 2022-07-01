@@ -1026,7 +1026,8 @@ def app():
 
     with col1:
 
-        st.write("Select the 'Analyze Sources' button to explore how GPT-3 simulates historical analysis. Select 'Rank Responses' to note your impressions of these interpretations.")
+        st.subheader("Instructions:")
+        st.write("Select the 'Analyze Sources' button to explore how GPT-3 simulates analysis of primary sources. Select the 'Rank Responses' button to note your impressions of these interpretations.")
 
 
         pages = {
