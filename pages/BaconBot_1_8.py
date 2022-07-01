@@ -518,7 +518,7 @@ def app():
                             st.write("Bacon's Response:")
                             st.write(output)
                             st.write("\n\n\n\n")
-                            st.subheader('As Lord Bacon says, "Truth will sooner come out from error than from confusion."  Please click on the Rank Bacon button above to rank this reply for future improvement.')
+                            st.subheader('As Lord Bacon once said, "Truth will sooner come out from error than from confusion."  Please click on the Rank Bacon button above to rank this reply for future improvement.')
                         elif int(filter_function()) == 2:
                             st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed. Consider adjusting the question or temperature, and ask again.")
 
