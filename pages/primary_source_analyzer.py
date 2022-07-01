@@ -192,7 +192,7 @@ def app():
 
                     histriography_options = "Marxist history, British history, economic history, gender history, labor history, women's history, social history, and the history of marriage."
 
-                    instructions = "Instructions: Based on the Historical Method outlined above, provide a substantive and detailed analysis of the Primary Source in the manner of an academic historian. Let's take this step by step."
+                    instructions = "Instructions: Based on the Historical Method outlined above, provide a substantive and detailed analysis of the Primary Source in the manner of an academic historian. Let's take this step by step, and be sure to include every step."
 
                     st.header('Primary Source - "The Book of Household Management" (1861)')
 
@@ -343,7 +343,7 @@ def app():
 
                     histriography_options = "Marxist, postcolonial, World Systems Theory, social history, history of medicine, Diplomatic history, economic history."
 
-                    instructions = "Instructions: Based on the Historical Method outlined above, provide a substantive and detailed analysis of the Primary Source in the manner of an academic historian. Let's take this step by step."
+                    instructions = "Instructions: Based on the Historical Method outlined above, provide a substantive and detailed analysis of the Primary Source in the manner of an academic historian. Let's take this step by step, and be sure to include every step."
 
                     st.header('Primary Source - Translation of a letter from Lin Zexu to Queen Victoria (1839)')
 
