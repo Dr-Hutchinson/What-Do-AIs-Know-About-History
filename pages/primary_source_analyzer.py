@@ -34,7 +34,7 @@ def app():
         st.subheader("App Description:")
         st.write("The following app prompts GPT-3 to simulate historical analysis of primary sources. GPT-3 is given the text of the source, the source information, and the following historical method:")
 
-        with st.form('method'):
+        with st.container('method'):
             st.write("Step 1 -  Contextualization: Apply the Source Information to provide a lengthy, detailed, and substantive analysis of how the Primary Source reflects the larger historical period in which it was created. In composing this lengthy, detailed, and substantive analysis, note specific events, personalities, and ideologies that shaped the the period noted in the Source Information.")
             st.write("Step 2 - Purpose : Offer a substantive exploration of the purpose of the Primary Source, interpreting the author’s arguments through the Contextualization offered in Step 1.")
             st.write("Step 3 - Audience: Compose a substantive assessment of the intended audience of the Primary Source. Note how this audience would shape the Primary Source's reception and historical impact in light of the Contextualization offered in Step 1.")
