@@ -308,6 +308,8 @@ def app():
                         st.write("\n\n\n\n")
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
+                        st.subheader('Please click on the **Rank Resonses** button at the top of this screen to rank this reply for future improvement.')
+
                         def total_output_collection():
                             d1 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'date':[now]}
                             df1 = pd.DataFrame(data=d1, index=None)
@@ -460,6 +462,8 @@ def app():
                         st.write("\n\n\n\n")
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
+                        st.subheader('Please click on the **Rank Resonses** button at the top of this screen to rank this reply for future improvement.')
+
                         def total_output_collection():
                             d1 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'date':[now]}
                             df1 = pd.DataFrame(data=d1, index=None)
@@ -608,6 +612,8 @@ def app():
 
                         st.write("\n\n\n\n")
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
+
+                        st.subheader('Please click on the **Rank Resonses** button at the top of this screen to rank this reply for future improvement.')
 
                         def total_output_collection():
                             d1 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'date':[now]}
@@ -762,6 +768,8 @@ def app():
                         st.write("\n\n\n\n")
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
+                        st.subheader('Please click on the **Rank Resonses** button at the top of this screen to rank this reply for future improvement.')
+
                         def total_output_collection():
                             d1 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'date':[now]}
                             df1 = pd.DataFrame(data=d1, index=None)
@@ -914,6 +922,8 @@ def app():
 
                         st.write("\n\n\n\n")
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
+
+                        st.subheader('Please click on the **Rank Resonses** button at the top of this screen to rank this reply for future improvement.')
 
                         def total_output_collection():
                             d1 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'date':[now]}
