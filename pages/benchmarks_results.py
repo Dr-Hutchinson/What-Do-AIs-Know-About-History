@@ -44,10 +44,10 @@ def app():
     st.header('What Does an AI "Know" About History?')
 
     st.subheader("Instructions:")
-    st.write("This app permits you to test your historical knowledge against GPT-3. Choose one of the A.P. categories on the left to load a random question. Select an answer in the Human Interface to see the correct result. You can then compare your answer against the AI in the GPT-3 Interface.")
+    st.write("This app permits you to test your historical knowledge against GPT-3. Choose one of the A.P. categories on the left to load a random question. Select an answer in the Human Interface to see if you answered correctly. You can then compare your answer against the AI in the GPT-3 Interface.")
 
     st.subheader("Implications:")
-    st.write("Recent advances in machine learning have resulted in the creation of AI models capable of accurate recall of historical knowledge. These capabilities have been measured through benchmarks of AI performance on a commonly assessed form of historical knowledge: the Advanced Placement (A.P.) curriculums for U.S., European, and World History. The first major assessment came from a [January 2021 study](https://arxiv.org/pdf/2008.02275.pdf) by machine learning researchers led by [Dan Hendryks](https://people.eecs.berkeley.edu/~hendrycks/), with GPT-3 initially achieving over 50% accuracy in these fields. By January 2022 a new model of GPT-3 demonstrated significant advances in performance, approaching near expert-level accuracy (80%) in two historical fields. You can see the more information and the full results from the most recent replication of the Hendryks study [here.](https://github.com/Dr-Hutchinson/gpt-3_history_benchmark_results).")
+    st.write("Recent advances in machine learning have resulted in the creation of AI models capable of accurate recall of historical knowledge. These capabilities have been measured through benchmarks of AI performance on a commonly assessed form of historical knowledge: the Advanced Placement (A.P.) curriculums for U.S., European, and World History. The first major assessment came from a [January 2021 study](https://arxiv.org/pdf/2008.02275.pdf) by machine learning researchers led by [Dan Hendryks](https://people.eecs.berkeley.edu/~hendrycks/), with GPT-3 initially achieving over 50% accuracy in these fields. By January 2022 a new model of GPT-3 demonstrated significant advances in performance, approaching near expert-level accuracy (80%) in two historical fields. You can see the more information and the full results from the most recent replication of the Hendryks study [here](https://github.com/Dr-Hutchinson/gpt-3_history_benchmark_results).")
 
 
     with st.sidebar.form(key ='Form2'):
@@ -215,6 +215,7 @@ def app():
             incorrect_data = field_data[field_data['correct_status'] == 'incorrect']
 
             st.write('In May 2022, GPT-3 correctly answered {} out of {} U.S. History questions, for a {:.2f}% accuracy rate. Click [here](https://github.com/Dr-Hutchinson/gpt-3_history_benchmark_results/blob/main/us_history_benchmark_results.csv) to see the results.'.format(len(correct_data), len(field_data), len(correct_data)/len(field_data)*100))
+            st.write("Below is GPT-3's accuracy on all questions to date.")
             st.bar_chart(data2['correct_status'].value_counts())
 
         def euro_history_data():
@@ -238,7 +239,7 @@ def app():
             incorrect_data = field_data[field_data['correct_status'] == 'incorrect']
 
             st.write('In May 2022, GPT-3  correctly answered {} out of {} European history questions, for a {:.2f}% accuracy rate. Click [here](https://github.com/Dr-Hutchinson/gpt-3_history_benchmark_results/blob/main/european_history_benchmark_results.csv) to see the results.'.format(len(correct_data), len(field_data), len(correct_data)/len(field_data)*100))
-            st.write("Below is GPT-3's total accuracy rate to date.")
+            st.write("Below is GPT-3's accuracy on all questions to date.")
             st.bar_chart(data2['correct_status'].value_counts())
 
         def world_history_data():
@@ -262,7 +263,7 @@ def app():
             incorrect_data = field_data[field_data['correct_status'] == 'incorrect']
 
             st.write('In May 2022, GPT-3 correctly answered {} out of {} World history questions, for a {:.2f}% accuracy rate. Click [here](https://github.com/Dr-Hutchinson/gpt-3_history_benchmark_results/blob/main/world_history_benchmark_results.csv) to see the results.'.format(len(correct_data), len(field_data), len(correct_data)/len(field_data)*100))
-            st.write("Below is GPT-3's total accuracy rate to date.")
+            st.write("Below is GPT-3's accuracy on all questions to date.")
             st.bar_chart(data2['correct_status'].value_counts())
 
         if st.session_state.field == "U.S. History":
