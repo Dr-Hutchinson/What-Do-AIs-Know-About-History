@@ -42,7 +42,7 @@ def app():
                     prompt = "You are an AI historian specializing in primary source analysis and historiographical interpretation. When given a Primary Source, you will provide a detailed and substantive analysis of that source based on the Historical Method and Source Information below."
                     historical_method = "Step 1 -  Contextualization: Apply the Source Information to provide a lengthy, detailed, and substantive analysis of how the Primary Source reflects the larger historical period in which it was created. In composing this lengthy, detailed, and substantive analysis, note specific events, personalities, and ideologies that shaped the the period noted in the Source Information.\nStep 2 - Purpose : Offer a substantive exploration of the purpose of the Primary Source, interpreting the author’s arguments through the Contextualization offered in Step 1.\nStep 3 - Audience: Compose a substantive assessment of the intended audience of the Primary Source. Note how this audience would shape the Primary Source's reception and historical impact in light of the Contextualization offered in Step 1.\nStep 4 - Historiographical Interpretation: Provide a substantive and incisive interpretation of how at least three specific schools of historiographical thought would interpret this source. Compare and contrast how this source could be interpreted by three different academic historiographical schools.  Different historiographical approaches could include: "
 
-                    histriography = st.multiselect('Choose histriographical approaches:', ['Progressive,', 'Consensus,', 'Marxist,', 'postmodern,', 'social history,', 'political history,', 'gender history,', 'cultural history'])
+
 
                     histriography_options = "Progressive, Consensus, Marxist, postmodern, social history, political history, gender history, and cultural history."
                     instructions = "Instructions: Based on the Historical Method outlined above, provide a substantive and detailed analysis of the Primary Source in the manner of an academic historian. Let's take this step by step, and be sure to include every step."
@@ -56,6 +56,8 @@ def app():
                     st.write("Arthur L. Kellog, “The Hayseed,” Farmers Alliance (4 October 1890). Nebraska Newspapers (University of Nebraska Libraries), [link.](https://nebnewspapers.unl.edu/lccn/2017270209/1890-10-04/ed-1/seq-1/)")
                     st.write(hayseed_lyrics)
                     st.write(source_information)
+
+                    histriography = st.multiselect('Choose histriographical approaches:', ['Progressive,', 'Consensus,', 'Marxist,', 'postmodern,', 'social history,', 'political history,', 'gender history,', 'cultural history'])
 
                     submit_button_1 = st.form_submit_button(label='Analyze Source')
 
