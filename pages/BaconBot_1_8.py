@@ -838,7 +838,7 @@ def app():
 
     with col1:
 
-        st.write("Select the 'Ask Bacon' button to ask the AI questions. Select 'Rank Bacon' to note your impressions of his responses.")
+        st.write("Select the 'Ask Bacon' button to ask the AI questions. Select 'Rank Bacon' to note your impressions of its responses.")
 
 
         pages = {
