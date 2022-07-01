@@ -393,7 +393,7 @@ def app():
 
                     temperature_choice = st.radio("Select the temperature of the AI's response. Low tends to produce more factually correct responses, but with greater repetition. High tends to produce more creative responses but which are less coherent.", ["Low", "Medium", "High"])
 
-                    question = st.radio("Questions concerning Bacon's life and career.", ["What similarities and differences did you observe in the courts of Queen Elizabeth and King James?", "What were some of the defining moments of Elizabeth I's reign?", "What were some of the defining moments of James I's reign?", "What differences marked Elizabeth and James's approach to foriegn policy?", "How did the personaliies of Elizabeth and James shape their reigns?"])
+                    question = st.radio("Questions concerning the reigns of Queen Elizabeth I and King James I.", ["What similarities and differences did you observe in the courts of Queen Elizabeth and King James?", "What were some of the defining moments of Elizabeth I's reign?", "What were some of the defining moments of James I's reign?", "What differences marked Elizabeth and James's approach to foriegn policy?", "How did the personaliies of Elizabeth and James shape their reigns?"])
 
                     submit_button_1 = st.form_submit_button(label='Submit Question')
                         #with st.expander("Test:"):
