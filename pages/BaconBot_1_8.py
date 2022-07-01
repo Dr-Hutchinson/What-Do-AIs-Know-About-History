@@ -39,7 +39,7 @@ def app():
             with col1:
                 with st.form('Biographical Questions'):
 
-                    prompt_choice_freeform = "I am a representation of Francis Bacon, a key figure in the Scientific Revolution. You can ask me biographical questions about my life and I will reply in the style of Bacon's Novum Organum."
+                    prompt_choice_freeform = "I am a representation of Francis Bacon, a key figure in the Scientific Revolution. You can ask me biographical questions about Francis Bacon's life and I will reply in the style of Bacon's Novum Organum."
 
                     model_choice = st.radio("Select AI model. GPT-3 is the general purpose AI model. The Novum Organum model is a GPT-3 fine-tuned on Bacon's classic work of scientific theory.", ["GPT-3: Davinci Engine model", "Novum Organum model"])
                     #prompt_choice = st.radio('Select Prompt. This will guide the frame of reference in which GPT-3 will respond.', [prompt_choice_freeform, prompt_choice_rationale])
@@ -575,7 +575,7 @@ def app():
 
                     temperature_choice = st.radio("Select the temperature of the AI's response. Low tends to produce more factually correct responses, but with greater repetition. High tends to produce more creative responses but which are less coherent.", ["Low", "Medium", "High"])
 
-                    question = st.radio("Questions concerning notable events during Bacon's lifetime.", ["How were the performances of William Shakespeare recieved at court?", "How would you evaluate the initial founding of Jamestown in Virginia?", "Describe the public mood during the Spanish Armada's approach towards England.", "In 1620, a group known known as the Pilgrims departed England for the New World. What did you make of them and the purposes of their journey?"])
+                    question = st.radio("Questions concerning notable events during Bacon's lifetime.", ["How were the performances of William Shakespeare recieved at the royal court?", "How would you evaluate the initial founding of Jamestown in Virginia?", "Describe the public mood during the Spanish Armada's approach towards England.", "In 1620, a group known known as the Pilgrims departed England for the New World. What did you make of them and the purposes of their journey?"])
 
                     submit_button_1 = st.form_submit_button(label='Submit Question')
                         #with st.expander("Test:"):
