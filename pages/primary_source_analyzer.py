@@ -66,7 +66,11 @@ def app():
 
                     st.image(image='./hayseed.png')
                     st.write("Arthur L. Kellog, “The Hayseed,” Farmers Alliance (4 October 1890). Nebraska Newspapers (University of Nebraska Libraries), [link.](https://nebnewspapers.unl.edu/lccn/2017270209/1890-10-04/ed-1/seq-1/)")
-                    st.write(hayseed_lyrics)
+                    st.write("I was once a tool of oppression")
+                    st.write("and as green as a sucker could be")
+                    st.write("And monopolies banded together")
+                    st.write("To beat a poor hayseed like me.")
+                    st.write("The railroads and old party bosses")
                     st.write(source_information)
 
 
