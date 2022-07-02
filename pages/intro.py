@@ -10,12 +10,12 @@ def app():
 
     st.header("Project Elements")
 
-    st.write("_What Does an AI “Know” about History?_: In this section, humans can test their historical knowledge against that of an AI. Users can answer multiple choice questions from the Advanced Placement (A.P.) curriculums for U.S., European, and World history, and then compare their performance against GPT-3. Accompanying these questions is data on GPT-3 overall performance on these questions, which are used in machine learning research as an AI performance benchmark for historical knowledge.")
+    st.write("**What Does an AI “Know” about History?**: In this section, humans can test their historical knowledge against that of an AI. Users can answer multiple choice questions from the Advanced Placement (A.P.) curriculums for U.S., European, and World history, and then compare their performance against GPT-3. Accompanying these questions is data on GPT-3 overall performance on these questions, which are used in machine learning research as an AI performance benchmark for historical knowledge.")
 
-    st.write("_How Does an AI “Interpret” a Primary Source?_: Here users can prompt GPT-3 to analyze and interpret a selection of primary sources. GPT-3 will attempt to offer the source’s context, purpose, intended audience, and possible historiographical interpretations of the source.")
+    st.write("**How Does an AI “Interpret” a Primary Source?**: Here users can prompt GPT-3 to analyze and interpret a selection of primary sources. GPT-3 will attempt to offer the source’s context, purpose, intended audience, and possible historiographical interpretations of the source.")
 
-    st.write("Can an AI Simulate a Historical Worldview?: In this section users can pose questions to an AI instructed to imitate a figure from history: Francis Bacon (1561-1626), former Lord Chancellor of England under Queen Elizabeth I and King James I, and a key figure in the Scientific Revolution.")
+    st.write("**Can an AI Simulate a Historical Worldview?**: In this section users can pose questions to an AI instructed to imitate a figure from history: Francis Bacon (1561-1626), former Lord Chancellor of England under Queen Elizabeth I and King James I, and a key figure in the Scientific Revolution.")
 
-    st.write("Implications and Ethical Considerations: In this summative section, the potential  implications of these technologies are explored, as and ethical questions raised by this technology.")
+    st.write("**Implications and Ethical Considerations:** In this summative section, the potential  implications of these technologies are explored, as and ethical questions raised by this technology.")
 
-    st.write("Credits & Technical Details: Additional detail is provided on the methods used in this project, and acknowledgements of those who helped make this project possible.")
+    st.write("**Credits & Technical Details**: Additional detail is provided on the methods used in this project, and acknowledgements of those who helped make this project possible.")
