@@ -960,7 +960,7 @@ def app():
 
         with st.sidebar.form(key ='Form2'):
             st.title("Primary Source Collection")
-            st.write("The following experiment pairs topically similar primary sources, one drawn from the A.P. curriculum and one from outside it. You are invited to rank GPT-3's responses. The rankings will help provide research data on GPT-3 performance.")
+            st.write("The following experiment pairs topically similar primary sources, one drawn from the A.P. curriculum and one from outside it. You are invited to rank GPT-3's responses. The rankings will help provide research data on GPT-3's performance.")
             field_choice = st.radio("Choose a Primary Source:", ['"The Hayseed" (U.S. History)', '"Women in the Farmers Alliance" (U.S. History)', '"Book of Household Management" (European History)', '"Practical Housekeeping" (European History)', 'A letter from Lin Zexu to Queen Victoria (World History)', 'Lin Zexu Burns the Opium (World History)'])
 
             button2 = st.form_submit_button("Click here to load the Primary Source.")
