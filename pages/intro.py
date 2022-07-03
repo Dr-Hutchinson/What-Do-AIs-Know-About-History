@@ -6,7 +6,7 @@ def app():
 
     st.header("Project Description")
 
-    st.write("This digital history experiment examines the following question: can AIs accurately interpret the past?  Recent advances in machine learning have resulted in new computational models capable of remarkable imitation of human analytical capabilities. Among the most studied of these models is [GPT-3] (https://en.wikipedia.org/wiki/GPT-3) (Generative Pre-trained Transformer-3). In this project, users can pose historical questions to GPT-3 and observe its responses. This project enables historians and the public to directly probe the historical capacities of advanced AIs, and gauge for themselves the potentials and perils of this technology. With such knowledge, we can better assess AI’s potential impact on understanding of the past, and consider the broader implications of this technology for the future.")
+    st.write("This digital history experiment examines the following question: can AIs accurately interpret the past?  Recent advances in machine learning have resulted in new computational models capable of remarkable imitation of human analytical capabilities. Among the most studied of these models is [GPT-3](https://en.wikipedia.org/wiki/GPT-3) (Generative Pre-trained Transformer-3). In this project, users can pose historical questions to GPT-3 and observe its responses. This project enables historians and the public to directly probe the historical capacities of advanced AIs, and gauge for themselves the potentials and perils of this technology. With such knowledge, we can better assess AI’s potential impact on understanding of the past, and consider the broader implications of this technology for the future.")
 
     st.header("Project Elements")
 
