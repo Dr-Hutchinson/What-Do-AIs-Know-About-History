@@ -31,7 +31,7 @@ with st.sidebar:
     )
 
     st.title("Can AIs Accurately Interpret History? A Digital History Experiment")
-    st.subheader("Created by Daniel Hutchinson")
+    #st.subheader("Created by Daniel Hutchinson")
 
 # Add all your applications (pages) here
 app.add_page("1. Project Overview", intro.app)
