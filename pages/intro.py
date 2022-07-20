@@ -2,7 +2,7 @@ import streamlit as st
 
 def app():
 
-    col1, col2, col3, col4 = st.columns(4)
+    col1, col2, col3, col4 = st.columns(5)
 
     with col1:
         st.write(' ')
@@ -16,6 +16,8 @@ def app():
     with col4:
         st.write(' ')
 
+    with col5:
+        st.write(' ')
 
     #st.title("Can AIs Accurately Interpret History? A Digital History Experiment")
 
