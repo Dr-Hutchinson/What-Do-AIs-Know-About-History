@@ -2,7 +2,7 @@ import streamlit as st
 
 def app():
 
-    st.image('./output_project_aperture_crop.png')
+    st.image('./output_project_aperture_crop.png', width=1, caption="Designed with DALL-E")
 
     #st.title("Can AIs Accurately Interpret History? A Digital History Experiment")
 
