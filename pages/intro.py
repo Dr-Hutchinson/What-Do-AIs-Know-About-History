@@ -2,7 +2,9 @@ import streamlit as st
 
 def app():
 
-    st.title("Can AIs Accurately Interpret History? A Digital History Experiment")
+    st.image('./output_project_aperture_crop.png')
+
+    #st.title("Can AIs Accurately Interpret History? A Digital History Experiment")
 
     st.header("Project Description")
 
