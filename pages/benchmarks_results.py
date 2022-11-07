@@ -220,9 +220,9 @@ def app():
 
         def euro_history_data():
             sh1 = gc.open('european_history_benchmark_results')
+            sh2 = gc.open('benchmark_tests')
             wks1 = sh1[0]
             wks2 = sh2[0]
-            sh2 = gc.open('benchmark_tests')
             now = dt.now()
             data = wks1.get_as_df(has_header=True, index_col=None)
             data2 = wks2.get_as_df(has_header=True, index_col=None)
