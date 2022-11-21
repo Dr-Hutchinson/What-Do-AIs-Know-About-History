@@ -8,7 +8,7 @@ def app():
         st.write(' ')
 
     with col2:
-        st.image('./logo.png', width=600, caption="Designed with DALL-E")
+        st.image('./logo.png', width=600, caption="Designed with Midjourney")
 
     with col3:
         st.write(' ')
