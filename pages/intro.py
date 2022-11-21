@@ -27,7 +27,7 @@ def app():
 
     st.header("Project Elements")
 
-    st.write("**What Does an AI “Know” about History?**: In this section, humans can test their historical knowledge against that of an AI. Users can answer multiple choice questions from the Advanced Placement (A.P.) curriculums for U.S., European, and World history, and then compare their performance against GPT-3. Accompanying these questions is data on GPT-3's overall performance on these questions.")
+    st.write("**What Does an AI “Know” about A.P. History?**: In this section, humans can test their historical knowledge against that of an AI. Users can answer multiple choice questions from the Advanced Placement (A.P.) curriculums for U.S., European, and World history, and then compare their performance against GPT-3. Accompanying these questions is data on GPT-3's overall performance on these questions.")
 
     st.write("**How Does an AI “Interpret” a Primary Source?**: Here users can prompt GPT-3 to analyze and interpret a selection of primary sources. GPT-3 will attempt to offer the source’s context, purpose, intended audience, and possible historiographical interpretations of the source.")
 
