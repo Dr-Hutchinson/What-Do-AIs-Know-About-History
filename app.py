@@ -30,7 +30,7 @@ with st.sidebar:
     unsafe_allow_html=True,
     )
 
-    st.title("Can AIs Accurately Interpret History? A Digital History Experiment")
+    st.title("What Do AIs Know About History? A Digital History Experiment")
     #st.subheader("Created by Daniel Hutchinson")
 
 # Add all your applications (pages) here
