@@ -33,4 +33,4 @@ def app():
 
     st.write("**Can an AI Simulate a Historical Worldview?**: In this section users can pose questions to an AI instructed to imitate a figure from history: [Francis Bacon](https://en.wikipedia.org/wiki/Francis_Bacon) (1561-1626), former Lord Chancellor of England under Queen Elizabeth I and King James I, and a key figure in the Scientific Revolution.")
 
-    st.write("**Project Goals, Methods, and Acknowledgements**")
+    st.write("**Project Goals, Methods, and Acknowledgements**: Explores the aims of this project, some of the methods used, and thanks those who contributed to this project.")
