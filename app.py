@@ -2,7 +2,7 @@ import streamlit as st
 
 # Custom imports
 from multipage import MultiPage
-from pages import benchmarks_results, Baconbot_1_7_1, BaconBot_1_8, primary_source_analyzer, intro
+from pages import benchmarks_results, Baconbot_1_7_1, BaconBot_1_8, primary_source_analyzer, intro, goals
 #from pages import data_upload, machine_learning, metadata, data_visualize, redundant, inference # import your pages here
 
 # Create an instance of the app
@@ -38,7 +38,9 @@ app.add_page("1. Project Overview", intro.app)
 app.add_page('2. What Does an AI "Know" About A.P. History?', benchmarks_results.app)
 app.add_page('3. How does an AI "Interpret" a Primary Source?', primary_source_analyzer.app)
 app.add_page("4. Can an AI Simulate a Historical Worldview?", BaconBot_1_8.app)
-app.add_page("5. BaconBot: An AI Simulation of Francis Bacon (Research)", Baconbot_1_7_1.app)
+app.add_page("5. Project Goals & Methods", goals.app)
+#app.add_page("5. BaconBot: An AI Simulation of Francis Bacon (Research)", Baconbot_1_7_1.app)
+
 
 #app.add_page("Y-Parameter Optimization",redundant.app)
 
