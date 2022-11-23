@@ -26,7 +26,7 @@ def app():
 
     st.header("Project Methods:")
 
-    st.write("The project employs [Streamlit](https://streamlit.io/) to run Python scripts calling OpenAI's API for GPT-3. GPT-3's outputs are products of specialized prompts informed by current research in prompt engineering. Specific methods include [few shot prompting](https://arxiv.org/abs/2005.14165) and [chain-of-thought reasoning](https://arxiv.org/abs/2210.03493). The project's [GitHub repository](https://github.com/Dr-Hutchinson/gpt-3_challenge) contains the full text of these prompts.")
+    st.write("The project employs [Streamlit](https://streamlit.io/) to run Python scripts calling [OpenAI's API](https://beta.openai.com/docs/introduction) for GPT-3. GPT-3's outputs are products of specialized prompts informed by current research in prompt engineering. Specific methods include [few shot prompting](https://arxiv.org/abs/2005.14165) and [chain-of-thought reasoning](https://arxiv.org/abs/2210.03493). The project's [GitHub repository](https://github.com/Dr-Hutchinson/gpt-3_challenge) contains the full text of these prompts.")
 
     st.header("Acknowledgements:")
 
