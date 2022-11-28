@@ -74,7 +74,7 @@ def app():
                         openai.api_key = os.getenv("OPENAI_API_KEY")
 
                         summon = openai.Completion.create(
-                            model="text-davinci-002",
+                            model="text-davinci-003",
                             prompt=primary_source_analysis,
                             temperature=0,
                             user="0",
