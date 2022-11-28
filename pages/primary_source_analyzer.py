@@ -79,8 +79,8 @@ def app():
                             temperature=0,
                             user="0",
                             max_tokens=response_length,
-                            frequency_penalty=0.05,
-                            presence_penalty=0.35)
+                            frequency_penalty=0.00,
+                            presence_penalty=0.5)
 
 
                         response_json = len(summon["choices"])
