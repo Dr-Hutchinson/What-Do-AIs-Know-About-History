@@ -216,7 +216,7 @@ def app():
                     st.write(household_text)
                     st.write(source_information)
 
-                    submit_button_1 = st.form_submit_button(label='Analyze Source')
+                    submit_button_1 = st.form_submit_button(label='Analyze Source. Please be patient - this will take a up to 30 seconds.')
 
                     if submit_button_1:
 
@@ -379,7 +379,7 @@ def app():
                     st.write(zexu_letter)
                     st.write(source_information)
 
-                    submit_button_1 = st.form_submit_button(label='Analyze Source')
+                    submit_button_1 = st.form_submit_button(label='Analyze Source. Please be patient - this will take a up to 30 seconds.')
                         #with st.expander("Test:"):
                             #test = st.radio("Test",["test1", "test2"])
 
@@ -539,7 +539,7 @@ def app():
                     st.write(lease_speech)
                     st.write(source_information)
 
-                    submit_button_1 = st.form_submit_button(label='Analyze Source')
+                    submit_button_1 = st.form_submit_button(label='Analyze Source. Please be patient - this will take a up to 30 seconds.')
                         #with st.expander("Test:"):
                             #test = st.radio("Test",["test1", "test2"])
 
@@ -697,7 +697,7 @@ def app():
                     st.write(practical_housekeeping)
                     st.write(source_information)
 
-                    submit_button_1 = st.form_submit_button(label='Analyze Source')
+                    submit_button_1 = st.form_submit_button(label='Analyze Source. Please be patient - this will take a up to 30 seconds.')
                         #with st.expander("Test:"):
                             #test = st.radio("Test",["test1", "test2"])
 
@@ -709,7 +709,7 @@ def app():
                         now = dt.now()
 
                         #model selection for OpenAI query
-                        #primary_source_analysis = prompt + "\n" + historical_method + histriography_options + "\n\n" + instructions + k_shot + "/nLet's try another." + "/nPrimary Source: " + "\n" + household_text + "\n" + source_information + "\n" + instructions + "\n"
+
                         primary_source_analysis = prompt + "\n" + historical_method + histriography_options + "\n\n" + + instructions + k_shot + "/nLet's try another." + "/nPrimary Source: " + "\n" + practical_housekeeping + "\n" + source_information + "\n" + instructions + "\n"
 
                         response_length = 1500
@@ -848,28 +848,30 @@ def app():
 
                     st.header('Primary Source - Lin Zexu Burns the Opium (1909)')
 
-                    hayseed_lyrics = "In 1839, Lin Zexu arrived as Governor-general of Liangguang, and discovered that Western merchants held opium stores of 20,283 chests. He burnt them all on the beach. Later other foreign ships secretly stole into port with more opium. Lin took advantage of a dark night when the tide was low to send crack troops to capture them. He burnt 23 ships at Changsha bay. Subsequently, because these actions caused a diplomatic incident, opium imports kept on growing. Now the British government agrees that we must eliminate the poison of opium. Reflecting on past events, we have turned our misfortunes into a happy outcome."
+                    lin_text = "In 1839, Lin Zexu arrived as Governor-general of Liangguang, and discovered that Western merchants held opium stores of 20,283 chests. He burnt them all on the beach. Later other foreign ships secretly stole into port with more opium. Lin took advantage of a dark night when the tide was low to send crack troops to capture them. He burnt 23 ships at Changsha bay. Subsequently, because these actions caused a diplomatic incident, opium imports kept on growing. Now the British government agrees that we must eliminate the poison of opium. Reflecting on past events, we have turned our misfortunes into a happy outcome."
 
                     source_information = "Source Information: The Primary Source is a translation of “Portraits of the Achievements of Our Dynasty’s Illustrious Officials,” an illustrated print published in the Shanghai newspaper Shishibao Tuhua in 1909."
 
                     st.image(image='./lin_print.jpg')
                     st.write('Source: Peter Perdue, “Production and Consumption",_The First Opium War: The Anglo-Chinese War of 1839-1942_. Visualizing Cultures (MIT, 2010), [link](https://visualizingcultures.mit.edu/opium_wars_01/ow1_essay02.html)')
-                    st.write(hayseed_lyrics)
+                    st.write(lin_text)
                     st.write(source_information)
 
-                    submit_button_1 = st.form_submit_button(label='Analyze Source')
+                    submit_button_1 = st.form_submit_button(label='Analyze Source. Please be patient - this will take a up to 30 seconds.')
                         #with st.expander("Test:"):
                             #test = st.radio("Test",["test1", "test2"])
 
                     if submit_button_1:
 
+                        k_shot = "Step 1 - Contextualization: The Primary Source is an American political campaign song popularized in 1890, and published by a Nebraska newspaper known as the Farmer's Alliance. The song reflects the historical period of America's Gilded Age, a time of great economic growth and prosperity. However, this prosperity was not evenly distributed, and many Americans were left behind. The song speaks to this inequality, with the 'hayseed' protagonist being oppressed by wealthy interests. This source provides insights into the larger historic events of the Gilded Age, including the rise of monopolies and the power of political bosses. It also offers insight into the ideologies of the time, including populism and progressivism.  \n\nStep 2 - Purpose: The purpose of the Primary Source is to offer a populist critique of the Gilded Age status quo. The song argues that the rich are oppressing the poor, and that this needs to change. It calls for a return to more egalitarian values, and for Americans to stand up against the powerful interests that are keeping them down.  \n\nStep 3 - Audience: The intended audience of the Primary Source is working-class Americans who feel left behind by the country's economic success. The song speaks to their situation, and offers a message of hope that things can change. It is also meant to inspire them to take action against the wealthy interests that are oppressing them.  \n\nStep 4 - Historiographical Interpretation: Different historians would interpret this source differently, depending on their historiographical school of thought. For example, Marxist historians would focus on the class conflict inherent in the song, and see it as reflective of the wider struggle between workers and capitalists during the Gilded Age. Postcolonial historians might focus on the hayseed protagonist's position as an outsider within American society, and use the song to explore issues of race and ethnicity during the period. Gender historians might focus on the fact that the hayseed is male, and use the song to explore issues of masculinity during the Gilded Age."
+
                         os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
                         now = dt.now()
 
                         #model selection for OpenAI query
+                        #primary_source_analysis = prompt + "\n" + historical_method + histriography_options + "\n\n" + instructions + k_shot + "/nLet's try another." + "/nPrimary Source: " + "\n" + household_text + "\n" + source_information + "\n" + instructions + "\n"
 
-
-                        primary_source_analysis = prompt + "\n" + historical_method + histriography_options + "\n\n" + "Primary Source: " + "\n" + hayseed_lyrics + "\n" + source_information + "\n" + instructions
+                        primary_source_analysis = prompt + "\n" + historical_method + histriography_options + "\n\n" + + instructions + k_shot + "/nLet's try another." + "/nPrimary Source: " + "\n" + lin_text + "\n" + source_information + "\n" + instructions
 
                         response_length = 1500
 
@@ -952,6 +954,10 @@ def app():
                         elif int(filter_function()) == 2:
                             st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed.")
 
+                        st.header("Here is the prompt fed to GPT-3 for analyzing these sources:")
+                        st.write(prompt)
+                        st.write(historical_method + histriography_options)
+                        st.write(instructions)
                         st.write("\n\n\n\n")
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
