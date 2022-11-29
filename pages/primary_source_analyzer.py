@@ -44,12 +44,6 @@ def app():
         st.write("This app prompts GPT-3 to simulate historical analysis of a primary source. GPT-3 is given the text of the source, the source information, and instructions to determine the:")
         st.write("**1.)** Contextualization of the source, **2.)** Purpose of the source, **3.)** Intended audience of the source, **4.)** Possible histriographical interpretations of the source.")
 
-        st.write("Here is the method GPT-3 used for analyzing these sources:")
-        st.write(prompt)
-        st.write(historical_method)
-        st.write(histriography_options)
-        st.write(instructions)
-
         def hayseed_question():
             with col1:
                 with st.form('Hayseed Question'):
