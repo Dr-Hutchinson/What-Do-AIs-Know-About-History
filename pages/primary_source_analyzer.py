@@ -61,7 +61,7 @@ def app():
                     st.write(source_information)
 
 
-                    submit_button_1 = st.form_submit_button(label='Analyze Source')
+                    submit_button_1 = st.form_submit_button(label='Analyze Source. Please be patient - this will take a up to 30 seconds.')
 
                     if submit_button_1:
 
