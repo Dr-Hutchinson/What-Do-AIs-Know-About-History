@@ -31,6 +31,7 @@ with st.sidebar:
     )
 
     st.title("What Do AIs Know About History? A Digital History Experiment")
+    st.title("By Daniel Hutchinson")
     #st.subheader("Created by Daniel Hutchinson")
 
 # Add all your applications (pages) here
