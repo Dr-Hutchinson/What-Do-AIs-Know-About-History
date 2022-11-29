@@ -215,7 +215,7 @@ def app():
 
                     st.image(image='./household_management.png',  use_column_width='never')
                     st.write("Isabella Beeton, _Book of Household Management_ (S.O. Beeton: London, 1861), 46. Avaliable via the [Internet Archive.](https://archive.org/details/b20392758/page/n45/mode/2up)")
-                    st.write(hayseed_lyrics)
+                    st.write(household_text)
                     st.write(source_information)
 
                     submit_button_1 = st.form_submit_button(label='Analyze Source')
@@ -228,7 +228,7 @@ def app():
                         now = dt.now()
 
 
-                        primary_source_analysis = prompt + "\n" + historical_method + histriography_options + "\n\n" + kinstructions + k_shot + "/nLet's try another." + "/nPrimary Source: " + "\n" + household_text + "\n" + source_information + "\n" + instructions + "\n"
+                        primary_source_analysis = prompt + "\n" + historical_method + histriography_options + "\n\n" + instructions + k_shot + "/nLet's try another." + "/nPrimary Source: " + "\n" + household_text + "\n" + source_information + "\n" + instructions + "\n"
 
                         os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
                         now = dt.now()
