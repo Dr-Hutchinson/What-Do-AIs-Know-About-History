@@ -37,6 +37,8 @@ def app():
         histriography_options = "Progressive, Consensus, Marxist, postmodern, social history, political history, gender history, and cultural history."
         instructions = "Instructions: Based on the Historical Method outlined above, provide a substantive and detailed analysis of the Primary Source in the manner of an academic historian. Let's take this step by step, and be sure to include every step."
 
+        k_shot = "Step 1 - Contextualization: The Primary Source is an American political campaign song popularized in 1890, and published by a Nebraska newspaper known as the Farmer's Alliance. The song reflects the historical period of America's Gilded Age, a time of great economic growth and prosperity. However, this prosperity was not evenly distributed, and many Americans were left behind. The song speaks to this inequality, with the "hayseed" protagonist being oppressed by wealthy interests. This source provides insights into the larger historic events of the Gilded Age, including the rise of monopolies and the power of political bosses. It also offers insight into the ideologies of the time, including populism and progressivism./nStep 2 - Purpose: The purpose of the Primary Source is to offer a populist critique of the Gilded Age status quo. The song argues that the rich are oppressing the poor, and that this needs to change. It calls for a return to more egalitarian values, and for Americans to stand up against the powerful interests that are keeping them down./nStep 3 - Audience: The intended audience of the Primary Source is working-class Americans who feel left behind by the country's economic success. The song speaks to their situation, and offers a message of hope that things can change. It is also meant to inspire them to take action against the wealthy interests that are oppressing them./nStep 4 - Historiographical Interpretation: Different historians would interpret this source differently, depending on their historiographical school of thought. For example, Marxist historians would focus on the class conflict inherent in the song, and see it as reflective of the wider struggle between workers and capitalists during the Gilded Age. Postcolonial historians might focus on the hayseed protagonist's position as an outsider within American society, and use the song to explore issues of race and ethnicity during the period. Gender historians might focus on the fact that the hayseed is male, and use the song to explore issues of masculinity during the Gilded Age."
+
         st.subheader("Instructions:")
         st.write("Select one of the primary sources on the left. Then click on the **Analyze Source** button below to see GPT-3's interpretation.")
 
@@ -210,7 +212,7 @@ def app():
 
                     st.header('Primary Source - "The Book of Household Management" (1861)')
 
-                    hayseed_lyrics = '"As with a Commander of the Army, or leader of any enterprise, so it is with the mistress of the house. Her spirit will be seen through the whole establishment; and just in proportion as she performs her duties intelligently and thoroughly, so will her domestics follow in her path. Of all of those acquirements, which more particularly belong to the feminine character, there are none which take a higher rank, in our estimation, than such as enter into a knowledge of household duties; for on these are perpetually dependent the happiness, comfort, and well-being of the family.'
+                    household_text = '"As with a Commander of the Army, or leader of any enterprise, so it is with the mistress of the house. Her spirit will be seen through the whole establishment; and just in proportion as she performs her duties intelligently and thoroughly, so will her domestics follow in her path. Of all of those acquirements, which more particularly belong to the feminine character, there are none which take a higher rank, in our estimation, than such as enter into a knowledge of household duties; for on these are perpetually dependent the happiness, comfort, and well-being of the family.'
                     source_information = "Source Information: The Primary Source is The Book of Household Management, published in London in 1861 and written by Isabella Beeton."
 
                     st.image(image='./household_management.png',  use_column_width='never')
@@ -226,7 +228,7 @@ def app():
                         now = dt.now()
 
 
-                        primary_source_analysis = prompt + "\n" + historical_method + histriography_options + "\n\n" + "Primary Source: " + "\n" + hayseed_lyrics + "\n" + source_information + "\n" + instructions + "\n"
+                        primary_source_analysis = prompt + "\n" + historical_method + histriography_options + "\n\n" + kinstructions + k_shot + "/nLet's try another." + "/nPrimary Source: " + "\n" + household_text + "\n" + source_information + "\n" + instructions + "\n"
 
                         os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
                         now = dt.now()
