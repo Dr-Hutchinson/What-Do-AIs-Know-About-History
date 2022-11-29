@@ -308,7 +308,7 @@ def app():
 
                                 # filter or display OpenAI outputs, record outputs to Google Sheets API
                         if int(filter_function()) < 2:
-                            st.write("GPT-3's Analysis:")
+                            st.header("GPT-3's Analysis:")
                             st.write(output)
                             #st.write("\n\n\n\n")
                             #st.subheader('As Lord Bacon says, "Truth will sooner come out from error than from confusion."  Please click on the Rank Bacon button above to rank this reply for future improvement.')
