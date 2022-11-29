@@ -710,7 +710,7 @@ def app():
 
                         #model selection for OpenAI query
 
-                        primary_source_analysis = prompt + "\n" + historical_method + histriography_options + "\n\n" + + instructions + k_shot + "/nLet's try another." + "/nPrimary Source: " + "\n" + practical_housekeeping + "\n" + source_information + "\n" + instructions + "\n"
+                        primary_source_analysis = prompt + "\n" + historical_method + histriography_options + "\n\n" + instructions + k_shot + "/nLet's try another." + "/nPrimary Source: " + "\n" + practical_housekeeping + "\n" + source_information + "\n" + instructions + "\n"
 
                         response_length = 1500
 
