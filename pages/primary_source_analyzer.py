@@ -252,8 +252,8 @@ def app():
                         for item in range(response_json):
                             output = summon['choices'][item]['text']
 
-                        output_cleaned = output.replace("\n", "")
-                        output_cleaned2 = output_cleaned.strip()
+                        #output_cleaned = output.replace("\n", "")
+                        #output_cleaned2 = output_cleaned.strip()
 
                         response = openai.Completion.create(
                                 engine="content-filter-alpha",
@@ -311,7 +311,7 @@ def app():
                                 # filter or display OpenAI outputs, record outputs to Google Sheets API
                         if int(filter_function()) < 2:
                             st.write("GPT-3's Analysis:")
-                            st.write(output_cleaned2)
+                            st.write(output)
                             #st.write("\n\n\n\n")
                             #st.subheader('As Lord Bacon says, "Truth will sooner come out from error than from confusion."  Please click on the Rank Bacon button above to rank this reply for future improvement.')
                         elif int(filter_function()) == 2:
