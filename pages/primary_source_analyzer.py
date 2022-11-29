@@ -242,7 +242,7 @@ def app():
                             user="0",
                             max_tokens=response_length,
                             frequency_penalty=0.0,
-                            presence_penalty=0.7)
+                            presence_penalty=2.0)
 
 
                         response_json = len(summon["choices"])
@@ -406,7 +406,7 @@ def app():
                             user="0",
                             max_tokens=response_length,
                             frequency_penalty=0.0,
-                            presence_penalty=0.7)
+                            presence_penalty=2.0)
 
 
                         response_json = len(summon["choices"])
@@ -563,7 +563,7 @@ def app():
                             user="0",
                             max_tokens=response_length,
                             frequency_penalty=0.0,
-                            presence_penalty=0.7)
+                            presence_penalty=2.0)
 
 
                         response_json = len(summon["choices"])
@@ -723,7 +723,7 @@ def app():
                             user="0",
                             max_tokens=response_length,
                             frequency_penalty=0.0,
-                            presence_penalty=0.7)
+                            presence_penalty=2.0)
 
 
                         response_json = len(summon["choices"])
@@ -884,7 +884,7 @@ def app():
                             user="0",
                             max_tokens=response_length,
                             frequency_penalty=0.0,
-                            presence_penalty=0.7)
+                            presence_penalty=2.0)
 
 
                         response_json = len(summon["choices"])
