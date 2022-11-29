@@ -41,7 +41,7 @@ def app():
         st.write("Select one of the primary sources on the left. Then click on the **Analyze Source** button below to see GPT-3's interpretation.")
 
         st.subheader("App Description:")
-        st.write("This app prompts GPT-3 to simulate historical analysis of a primary source. GPT-3 is given the text of the source, the source information, and instructions to determine the:")
+        st.write("This app prompts GPT-3 to simulate historical analysis of a primary source. GPT-3 is given the text of the source, the source information, and a historical method for interpreting the source. The specific prompt for these instructions is revealed after you select a submit a source for analysis.")
         st.write("**1.)** Contextualization of the source, **2.)** Purpose of the source, **3.)** Intended audience of the source, **4.)** Possible histriographical interpretations of the source.")
 
         def hayseed_question():
