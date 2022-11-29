@@ -28,7 +28,7 @@ def app():
 
     st.title('Can an AI "Interpret" a Primary Source?')
     col1, col2 = st.columns([5.5,.5])
-
+    
     def button_one():
 
         prompt = "You are an AI historian specializing in primary source analysis and historiographical interpretation. When given a Primary Source, you will provide a detailed and substantive analysis of that source based on the Historical Method and Source Information below."
@@ -81,7 +81,7 @@ def app():
                             user="0",
                             max_tokens=response_length,
                             frequency_penalty=0.00,
-                            presence_penalty=0.7)
+                            presence_penalty=1.0)
 
 
                         response_json = len(summon["choices"])
