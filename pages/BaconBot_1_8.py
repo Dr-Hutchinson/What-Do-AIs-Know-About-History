@@ -62,7 +62,7 @@ def app():
 
                         #model selection for OpenAI query
                         if model_choice == "GPT-3: Davinci Engine":
-                            model_select = 'text-davinci-002'
+                            model_select = 'text-davinci-003'
                         else:
                             model_select = st.secrets['novum_organum_model']
 
