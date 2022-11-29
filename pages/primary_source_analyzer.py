@@ -150,7 +150,7 @@ def app():
                         elif int(filter_function()) == 2:
                             st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed.")
 
-                        st.header("Here is the prompt fed to GPT-3 for analyzing these sources:")
+                        st.header("Here is the prompt fed to GPT-3 for analyzing this source:")
                         st.write(prompt)
                         st.write(historical_method + histriography_options)
                         st.write(instructions)
@@ -316,7 +316,7 @@ def app():
                             st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed.")
 
 
-                        st.header("Here is the prompt fed to GPT-3 for analyzing these sources:")
+                        st.header("Here is the prompt fed to GPT-3 for analyzing this source:")
                         st.write(prompt)
                         st.write(historical_method + histriography_options)
                         st.write(instructions)
@@ -476,7 +476,7 @@ def app():
                         elif int(filter_function()) == 2:
                             st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed.")
 
-                        st.header("Here is the prompt fed to GPT-3 for analyzing these sources:")
+                        st.header("Here is the prompt fed to GPT-3 for analyzing this source:")
                         st.write(prompt)
                         st.write(historical_method + histriography_options)
                         st.write(instructions)
@@ -633,7 +633,7 @@ def app():
                         elif int(filter_function()) == 2:
                             st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed.")
 
-                        st.header("Here is the prompt fed to GPT-3 for analyzing these sources:")
+                        st.header("Here is the prompt fed to GPT-3 for analyzing this source:")
                         st.write(prompt)
                         st.write(historical_method + histriography_options)
                         st.write(instructions)
@@ -793,7 +793,7 @@ def app():
                         elif int(filter_function()) == 2:
                             st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed.")
 
-                        st.header("Here is the prompt fed to GPT-3 for analyzing these sources:")
+                        st.header("Here is the prompt fed to GPT-3 for analyzing this source:")
                         st.write(prompt)
                         st.write(historical_method + histriography_options)
                         st.write(instructions)
@@ -954,7 +954,7 @@ def app():
                         elif int(filter_function()) == 2:
                             st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed.")
 
-                        st.header("Here is the prompt fed to GPT-3 for analyzing these sources:")
+                        st.header("Here is the prompt fed to GPT-3 for analyzing this source:")
                         st.write(prompt)
                         st.write(historical_method + histriography_options)
                         st.write(instructions)
