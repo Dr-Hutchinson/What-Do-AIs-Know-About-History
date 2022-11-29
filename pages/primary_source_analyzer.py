@@ -552,7 +552,7 @@ def app():
 
                         #primary_source_analysis = prompt + "\n" + historical_method + histriography_options + "\n\n" + instructions + k_shot + "/nLet's try another." + "/nPrimary Source: " + "\n" + household_text + "\n" + source_information + "\n" + instructions + "\n"
 
-                        primary_source_analysis = prompt + "\n" + historical_method + histriography_options + "\n\n" + instructions + k_shot + "\nLet's try another." + \n"Primary Source: " + "\n" + lease_speech + "\n" + source_information + "\n" + instructions + "\n"
+                        primary_source_analysis = prompt + "\n" + historical_method + histriography_options + "\n\n" + instructions + k_shot + "\nLet's try another." + "\nPrimary Source: " + "\n" + lease_speech + "\n" + source_information + "\n" + instructions + "\n"
 
                         response_length = 1500
 
