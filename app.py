@@ -9,7 +9,7 @@ from pages import benchmarks_results, Baconbot_1_7_1, BaconBot_1_8, primary_sour
 app = MultiPage()
 
 st.set_page_config(
-    page_title="What Do AIs Know About History? A Digital History Experiment  /nby Daniel Hutchinson",
+    page_title="What Do AIs Know About History? A Digital History Experiment  \nby Daniel Hutchinson",
     layout='wide',
     page_icon='🔍'
 )
