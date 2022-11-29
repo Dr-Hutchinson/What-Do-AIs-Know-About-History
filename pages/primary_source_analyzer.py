@@ -241,8 +241,8 @@ def app():
                             temperature=0,
                             user="0",
                             max_tokens=response_length,
-                            frequency_penalty=0.35,
-                            presence_penalty=0.25)
+                            frequency_penalty=0.0,
+                            presence_penalty=0.7)
 
 
                         response_json = len(summon["choices"])
@@ -395,8 +395,8 @@ def app():
                             temperature=0,
                             user="0",
                             max_tokens=response_length,
-                            frequency_penalty=0.35,
-                            presence_penalty=0.25)
+                            frequency_penalty=0.0,
+                            presence_penalty=0.7)
 
 
                         response_json = len(summon["choices"])
@@ -546,8 +546,8 @@ def app():
                             temperature=0,
                             user="0",
                             max_tokens=response_length,
-                            frequency_penalty=0.35,
-                            presence_penalty=0.25)
+                            frequency_penalty=0.0,
+                            presence_penalty=0.7)
 
 
                         response_json = len(summon["choices"])
@@ -701,8 +701,8 @@ def app():
                             temperature=0,
                             user="0",
                             max_tokens=response_length,
-                            frequency_penalty=0.35,
-                            presence_penalty=0.25)
+                            frequency_penalty=0.0,
+                            presence_penalty=0.7)
 
 
                         response_json = len(summon["choices"])
@@ -856,8 +856,8 @@ def app():
                             temperature=0,
                             user="0",
                             max_tokens=response_length,
-                            frequency_penalty=0.35,
-                            presence_penalty=0.40)
+                            frequency_penalty=0.0,
+                            presence_penalty=0.7)
 
 
                         response_json = len(summon["choices"])
