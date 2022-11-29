@@ -44,7 +44,7 @@ def app():
         st.write("This app prompts GPT-3 to simulate historical analysis of a primary source. GPT-3 is given the text of the source, the source information, and instructions to determine the:")
         st.write("**1.)** Contextualization of the source, **2.)** Purpose of the source, **3.)** Intended audience of the source, **4.)** Possible histriographical interpretations of the source.")
 
-        st.write("Here is GPT-3's instructions for analyzing these sources:")
+        st.write("Here is the method GPT-3 used for analyzing these sources:")
         st.write(prompt)
         st.write(historical_method)
         st.write(histriography_options)
@@ -156,6 +156,12 @@ def app():
                             #st.subheader('As Lord Bacon says, "Truth will sooner come out from error than from confusion."  Please click on the Rank Bacon button above to rank this reply for future improvement.')
                         elif int(filter_function()) == 2:
                             st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed.")
+
+                        st.write("Here is the method GPT-3 used for analyzing these sources:")
+                        st.write(prompt)
+                        st.write(historical_method)
+                        st.write(histriography_options)
+                        st.write(instructions)
 
                         st.write("\n\n\n\n")
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
