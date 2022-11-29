@@ -320,7 +320,7 @@ def app():
                         st.write(prompt)
                         st.write(historical_method + histriography_options)
                         st.write(instructions)
-                        st.write("This prompt also uses a single-shot example of another primary source analysis to guide GPT-3's generation.")
+                        #st.write("This prompt also uses a single-shot example of another primary source analysis to guide GPT-3's generation.")
                         st.write("\n\n\n\n")
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
@@ -481,7 +481,7 @@ def app():
                         st.write(prompt)
                         st.write(historical_method + histriography_options)
                         st.write(instructions)
-                        st.write("This prompt also uses a single-shot example of another primary source analysis to guide GPT-3's generation.")
+                        #st.write("This prompt also uses a single-shot example of another primary source analysis to guide GPT-3's generation.")
                         st.write("\n\n\n\n")
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
@@ -639,7 +639,7 @@ def app():
                         st.write(prompt)
                         st.write(historical_method + histriography_options)
                         st.write(instructions)
-                        st.write("This prompt also uses a single-shot example of another primary source analysis to guide GPT-3's generation.")
+                        #st.write("This prompt also uses a single-shot example of another primary source analysis to guide GPT-3's generation.")
                         st.write("\n\n\n\n")
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
@@ -800,7 +800,7 @@ def app():
                         st.write(prompt)
                         st.write(historical_method + histriography_options)
                         st.write(instructions)
-                        st.write("This prompt also uses a single-shot example of another primary source analysis to guide GPT-3's generation.")
+                        #st.write("This prompt also uses a single-shot example of another primary source analysis to guide GPT-3's generation.")
                         st.write("\n\n\n\n")
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
@@ -962,7 +962,7 @@ def app():
                         st.write(prompt)
                         st.write(historical_method + histriography_options)
                         st.write(instructions)
-                        st.write("This prompt also uses a single-shot example of another primary source analysis to guide GPT-3's generation.")
+                        #st.write("This prompt also uses a single-shot example of another primary source analysis to guide GPT-3's generation.")
                         st.write("\n\n\n\n")
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
