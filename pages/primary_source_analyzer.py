@@ -28,7 +28,7 @@ def app():
 
     st.title('Can an AI "Interpret" a Primary Source?')
     col1, col2 = st.columns([5.5,.5])
-
+    
     def button_one():
 
         prompt = "You are an AI historian specializing in primary source analysis and historiographical interpretation. When given a Primary Source, you will provide a detailed and substantive analysis of that source based on the Historical Method and Source Information below."
@@ -314,12 +314,6 @@ def app():
                         elif int(filter_function()) == 2:
                             st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed.")
 
-                        st.header("Here is the prompt fed to GPT-3 for analyzing these sources:")
-                        st.write(prompt)
-                        st.write(historical_method)
-                        st.write(histriography_options)
-                        st.write(instructions)
-
                         st.write("\n\n\n\n")
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
@@ -474,12 +468,6 @@ def app():
                         elif int(filter_function()) == 2:
                             st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed.")
 
-                        st.header("Here is the prompt fed to GPT-3 for analyzing these sources:")
-                        st.write(prompt)
-                        st.write(historical_method)
-                        st.write(histriography_options)
-                        st.write(instructions)
-
                         st.write("\n\n\n\n")
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
@@ -630,12 +618,6 @@ def app():
                             #st.subheader('As Lord Bacon says, "Truth will sooner come out from error than from confusion."  Please click on the Rank Bacon button above to rank this reply for future improvement.')
                         elif int(filter_function()) == 2:
                             st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed.")
-
-                        st.header("Here is the prompt fed to GPT-3 for analyzing these sources:")
-                        st.write(prompt)
-                        st.write(historical_method)
-                        st.write(histriography_options)
-                        st.write(instructions)
 
                         st.write("\n\n\n\n")
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
@@ -946,12 +928,6 @@ def app():
                             #st.subheader('As Lord Bacon says, "Truth will sooner come out from error than from confusion."  Please click on the Rank Bacon button above to rank this reply for future improvement.')
                         elif int(filter_function()) == 2:
                             st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed.")
-
-                        st.header("Here is the prompt fed to GPT-3 for analyzing these sources:")
-                        st.write(prompt)
-                        st.write(historical_method)
-                        st.write(histriography_options)
-                        st.write(instructions)
 
                         st.write("\n\n\n\n")
                         st.write("OpenAI's Content Filter Ranking: " +  output_label)
