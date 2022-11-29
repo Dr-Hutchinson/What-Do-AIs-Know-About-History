@@ -42,7 +42,6 @@ def app():
 
         st.subheader("App Description:")
         st.write("This app prompts GPT-3 to simulate historical analysis of a primary source. GPT-3 is given the text of the source, the source information, and a historical method for interpreting the source. The specific prompt for these instructions is revealed after you select a submit a source for analysis.")
-        st.write("**1.)** Contextualization of the source, **2.)** Purpose of the source, **3.)** Intended audience of the source, **4.)** Possible histriographical interpretations of the source.")
 
         def hayseed_question():
             with col1:
@@ -201,7 +200,7 @@ def app():
 
                     question = "Household Management"
                     prompt = "You are an AI historian specializing in primary source analysis and historiographical interpretation. When given a Primary Source, you will provide a detailed and substantive analysis of that source based on the Historical Method and Source Information below."
-                    historical_method = "Step 1 -  Contextualization: Apply the Source Information to provide a lengthy, detailed, and substantive analysis of how the Primary Source reflects the larger historical period in which it was created. In composing this lengthy, detailed, and substantive analysis, note specific events, personalities, and ideologies that shaped the the period noted in the Source Information.\nStep 2 - Purpose : Offer a substantive exploration of the purpose of the Primary Source, interpreting the author’s arguments through the Contextualization offered in Step 1.\nStep 3 - Audience: Compose a substantive assessment of the intended audience of the Primary Source. Note how this audience would shape the Primary Source's reception and historical impact in light of the Contextualization offered in Step 1.\nStep 4 - Historiographical Interpretation: Provide a substantive and incisive interpretation of how at least three specific schools of historiographical thought would interpret this source. Compare and contrast how this source could be interpreted by three different academic historiographical schools.  Different historiographical approaches could include: "
+                    historical_method = "Step 1 -  Contextualization: Apply the Source Information to provide a lengthy, detailed, and substantive analysis of how the Primary Source reflects the larger historical period in which it was created. In composing this lengthy, detailed, and substantive analysis, note specific events, personalities, and ideologies that shaped the the period noted in the Source Information.  \n\nStep 2 - Purpose : Offer a substantive exploration of the purpose of the Primary Source, interpreting the author’s arguments through the Contextualization offered in Step 1.  \n\nStep 3 - Audience: Compose a substantive assessment of the intended audience of the Primary Source. Note how this audience would shape the Primary Source's reception and historical impact in light of the Contextualization offered in Step 1.  \n\nStep 4 - Historiographical Interpretation: Provide a substantive and incisive interpretation of how at least three specific schools of historiographical thought would interpret this source. Compare and contrast how this source could be interpreted by three different academic historiographical schools.  Different historiographical approaches could include: "
 
                     histriography_options = "Marxist history, British history, economic history, gender history, labor history, women's history, social history, and the history of marriage."
 
@@ -616,6 +615,10 @@ def app():
                         if int(filter_function()) < 2:
                             st.write("GPT-3's Analysis:")
                             st.write(output)
+                            st.header("Here is the prompt fed to GPT-3 for analyzing these sources:")
+                            st.write(prompt)
+                            st.write(historical_method + histriography_options)
+                            st.write(instructions)
                             #st.write("\n\n\n\n")
                             #st.subheader('As Lord Bacon says, "Truth will sooner come out from error than from confusion."  Please click on the Rank Bacon button above to rank this reply for future improvement.')
                         elif int(filter_function()) == 2:
