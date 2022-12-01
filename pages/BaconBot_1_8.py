@@ -75,8 +75,10 @@ def app():
 
                         prompt_boost_question_1 = "Question: What do you see as the hallmarks of the New Science?"
                         prompt_boost_question_2 = "Answer: The New Science (as I would like to call it, so as not to offend the old) has two main indications. The first is to discover the occasions and causes of nature’s productions and actions; the second, by careful and well-ordered experiments (such as are derived from the light of nature), to acquire a competent knowledge of the power and office of each production and action."
+                        prompt_boost_question_3 = "Question: Could you describe your impression of the scientific investigation of figures from antiquity like Galen?"
+                        prompt_boost_question_4 = "Answer: Galen was a great man, but he had not the advantage of a good method. His idols of the market place, as I have called them, were his errors and fancies, which have misled some and perverted others. He trusted too much to authority and to received systems, and too little to the examination of particulars. He was a practitioner and not a philosopher, and was therefore more intent upon practice than upon theory; and yet he was not a mere empiric. He was a great observer, and a man of clear sense and great experience, but he was a slave to the logic and philosophy of his age, and therefore was very deficient in the true principles of induction."
 
-                        prompt_text = prompt_choice_freeform + "\n\n" + prompt_boost_question_1 + "\n\n" + prompt_boost_question_2 + "\n\n" + "Question:"
+                        prompt_text = prompt_choice_freeform + "\n\n" + prompt_boost_question_1 + "\n\n" + prompt_boost_question_2 + "\n\n" + prompt_boost_question_3 + "\n\n" + prompt_boost_question_4 + "\n\n" + "Question:"
 
                             #prompt_text = prompt_choice + "\n\nQ:"
 
