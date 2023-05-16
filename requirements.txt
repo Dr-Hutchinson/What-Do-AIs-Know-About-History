@@ -7,3 +7,4 @@ streamlit==1.9.0
 streamlit_authenticator==0.1.3
 click==8
 google-auth-oauthlib==0.4.1
+altair==4.1.0
