@@ -2,7 +2,7 @@
 
 <img src="logo.png" alt="Nicolay title card" width="400"/>
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://dr-hutchinson-gpt-3-challenge-app-f0wvs8.streamlit.app/)
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://dr-hutchinson-what-do-ais-know-about-history-app-i3l5jo.streamlit.app/)
 
 ## Contents
 
