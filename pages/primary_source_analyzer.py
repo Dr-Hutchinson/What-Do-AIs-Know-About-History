@@ -165,7 +165,8 @@ def app():
                         st.subheader('Please click on the **Rank Resonses** button at the top of this screen to rank this reply for future improvement.')
 
                         def total_output_collection():
-                            d1 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'date':[now]}
+                            #d1 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'date':[now]}
+                            d1 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'date':[now]}
                             df1 = pd.DataFrame(data=d1, index=None)
                             sh1 = gc.open('total_outputs_primary_sources')
                             wks1 = sh1[0]
