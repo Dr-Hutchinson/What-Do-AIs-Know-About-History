@@ -76,7 +76,7 @@ def app():
                         summon = openai.Completion.create(
                             # original model depcreated
                             #model="text-davinci-003",
-                            model='davinci-002',
+                            model='davinci-003',
                             prompt=primary_source_analysis,
                             temperature=0,
                             user="0",
