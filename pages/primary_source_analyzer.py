@@ -421,7 +421,7 @@ def app():
 
                         summon = openai.Completion.create(
                             #model="text-davinci-003",
-                            model='gpt-3.5-turbo-instruct'
+                            model='gpt-3.5-turbo-instruct',
                             prompt=primary_source_analysis,
                             temperature=0,
                             user="0",
