@@ -189,12 +189,15 @@ def app():
                             wks3 = sh3[0]
                             wks3.set_dataframe(df3,(1,1))
 
-                        if int(filter_function()) == 2:
-                            output_collection_filtered()
-                            total_output_collection()
-                        else:
-                            temp_output_collection()
-                            total_output_collection()
+                        #if int(filter_function()) == 2:
+                        #    output_collection_filtered()
+                        #    total_output_collection()
+                        #else:
+                        #    temp_output_collection()
+                        #    total_output_collection()
+
+                        temp_output_collection()
+                        total_output_collection()
 
 
 
