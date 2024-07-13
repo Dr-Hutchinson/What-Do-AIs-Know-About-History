@@ -246,7 +246,8 @@ def app():
                         openai.api_key = os.getenv("OPENAI_API_KEY")
 
                         summon = openai.Completion.create(
-                            model="text-davinci-003",
+                            #model="text-davinci-003",
+                            model='gpt-3.5-turbo-instruct'
                             prompt=primary_source_analysis,
                             temperature=0,
                             user="0",
@@ -263,69 +264,70 @@ def app():
                         #output_cleaned = output.replace("\n", "")
                         #output_cleaned2 = output_cleaned.strip()
 
-                        response = openai.Completion.create(
-                                engine="content-filter-alpha",
-                                prompt= "<|endoftext|>"+output+"\n--\nLabel:",
-                                temperature=0,
-                                max_tokens=1,
-                                user="0",
-                                top_p=0,
-                                logprobs=10)
+                        #response = openai.Completion.create(
+                        #        engine="content-filter-alpha",
+                        #        prompt= "<|endoftext|>"+output+"\n--\nLabel:",
+                        #        temperature=0,
+                        #        max_tokens=1,
+                        #        user="0",
+                        #        top_p=0,
+                        #        logprobs=10)
 
-                        output_label = response["choices"][0]["text"]
+                        #output_label = response["choices"][0]["text"]
 
                             # OpenAI Content Filter code - comments in this section from OpenAI documentation: https://beta.openai.com/docs/engines/content-filter
                                 # This is the probability at which we evaluate that a "2" is likely real
                                     # vs. should be discarded as a false positive
 
-                        def filter_function():
-                            output_label = response["choices"][0]["text"]
-                            toxic_threshold = -0.355
+                        #def filter_function():
+                        #    output_label = response["choices"][0]["text"]
+                        #    toxic_threshold = -0.355
 
-                            if output_label == "2":
+                        #    if output_label == "2":
                                     # If the model returns "2", return its confidence in 2 or other output-labels
-                                logprobs = response["choices"][0]["logprobs"]["top_logprobs"][0]
+                        #        logprobs = response["choices"][0]["logprobs"]["top_logprobs"][0]
 
                                     # If the model is not sufficiently confident in "2",
                                     # choose the most probable of "0" or "1"
                                     # Guaranteed to have a confidence for 2 since this was the selected token.
-                                if logprobs["2"] < toxic_threshold:
-                                    logprob_0 = logprobs.get("0", None)
-                                    logprob_1 = logprobs.get("1", None)
+                        #        if logprobs["2"] < toxic_threshold:
+                        #            logprob_0 = logprobs.get("0", None)
+                        #            logprob_1 = logprobs.get("1", None)
 
                                         # If both "0" and "1" have probabilities, set the output label
                                         # to whichever is most probable
-                                    if logprob_0 is not None and logprob_1 is not None:
-                                        if logprob_0 >= logprob_1:
-                                            output_label = "0"
-                                        else:
-                                            output_label = "1"
+                        #            if logprob_0 is not None and logprob_1 is not None:
+                        #                if logprob_0 >= logprob_1:
+                        #                    output_label = "0"
+                        #                else:
+                        #                    output_label = "1"
                                         # If only one of them is found, set output label to that one
-                                    elif logprob_0 is not None:
-                                        output_label = "0"
-                                    elif logprob_1 is not None:
-                                        output_label = "1"
+                        #            elif logprob_0 is not None:
+                        #                output_label = "0"
+                        #            elif logprob_1 is not None:
+                        #                output_label = "1"
 
                                         # If neither "0" or "1" are available, stick with "2"
                                         # by leaving output_label unchanged.
 
                                 # if the most probable token is none of "0", "1", or "2"
                                 # this should be set as unsafe
-                            if output_label not in ["0", "1", "2"]:
-                                output_label = "2"
+                        #    if output_label not in ["0", "1", "2"]:
+                        #        output_label = "2"
 
-                            return output_label
+                        #    return output_label
 
                                 # filter or display OpenAI outputs, record outputs to Google Sheets API
-                        if int(filter_function()) < 2:
-                            st.header("GPT-3's Analysis:")
-                            st.write(output)
+                        #if int(filter_function()) < 2:
+                        #    st.header("GPT-3's Analysis:")
+                        #    st.write(output)
                             #st.write("\n\n\n\n")
                             #st.subheader('As Lord Bacon says, "Truth will sooner come out from error than from confusion."  Please click on the Rank Bacon button above to rank this reply for future improvement.')
-                        elif int(filter_function()) == 2:
-                            st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed.")
+                        #elif int(filter_function()) == 2:
+                        #    st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed.")
 
-
+                        st.header("GPT-3's Analysis:")
+                        st.write(output)
                         st.header("Here is the prompt fed to GPT-3 for analyzing this source:")
                         st.write(prompt)
                         st.write(historical_method + histriography_options)
@@ -337,7 +339,8 @@ def app():
                         st.subheader('Please click on the **Rank Resonses** button at the top of this screen to rank this reply for future improvement.')
 
                         def total_output_collection():
-                            d1 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'date':[now]}
+                            #d1 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'date':[now]}
+                            d1 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'date':[now]}
                             df1 = pd.DataFrame(data=d1, index=None)
                             sh1 = gc.open('total_outputs_primary_sources')
                             wks1 = sh1[0]
@@ -355,18 +358,24 @@ def app():
                             wks2.set_dataframe(df2,(end_row2+1,1), copy_head=False, extend=True)
 
                         def temp_output_collection():
-                            d3 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'date':[now]}
+                            #d3 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'date':[now]}
+                            d3 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'date':[now]}
                             df3 = pd.DataFrame(data=d3, index=None)
                             sh3 = gc.open('primary_source_temp')
                             wks3 = sh3[0]
                             wks3.set_dataframe(df3,(1,1))
 
-                        if int(filter_function()) == 2:
-                            output_collection_filtered()
-                            total_output_collection()
-                        else:
-                            temp_output_collection()
-                            total_output_collection()
+                        #if int(filter_function()) == 2:
+                        #    output_collection_filtered()
+                        #    total_output_collection()
+                        #else:
+                        #    temp_output_collection()
+                        #    total_output_collection()
+
+                         temp_output_collection()
+                         total_output_collection()
+
+
 
         def lin_zexu_1():
             with col1:
@@ -411,7 +420,8 @@ def app():
                         openai.api_key = os.getenv("OPENAI_API_KEY")
 
                         summon = openai.Completion.create(
-                            model="text-davinci-003",
+                            #model="text-davinci-003",
+                            model='gpt-3.5-turbo-instruct'
                             prompt=primary_source_analysis,
                             temperature=0,
                             user="0",
@@ -425,80 +435,83 @@ def app():
                         for item in range(response_json):
                             output = summon['choices'][item]['text']
 
-                        response = openai.Completion.create(
-                                engine="content-filter-alpha",
-                                prompt= "<|endoftext|>"+output+"\n--\nLabel:",
-                                temperature=0,
-                                max_tokens=1,
-                                user="0",
-                                top_p=0,
-                                logprobs=10)
+                        #response = openai.Completion.create(
+                        #        engine="content-filter-alpha",
+                        #        prompt= "<|endoftext|>"+output+"\n--\nLabel:",
+                        #        temperature=0,
+                        #        max_tokens=1,
+                        #        user="0",
+                        #        top_p=0,
+                        #        logprobs=10)
 
-                        output_label = response["choices"][0]["text"]
+                        #output_label = response["choices"][0]["text"]
 
                             # OpenAI Content Filter code - comments in this section from OpenAI documentation: https://beta.openai.com/docs/engines/content-filter
                                 # This is the probability at which we evaluate that a "2" is likely real
                                     # vs. should be discarded as a false positive
 
-                        def filter_function():
-                            output_label = response["choices"][0]["text"]
-                            toxic_threshold = -0.355
+                        #def filter_function():
+                        #    output_label = response["choices"][0]["text"]
+                        #    toxic_threshold = -0.355
 
-                            if output_label == "2":
+                        #    if output_label == "2":
                                     # If the model returns "2", return its confidence in 2 or other output-labels
-                                logprobs = response["choices"][0]["logprobs"]["top_logprobs"][0]
+                        #        logprobs = response["choices"][0]["logprobs"]["top_logprobs"][0]
 
                                     # If the model is not sufficiently confident in "2",
                                     # choose the most probable of "0" or "1"
                                     # Guaranteed to have a confidence for 2 since this was the selected token.
-                                if logprobs["2"] < toxic_threshold:
-                                    logprob_0 = logprobs.get("0", None)
-                                    logprob_1 = logprobs.get("1", None)
+                        #        if logprobs["2"] < toxic_threshold:
+                        #            logprob_0 = logprobs.get("0", None)
+                        #            logprob_1 = logprobs.get("1", None)
 
                                         # If both "0" and "1" have probabilities, set the output label
                                         # to whichever is most probable
-                                    if logprob_0 is not None and logprob_1 is not None:
-                                        if logprob_0 >= logprob_1:
-                                            output_label = "0"
-                                        else:
-                                            output_label = "1"
+                        #            if logprob_0 is not None and logprob_1 is not None:
+                        #                if logprob_0 >= logprob_1:
+                        #                    output_label = "0"
+                        #                else:
+                        #                    output_label = "1"
                                         # If only one of them is found, set output label to that one
-                                    elif logprob_0 is not None:
-                                        output_label = "0"
-                                    elif logprob_1 is not None:
-                                        output_label = "1"
+                        #            elif logprob_0 is not None:
+                        #                output_label = "0"
+                        #            elif logprob_1 is not None:
+                        #                output_label = "1"
 
                                         # If neither "0" or "1" are available, stick with "2"
                                         # by leaving output_label unchanged.
 
                                 # if the most probable token is none of "0", "1", or "2"
                                 # this should be set as unsafe
-                            if output_label not in ["0", "1", "2"]:
-                                output_label = "2"
+                        #    if output_label not in ["0", "1", "2"]:
+                        #        output_label = "2"
 
-                            return output_label
+                        #    return output_label
 
                                 # filter or display OpenAI outputs, record outputs to Google Sheets API
-                        if int(filter_function()) < 2:
-                            st.header("GPT-3's Analysis:")
-                            st.write(output)
+                        #if int(filter_function()) < 2:
+                        #    st.header("GPT-3's Analysis:")
+                        #    st.write(output)
                             #st.write("\n\n\n\n")
                             #st.subheader('As Lord Bacon says, "Truth will sooner come out from error than from confusion."  Please click on the Rank Bacon button above to rank this reply for future improvement.')
-                        elif int(filter_function()) == 2:
-                            st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed.")
+                        #elif int(filter_function()) == 2:
+                        #    st.write("The OpenAI content filter ranks Bacon's response as potentially offensive. Per OpenAI's use policies, potentially offensive responses will not be displayed.")
 
+                        st.header("GPT-3's Analysis:")
+                        st.write(output)
                         st.header("Here is the prompt fed to GPT-3 for analyzing this source:")
                         st.write(prompt)
                         st.write(historical_method + histriography_options)
                         st.write(instructions)
                         #st.write("This prompt also uses a single-shot example of another primary source analysis to guide GPT-3's generation.")
-                        st.write("\n\n\n\n")
-                        st.write("OpenAI's Content Filter Ranking: " +  output_label)
+                        #st.write("\n\n\n\n")
+                        #st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
                         st.subheader('Please click on the **Rank Resonses** button at the top of this screen to rank this reply for future improvement.')
 
                         def total_output_collection():
-                            d1 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'date':[now]}
+                            #d1 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'date':[now]}
+                            d1 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'date':[now]}
                             df1 = pd.DataFrame(data=d1, index=None)
                             sh1 = gc.open('total_outputs_primary_sources')
                             wks1 = sh1[0]
@@ -516,18 +529,24 @@ def app():
                             wks2.set_dataframe(df2,(end_row2+1,1), copy_head=False, extend=True)
 
                         def temp_output_collection():
-                            d3 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'date':[now]}
+                            #d3 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'date':[now]}
+                            d3 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'date':[now]}
                             df3 = pd.DataFrame(data=d3, index=None)
                             sh3 = gc.open('primary_source_temp')
                             wks3 = sh3[0]
                             wks3.set_dataframe(df3,(1,1))
 
-                        if int(filter_function()) == 2:
-                            output_collection_filtered()
-                            total_output_collection()
-                        else:
-                            temp_output_collection()
-                            total_output_collection()
+                        #if int(filter_function()) == 2:
+                        #    output_collection_filtered()
+                        #    total_output_collection()
+                        #else:
+                        #    temp_output_collection()
+                        #    total_output_collection()
+
+                        temp_output_collection()
+                        total_output_collection()
+
+
 
         def mary_lease():
             with col1:
