@@ -153,7 +153,9 @@ def app():
                 openai.api_key = os.getenv("OPENAI_API_KEY")
 
                 summon = openai.Completion.create(
-                        model='text-davinci-002',
+                        # depcreated model
+                        #model='text-davinci-002',
+                        model='davinci-002'
                         prompt=st.session_state.question +  "A: " + st.session_state.option_a +  "B: " + st.session_state.option_b +  "C: " + st.session_state.option_c + "D: " + st.session_state.option_d,
                         temperature=0,
                         max_tokens=50)
