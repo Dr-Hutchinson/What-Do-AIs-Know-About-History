@@ -183,7 +183,9 @@ def app():
                             wks2.set_dataframe(df2,(end_row2+1,1), copy_head=False, extend=True)
 
                         def temp_output_collection():
-                            d3 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'date':[now]}
+                            #d3 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'filter_ranking':[output_label], 'date':[now]}
+                            d3 = {'question':[question], 'histriographies':[histriography_options], 'output':[output], 'date':[now]}
+
                             df3 = pd.DataFrame(data=d3, index=None)
                             sh3 = gc.open('primary_source_temp')
                             wks3 = sh3[0]
