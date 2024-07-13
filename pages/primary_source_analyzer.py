@@ -372,8 +372,8 @@ def app():
                         #    temp_output_collection()
                         #    total_output_collection()
 
-                         temp_output_collection()
-                         total_output_collection()
+                        temp_output_collection()
+                        total_output_collection()
 
 
 
