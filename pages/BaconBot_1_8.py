@@ -66,7 +66,7 @@ def app():
                             model_select = 'gpt-3.5-turbo-instruct'
                         else:
                             #model_select = st.secrets['novum_organum_model']
-                            movel_select = 'gpt-3.5-turbo-instruct'
+                            model_select = 'gpt-3.5-turbo-instruct'
 
                         if temperature_choice == "Low":
                             temperature_dial = 0
