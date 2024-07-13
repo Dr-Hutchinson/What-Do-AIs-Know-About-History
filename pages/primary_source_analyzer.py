@@ -333,8 +333,8 @@ def app():
                         st.write(historical_method + histriography_options)
                         st.write(instructions)
                         #st.write("This prompt also uses a single-shot example of another primary source analysis to guide GPT-3's generation.")
-                        st.write("\n\n\n\n")
-                        st.write("OpenAI's Content Filter Ranking: " +  output_label)
+                        #st.write("\n\n\n\n")
+                        #st.write("OpenAI's Content Filter Ranking: " +  output_label)
 
                         st.subheader('Please click on the **Rank Resonses** button at the top of this screen to rank this reply for future improvement.')
 
