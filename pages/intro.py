@@ -34,3 +34,5 @@ def app():
     st.write("**Can an AI Simulate a Historical Worldview?**: In this section users can pose questions to an AI instructed to imitate a figure from history: [Francis Bacon](https://en.wikipedia.org/wiki/Francis_Bacon) (1561-1626), former Lord Chancellor of England under Queen Elizabeth I and King James I, and a key figure in the Scientific Revolution.")
 
     st.write("**Project Goals, Methods, and Acknowledgements**: Explores the aims of this project, some of the methods used, and thanks those who contributed to this project.")
+
+    -st.write("**UPDATE 7/13/24**: With the depcrecation of GPT-3 models used in this 2022 experiment, the underlying models have been replaced with GPT-3.5. The custom models for BaconBot have likewise been retired and replaced.")

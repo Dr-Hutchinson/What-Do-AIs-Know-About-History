@@ -29,6 +29,7 @@ def app():
     st.title("Can an AI Simulate a Historical Worldview?")
     st.header("BaconBot: An AI Imitation of Francis Bacon")
     st.subheader("Public Demo")
+    st.subheader("UPDATE: The underlying BaconBot models were depcreated by OpenAI in 2023. The models have been replaced by GPT-3.5, and this app is for demonstration purposes only.")
     col1, col2 = st.columns([3.0,3.5])
 
     def button_one():
