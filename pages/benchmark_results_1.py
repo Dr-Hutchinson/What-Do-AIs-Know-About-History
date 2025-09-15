@@ -1,12 +1,12 @@
 # pages/benchmark_results_1.py
 # -*- coding: utf-8 -*-
 
+import re
 import streamlit as st
 import pandas as pd
 import pygsheets
 from google.oauth2 import service_account
 from openai import OpenAI
-from datetime import datetime as dt
 
 APP_TITLE = 'What Does an AI "Know" About History? (Minimal Demo)'
 
@@ -52,8 +52,10 @@ def parse_row(row: pd.Series):
     B = str(row.iloc[2]).strip()
     C = str(row.iloc[3]).strip()
     D = str(row.iloc[4]).strip()
-    # we won't use the official answer in this minimal demo, but keep it handy
-    ans_letter = str(row.iloc[5]).strip() if len(row) > 5 else ""
+    ans_letter = str(row.iloc[5]).strip().upper() if len(row) > 5 else ""
+    # Normalize weird entries like "A:" or "A) ..." to just "A"
+    if ans_letter and ans_letter[0] in "ABCD":
+        ans_letter = ans_letter[0]
     return q, A, B, C, D, ans_letter
 
 def mcq_prompt_plain(question: str, A: str, B: str, C: str, D: str) -> str:
@@ -65,11 +67,45 @@ def mcq_prompt_plain(question: str, A: str, B: str, C: str, D: str) -> str:
         f"Options:\nA. {A}\nB. {B}\nC. {C}\nD. {D}\n"
     )
 
+def letter_to_text(letter: str, A: str, B: str, C: str, D: str) -> str:
+    mapping = {"A": A, "B": B, "C": C, "D": D}
+    return mapping.get(letter.upper(), "")
+
+# --- NEW: simple parser for the model's final choice ---
+def extract_model_letter(raw_reply: str) -> str:
+    """
+    Try a few forgiving patterns to pull A/B/C/D from the raw model output.
+    Priority:
+      1) line like "Answer: C"
+      2) "Final answer: B"
+      3) standalone A/B/C/D token at line end or before punctuation
+    Returns "" if not found.
+    """
+    text = raw_reply.strip()
+
+    # 1) Preferred form: "Answer: X"
+    m = re.search(r'(?i)\banswer\s*:\s*([ABCD])\b', text)
+    if m:
+        return m.group(1).upper()
+
+    # 2) Common variant
+    m = re.search(r'(?i)\bfinal\s*answer\s*:\s*([ABCD])\b', text)
+    if m:
+        return m.group(1).upper()
+
+    # 3) Fallback: look for a single capital letter A-D at end of a line or before punctuation
+    # (avoid matching letters inside words)
+    m = re.search(r'(?m)(?:^|\s)([ABCD])(?=[\s\).:;,-]*$)', text)
+    if m:
+        return m.group(1).upper()
+
+    return ""
+
 # ---------- PAGE ENTRY POINT ----------
 
 def app():
     st.header(APP_TITLE)
-    st.caption("Minimal demo: loads a random AP question and shows the **raw** model reply. No scoring or schema.")
+    st.caption("Minimal demo: loads a random AP question and shows the **raw** model reply. Now also displays the official answer and a simple Correct/Incorrect check.")
 
     # Sidebar controls
     with st.sidebar:
@@ -105,7 +141,7 @@ def app():
     ss.setdefault("B", B)
     ss.setdefault("C", C)
     ss.setdefault("D", D)
-    ss.setdefault("ans_letter", ans_letter)  # not used here
+    ss.setdefault("ans_letter", ans_letter)  # we use this for display/check
 
     # Layout
     col1, col2 = st.columns(2)
@@ -116,18 +152,16 @@ def app():
         st.write("**Question**")
         st.write(ss["question_text"])
         choice = st.radio(
-            "Your choice (not scored in this demo):",
+            "Your choice:",
             [f"A: {ss['A']}", f"B: {ss['B']}", f"C: {ss['C']}", f"D: {ss['D']}"],
             index=0,
             key="human_choice",
         )
-        st.info("This demo does not check correctness—it's just for side-by-side comparison.")
 
     # ----- Model side -----
     with col2:
         st.subheader("Model")
         st.caption("Plain Chat Completions call; raw content shown below.")
-
         if st.button("Ask the Model"):
             client = get_openai_client()
             prompt = mcq_prompt_plain(ss["question_text"], ss["A"], ss["B"], ss["C"], ss["D"])
@@ -145,7 +179,29 @@ def app():
                 st.markdown("**Raw model reply:**")
                 st.code(content)
 
-                # Optional: show token usage if available
+                # ---- Show official answer from the sheet ----
+                correct_letter = ss["ans_letter"]
+                if correct_letter in ("A", "B", "C", "D"):
+                    correct_text = letter_to_text(correct_letter, ss["A"], ss["B"], ss["C"], ss["D"])
+                    st.markdown("**Official answer (from sheet):**")
+                    st.info(f"{correct_letter}: {correct_text}")
+                else:
+                    st.warning("No official answer letter found in the sheet for this question.")
+
+                # ---- Try to extract the model's final letter and show verdict ----
+                model_letter = extract_model_letter(content)
+                if model_letter:
+                    if correct_letter in ("A", "B", "C", "D"):
+                        if model_letter == correct_letter:
+                            st.success(f"Model marked as **Correct** (Model: {model_letter})")
+                        else:
+                            st.error(f"Model marked as **Incorrect** (Model: {model_letter}, Correct: {correct_letter})")
+                    else:
+                        st.caption(f"Model chose: {model_letter} (not scored; no official answer available)")
+                else:
+                    st.caption("Couldn’t detect a final letter (A/B/C/D) in the model’s reply.")
+
+                # Optional: token usage if available
                 usage = getattr(resp, "usage", None)
                 if usage:
                     st.caption(f"Tokens — prompt: {getattr(usage, 'prompt_tokens', 'n/a')}, "
