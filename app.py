@@ -35,7 +35,7 @@ with st.sidebar:
 
 # Add all your applications (pages) here
 app.add_page("1. Project Overview", intro.app)
-app.add_page('2. What Does an AI "Know" About A.P. History?', benchmarks_results_1.app)
+app.add_page('2. What Does an AI "Know" About A.P. History?', benchmark_results_1.app)
 app.add_page('3. How does an AI "Interpret" a Primary Source?', primary_source_analyzer.app)
 app.add_page("4. Can an AI Simulate a Historical Worldview?", BaconBot_1_8.app)
 app.add_page('5. Project Goals, Methods, and Acknowledgements', goals.app)
