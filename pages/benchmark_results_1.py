@@ -225,7 +225,7 @@ def ask_model_mcq(client: OpenAI, model: str, question_text: str, A: str, B: str
 
 # ============ Streamlit App ============
 
-def main():
+def app():
     st.set_page_config(page_title=APP_TITLE, layout="wide")
     st.header(APP_TITLE)
 
@@ -367,6 +367,3 @@ def main():
     except Exception as e:
         st.warning(f"Could not load benchmark snapshot: {e}")
 
-
-if __name__ == "__main__":
-    main()
