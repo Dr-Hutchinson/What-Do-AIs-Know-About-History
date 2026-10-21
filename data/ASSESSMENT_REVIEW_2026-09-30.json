@@ -1,0 +1,333 @@
+{
+  "reviewed_at": "2026-09-30T12:10:24.562727+00:00",
+  "runs": [
+    {
+      "name": "qwen3-4b-instruct-nscale-history",
+      "requested_model": "Qwen/Qwen3-4B-Instruct-2507:nscale",
+      "questions": 606,
+      "correct": 510,
+      "invalid": 0,
+      "finish_reasons": {
+        "stop": 606
+      },
+      "invalid_output_categories": {},
+      "response_models": {
+        "Qwen/Qwen3-4B-Instruct-2507": 606
+      },
+      "input_tokens": 1269359,
+      "output_tokens": 1212,
+      "estimated_token_cost_usd": 0.01272995,
+      "subjects": [
+        {
+          "Subject": "U.S. History",
+          "Correct": 174,
+          "Questions": 204,
+          "Accuracy": "85.3%",
+          "Invalid answers": 0,
+          "API failures": 0
+        },
+        {
+          "Subject": "European History",
+          "Correct": 135,
+          "Questions": 165,
+          "Accuracy": "81.8%",
+          "Invalid answers": 0,
+          "API failures": 0
+        },
+        {
+          "Subject": "World History",
+          "Correct": 201,
+          "Questions": 237,
+          "Accuracy": "84.8%",
+          "Invalid answers": 0,
+          "API failures": 0
+        }
+      ],
+      "known_defective_items": [
+        {
+          "id": "high_school_us_history:test:022",
+          "answer": "C",
+          "expected": "C",
+          "correct": true,
+          "status": "valid"
+        },
+        {
+          "id": "high_school_us_history:test:044",
+          "answer": "B",
+          "expected": "B",
+          "correct": true,
+          "status": "valid"
+        },
+        {
+          "id": "high_school_us_history:test:130",
+          "answer": "C",
+          "expected": "A",
+          "correct": false,
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "name": "qwen3-8b-nscale-history",
+      "requested_model": "Qwen/Qwen3-8B:nscale",
+      "questions": 606,
+      "correct": 499,
+      "invalid": 52,
+      "finish_reasons": {
+        "stop": 585,
+        "length": 21
+      },
+      "invalid_output_categories": {
+        "non-letter output": 31,
+        "empty response": 19,
+        "truncated text": 2
+      },
+      "response_models": {
+        "Qwen/Qwen3-8B": 606
+      },
+      "input_tokens": 1269359,
+      "output_tokens": 401923,
+      "estimated_token_cost_usd": 0.16120127,
+      "subjects": [
+        {
+          "Subject": "U.S. History",
+          "Correct": 165,
+          "Questions": 204,
+          "Accuracy": "80.9%",
+          "Invalid answers": 22,
+          "API failures": 0
+        },
+        {
+          "Subject": "European History",
+          "Correct": 136,
+          "Questions": 165,
+          "Accuracy": "82.4%",
+          "Invalid answers": 9,
+          "API failures": 0
+        },
+        {
+          "Subject": "World History",
+          "Correct": 198,
+          "Questions": 237,
+          "Accuracy": "83.5%",
+          "Invalid answers": 21,
+          "API failures": 0
+        }
+      ],
+      "known_defective_items": [
+        {
+          "id": "high_school_us_history:test:022",
+          "answer": "C",
+          "expected": "C",
+          "correct": true,
+          "status": "valid"
+        },
+        {
+          "id": "high_school_us_history:test:044",
+          "answer": "B",
+          "expected": "B",
+          "correct": true,
+          "status": "valid"
+        },
+        {
+          "id": "high_school_us_history:test:130",
+          "answer": "",
+          "expected": "A",
+          "correct": false,
+          "status": "invalid"
+        }
+      ]
+    },
+    {
+      "name": "qwen3-14b-nscale-history",
+      "requested_model": "Qwen/Qwen3-14B:nscale",
+      "questions": 606,
+      "correct": 545,
+      "invalid": 7,
+      "finish_reasons": {
+        "stop": 599,
+        "length": 7
+      },
+      "invalid_output_categories": {
+        "empty response": 7
+      },
+      "response_models": {
+        "Qwen/Qwen3-14B": 606
+      },
+      "input_tokens": 1269359,
+      "output_tokens": 350512,
+      "estimated_token_cost_usd": 0.15895753000000004,
+      "subjects": [
+        {
+          "Subject": "U.S. History",
+          "Correct": 187,
+          "Questions": 204,
+          "Accuracy": "91.7%",
+          "Invalid answers": 2,
+          "API failures": 0
+        },
+        {
+          "Subject": "European History",
+          "Correct": 143,
+          "Questions": 165,
+          "Accuracy": "86.7%",
+          "Invalid answers": 2,
+          "API failures": 0
+        },
+        {
+          "Subject": "World History",
+          "Correct": 215,
+          "Questions": 237,
+          "Accuracy": "90.7%",
+          "Invalid answers": 3,
+          "API failures": 0
+        }
+      ],
+      "known_defective_items": [
+        {
+          "id": "high_school_us_history:test:022",
+          "answer": "C",
+          "expected": "C",
+          "correct": true,
+          "status": "valid"
+        },
+        {
+          "id": "high_school_us_history:test:044",
+          "answer": "B",
+          "expected": "B",
+          "correct": true,
+          "status": "valid"
+        },
+        {
+          "id": "high_school_us_history:test:130",
+          "answer": "A",
+          "expected": "A",
+          "correct": true,
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "name": "qwen3-32b-nscale-history",
+      "requested_model": "Qwen/Qwen3-32B:nscale",
+      "questions": 606,
+      "correct": 537,
+      "invalid": 19,
+      "finish_reasons": {
+        "stop": 592,
+        "length": 14
+      },
+      "invalid_output_categories": {
+        "non-letter output": 5,
+        "empty response": 13,
+        "truncated text": 1
+      },
+      "response_models": {
+        "Qwen/Qwen3-32B": 606
+      },
+      "input_tokens": 1269359,
+      "output_tokens": 346236,
+      "estimated_token_cost_usd": 0.18810772,
+      "subjects": [
+        {
+          "Subject": "U.S. History",
+          "Correct": 184,
+          "Questions": 204,
+          "Accuracy": "90.2%",
+          "Invalid answers": 8,
+          "API failures": 0
+        },
+        {
+          "Subject": "European History",
+          "Correct": 139,
+          "Questions": 165,
+          "Accuracy": "84.2%",
+          "Invalid answers": 4,
+          "API failures": 0
+        },
+        {
+          "Subject": "World History",
+          "Correct": 214,
+          "Questions": 237,
+          "Accuracy": "90.3%",
+          "Invalid answers": 7,
+          "API failures": 0
+        }
+      ],
+      "known_defective_items": [
+        {
+          "id": "high_school_us_history:test:022",
+          "answer": "C",
+          "expected": "C",
+          "correct": true,
+          "status": "valid"
+        },
+        {
+          "id": "high_school_us_history:test:044",
+          "answer": "B",
+          "expected": "B",
+          "correct": true,
+          "status": "valid"
+        },
+        {
+          "id": "high_school_us_history:test:130",
+          "answer": "A",
+          "expected": "A",
+          "correct": true,
+          "status": "valid"
+        }
+      ]
+    }
+  ],
+  "pairwise": [
+    {
+      "left": "qwen3-4b-instruct-nscale-history",
+      "right": "qwen3-8b-nscale-history",
+      "different_parsed_answers": 105,
+      "both_correct": 467,
+      "left_only_correct": 43,
+      "right_only_correct": 32
+    },
+    {
+      "left": "qwen3-4b-instruct-nscale-history",
+      "right": "qwen3-14b-nscale-history",
+      "different_parsed_answers": 76,
+      "both_correct": 497,
+      "left_only_correct": 13,
+      "right_only_correct": 48
+    },
+    {
+      "left": "qwen3-4b-instruct-nscale-history",
+      "right": "qwen3-32b-nscale-history",
+      "different_parsed_answers": 96,
+      "both_correct": 482,
+      "left_only_correct": 28,
+      "right_only_correct": 55
+    },
+    {
+      "left": "qwen3-8b-nscale-history",
+      "right": "qwen3-14b-nscale-history",
+      "different_parsed_answers": 79,
+      "both_correct": 491,
+      "left_only_correct": 8,
+      "right_only_correct": 54
+    },
+    {
+      "left": "qwen3-8b-nscale-history",
+      "right": "qwen3-32b-nscale-history",
+      "different_parsed_answers": 97,
+      "both_correct": 478,
+      "left_only_correct": 21,
+      "right_only_correct": 59
+    },
+    {
+      "left": "qwen3-14b-nscale-history",
+      "right": "qwen3-32b-nscale-history",
+      "different_parsed_answers": 55,
+      "both_correct": 520,
+      "left_only_correct": 25,
+      "right_only_correct": 17
+    }
+  ],
+  "limitations": "One run per model; provider-default sampling. 4B Instruct 2507 has different post-training and supports only non-thinking mode. Known canonical defects retained. Invalid outputs count as unsuccessful. Token-cost estimates exclude unsaved interrupted requests and are not account billing records."
+}

@@ -1,48 +1,22 @@
 import streamlit as st
 
-# Custom imports
-from multipage import MultiPage
-from pages import benchmark_results_1, Baconbot_1_7_1, BaconBot_1_8, primary_source_analyzer, intro, goals
-#from pages import data_upload, machine_learning, metadata, data_visualize, redundant, inference # import your pages here
+from views import about, quiz, results, critique
 
-# Create an instance of the app
-app = MultiPage()
-
-st.set_page_config(
-    page_title="What Do AIs Know About History? A Digital History Experiment by Daniel Hutchinson",
-    layout='wide',
-    page_icon='🔍'
-)
-# Title of the main page
-with st.sidebar:
-    st.markdown(
-    """
-    <style>
-    [data-testid="stSidebar"][aria-expanded="true"] > div:first-child {
-        width: 450px;
-    }
-    [data-testid="stSidebar"][aria-expanded="false"] > div:first-child {
-        width: 500px;
-        margin-left: -500px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-    )
-
-    st.title("What Do AIs 'Know' About History? A Digital History Experiment")
-    #st.subheader("Created by Daniel Hutchinson")
-
-# Add all your applications (pages) here
-app.add_page("1. Project Overview", intro.app)
-app.add_page('2. What Does an AI "Know" About A.P. History?', benchmark_results_1.app)
-app.add_page('3. How does an AI "Interpret" a Primary Source?', primary_source_analyzer.app)
-app.add_page("4. Can an AI Simulate a Historical Worldview?", BaconBot_1_8.app)
-app.add_page('5. Project Goals, Methods, and Acknowledgements', goals.app)
-#app.add_page("5. BaconBot: An AI Simulation of Francis Bacon (Research)", Baconbot_1_7_1.app)
-
-
-#app.add_page("Y-Parameter Optimization",redundant.app)
-
-# The main app
-app.run()
+st.set_page_config(page_title="What Do AIs Know About History?", page_icon="📚", layout="wide")
+st.markdown("""<style>
+.block-container {max-width:1120px;padding-top:2.4rem;}
+[data-testid="stRadio"] label {padding:.55rem .7rem;border-radius:8px;}
+[data-testid="stRadio"] label:hover {background:rgba(18,124,112,.09);}
+[data-testid="stText"] {white-space:pre-wrap;line-height:1.7;font-size:1rem;font-family:inherit;}
+</style>""", unsafe_allow_html=True)
+st.sidebar.title("What Do AIs Know About History?")
+st.sidebar.caption("Take the challenge. Inspect the answers. Question the score.")
+pages = {
+    'about': st.Page(about, title="Start here", default=True),
+    'quiz': st.Page(quiz, title="You versus the model", url_path="quiz"),
+    'critique': st.Page(critique, title="Question the benchmark", url_path="critique"),
+    'results': st.Page(results, title="Explore model performance", url_path="results"),
+}
+st.session_state.navigation_pages = pages
+page = st.navigation(list(pages.values()))
+page.run()

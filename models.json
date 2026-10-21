@@ -1,0 +1,57 @@
+{
+  "Qwen/Qwen3-4B-Instruct-2507": {
+    "name": "Qwen3 4B Instruct 2507",
+    "creator": "Qwen team / Alibaba",
+    "family": "Qwen3",
+    "total_parameters_b": 4.0,
+    "active_parameters_b": 4.0,
+    "architecture": "Dense",
+    "license": "Apache 2.0 (model weights)",
+    "training": "A later post-trained release supporting only non-thinking mode. Differences from the original Qwen3 releases include post-training and reasoning behavior as well as size. Developer disclosures do not establish which benchmark items were seen during training.",
+    "source": "https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507"
+  },
+  "Qwen/Qwen3-8B": {
+    "name": "Qwen3 8B",
+    "creator": "Qwen team / Alibaba",
+    "family": "Qwen3",
+    "total_parameters_b": 8.2,
+    "active_parameters_b": 8.2,
+    "architecture": "Dense",
+    "license": "Apache 2.0 (model weights)",
+    "training": "The model card describes multilingual pretraining and post-training. This is a description of the developer's disclosure, not an audit of training exposure.",
+    "source": "https://huggingface.co/Qwen/Qwen3-8B"
+  },
+  "Qwen/Qwen3-4B": {
+    "name": "Qwen3 4B",
+    "creator": "Qwen team / Alibaba",
+    "family": "Qwen3",
+    "total_parameters_b": 4.0,
+    "active_parameters_b": 4.0,
+    "architecture": "Dense",
+    "license": "Apache 2.0 (model weights)",
+    "training": "The model card describes multilingual pretraining and post-training. This is a description of the developer's disclosure, not an audit of training exposure.",
+    "source": "https://huggingface.co/Qwen/Qwen3-4B"
+  },
+  "Qwen/Qwen3-14B": {
+    "name": "Qwen3 14B",
+    "creator": "Qwen team / Alibaba",
+    "family": "Qwen3",
+    "total_parameters_b": 14.8,
+    "active_parameters_b": 14.8,
+    "architecture": "Dense",
+    "license": "Apache 2.0 (model weights)",
+    "training": "The model card describes multilingual pretraining and post-training. This is a description of the developer's disclosure, not an audit of training exposure.",
+    "source": "https://huggingface.co/Qwen/Qwen3-14B"
+  },
+  "Qwen/Qwen3-32B": {
+    "name": "Qwen3 32B",
+    "creator": "Qwen team / Alibaba",
+    "family": "Qwen3",
+    "total_parameters_b": 32.8,
+    "active_parameters_b": 32.8,
+    "architecture": "Dense",
+    "license": "Apache 2.0 (model weights)",
+    "training": "The model card describes multilingual pretraining and post-training. This is a description of the developer's disclosure, not an audit of training exposure.",
+    "source": "https://huggingface.co/Qwen/Qwen3-32B"
+  }
+}

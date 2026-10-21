@@ -1,0 +1,31 @@
+{
+  "source": "https://people.eecs.berkeley.edu/~hendrycks/data.tar",
+  "retrieved": "2026-09-29",
+  "archive_sha256": "bec563ba4bac1d6aaf04141cd7d1605d7a5ca833e38f994051e818489592989b",
+  "files": {
+    "high_school_us_history_dev.csv": {
+      "sha256": "028b3c81c7be1138ad50b4afa1835773788e4557426a40abfaf132b11edab541",
+      "rows": 5
+    },
+    "high_school_us_history_test.csv": {
+      "sha256": "0338dea3b11881be53c2208ae8dbb571c792c0dca6f0b36a352147c0be81625e",
+      "rows": 204
+    },
+    "high_school_european_history_dev.csv": {
+      "sha256": "a3677065cf51abc32901cdcf88ed64121f5595e3a5a67f86ae2570f866fe87c5",
+      "rows": 5
+    },
+    "high_school_european_history_test.csv": {
+      "sha256": "09983655452c3c40ba466050ec82252f02a235e5946734f4d73b73688fc9509b",
+      "rows": 165
+    },
+    "high_school_world_history_dev.csv": {
+      "sha256": "b6e87a14718b0415241dfe10dd86605de5b6e5995fa57580e9e2d7c56fe147a1",
+      "rows": 5
+    },
+    "high_school_world_history_test.csv": {
+      "sha256": "7787343ae18e4e1ef833c8630c0c914c62f42c2f35d8b90f4bec2eecccfc161e",
+      "rows": 237
+    }
+  }
+}
