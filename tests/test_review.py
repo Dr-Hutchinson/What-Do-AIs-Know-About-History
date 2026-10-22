@@ -1,5 +1,6 @@
 import pytest
 
+from experience import ISSUES
 from review_assessments import review
 from test_history import make_full_run
 
@@ -29,5 +30,5 @@ def test_review_refuses_model_substitution_and_missing_usage():
 def test_review_preserves_known_defects_and_uses_reported_tokens():
     result = review(reviewed_fixture())
     assert result['questions'] == 606
-    assert len(result['known_defective_items']) == 3
+    assert {r['id'] for r in result['known_defective_items']} == set(ISSUES)
     assert result['estimated_token_cost_usd'] == pytest.approx((60600*.07+1212*.18)/1_000_000)

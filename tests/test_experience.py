@@ -18,9 +18,11 @@ def config(**overrides):
 
 def test_curation_preserves_canonical_dataset():
     assert len(questions('high_school_us_history')) == 204
-    assert len(visitor_questions('high_school_us_history')) == 201
+    assert len(visitor_questions('high_school_us_history')) == 188
     assert not ISSUES.keys() & {q['id'] for s in SUBJECTS for q in visitor_questions(s)}
-    assert len(visitor_questions('high_school_world_history')) == 237
+    assert len(visitor_questions('high_school_world_history')) == 235
+    assert len(visitor_questions('high_school_european_history')) == 164
+    assert len(ISSUES) == 19
 
 
 def test_live_answer_is_locked_and_not_repeated(tmp_path):
@@ -182,3 +184,62 @@ def test_registered_page_navigation():
     next(b for b in app.button if b.label == 'Take the history challenge').click().run()
     assert not app.exception
     assert app.title[0].value == 'You versus the model'
+
+
+def test_all_reviewed_defects_are_inspectable_without_scoring():
+    app = AppTest.from_string('from views import critique; critique()').run()
+    assert not app.exception
+    assert set(app.selectbox[0].options) == {
+        f"{item_id} · {issue['title']}" for item_id, issue in ISSUES.items()}
+    for item_id, issue in ISSUES.items():
+        app.selectbox[0].set_value(item_id).run()
+        assert not app.exception
+        assert not app.metric
+        # An unseen item's explanation must not inherit another item's reveal state.
+        assert not app.warning
+        next(b for b in app.button if b.label == 'Reveal the source problem').click().run()
+        assert not app.exception
+        assert app.warning[0].value == issue['explanation']
+        subject = item_id.split(':')[0]
+        q = next(q for q in questions(subject) if q['id'] == item_id)
+        assert any(q['question'].splitlines()[-1] in m.value for m in app.markdown)
+        assert any(f"original benchmark key is {q['answer']}:" in m.value for m in app.markdown)
+
+
+def test_existing_quiz_drops_newly_excluded_item(monkeypatch):
+    import views
+    monkeypatch.setattr(views, 'live_config', lambda: None)
+    app = AppTest.from_string('from views import quiz; quiz()').run()
+    assert not app.exception
+    state = app.session_state['quiz_state']
+    state['questions'][0] = questions('high_school_us_history')[32]
+    state['answers'][state['questions'][0]['id']] = 'A'
+    old_nonce = state['nonce']
+    app.run()
+    assert not app.exception
+    new_state = app.session_state['quiz_state']
+    assert new_state['nonce'] != old_nonce
+    assert not new_state['answers']
+    assert not ISSUES.keys() & {q['id'] for q in new_state['questions']}
+    exported = json.loads(session_json(new_state))
+    assert '19 reviewed structurally defective items' in exported['selection']
+
+
+def test_audit_ledger_covers_every_test_item():
+    import csv
+    from history import dataset_version
+    from experience import AUDIT_PATH
+    audit = json.loads(AUDIT_PATH.read_text())
+    assert audit['dataset_version'] == dataset_version()
+    all_ids = {q['id'] for subject in SUBJECTS for q in questions(subject)}
+    with AUDIT_PATH.with_suffix('.csv').open(newline='') as handle:
+        rows = list(csv.DictReader(handle))
+    assert len(rows) == len(all_ids) == 606
+    assert {r['id'] for r in rows} == all_ids
+    assert {r['id'] for r in rows if r['disposition'] == 'excluded_from_visitor_quiz'} == set(ISSUES)
+    # Preserve the exact originally observed mismatches and the new missing-reference cases.
+    for row in (18, 22, 33, 44, 49, 71, 97, 105, 117, 119, 127, 130, 171, 176, 188, 195):
+        assert f'high_school_us_history:test:{row:03}' in ISSUES
+    assert 'high_school_european_history:test:153' in ISSUES
+    assert 'high_school_world_history:test:037' in ISSUES
+    assert 'high_school_world_history:test:062' in ISSUES

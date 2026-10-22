@@ -18,15 +18,15 @@ HELM = "https://crfm.stanford.edu/helm/mmlu/latest/"
 
 
 def about():
-    st.title("What does a correct answer tell us?")
-    st.write("Test your historical knowledge alongside a language model—and examine what a benchmark score can tell us about either of you.")
+    st.title("What Do AIs Know About History?")
+    st.write("Test your historical knowledge alongside a language model—and examine what a history benchmark score can tell us.")
     st.markdown(f"A companion to Daniel Hutchinson’s **[Benchmarking as Source Criticism: From Recognition to Reasoning in LLM Assessment]({ARTICLE})**, *Journal of Open Humanities Data* 12 (2026), 43.")
     st.markdown('### Can you outperform an AI on ten history questions?')
     st.write('Take the challenge, compare answers, then examine what the score actually measures.')
     if st.button('Take the history challenge', type='primary'):
         st.switch_page(st.session_state.navigation_pages['quiz'])
     st.subheader("One benchmark, three history subjects")
-    st.write("MMLU—the Massive Multitask Language Understanding benchmark—includes multiple-choice questions in U.S., European, and World history. This project uses 606 test questions from those three subjects. Each offers four answer choices; uniform random guessing has an expected accuracy of 25%.")
+    st.write("MMLU—the Massive Multitask Language Understanding benchmark—includes multiple-choice questions in U.S., European, and World history. This project uses 606 test questions from those three subjects. Each offers four answer choices; random guessing has an expected accuracy of 25%.")
     st.write("Choose Test yourself for a ten-question quiz. Model results & methods shows recorded assessments, individual answers, and the procedure used to produce them. Your quiz answers stay in your session and can be downloaded for your own review.")
     st.subheader("Recognition and historical reasoning")
     st.write("Selecting a correct answer demonstrates success on that question. It does not by itself establish the ability to weigh evidence, explain causation, or engage with historiographical debate. A high score here is not a measure of professional historical expertise.")
@@ -39,8 +39,8 @@ def about():
 """)
     st.markdown(f"For wider comparisons, explore [Stanford’s HELM MMLU leaderboard]({HELM}).")
     with st.expander("Project history and acknowledgements"):
-        st.write("This project began in 2022 as an invitation for historians and the public to probe generative AI. This edition focuses on MMLU history assessment; the primary-source analyzer and Francis Bacon simulation have been retired.")
-        st.write("Thanks to Abraham Gibson, William Mattingly, Patrick Wadden, and Ian Crowe for their contributions and feedback. The original project was supported by a sabbatical semester from Belmont Abbey College’s Office of Academic Affairs, with support from Provost Travis Feezell and Vice Provost David Williams.")
+        st.write("This project began in 2022 as an invitation for historians and the public to probe generative AI. This revisied edition focuses on the MMLU history assessment.")
+        st.write("Thanks to Abraham Gibson, William Mattingly, Patrick Wadden, and Ian Crowe for their contributions and feedback. The original project was supported by a sabbatical semester from Belmont Abbey College’s Office of Academic Affairs.")
 
 
 def run_label(run):
@@ -126,11 +126,14 @@ def quiz():
     if not config:
         st.caption('Live open-model play is awaiting provider configuration. Recorded opponents appear after a complete assessment is published.')
     excluded = sum(q['id'] in ISSUES for q in questions(subject))
-    st.caption(f'Visitor selection: {len(visitor_questions(subject))} eligible items · {excluded} reviewed passage mismatches excluded. Full model assessments retain all canonical rows.')
+    st.caption(f'Visitor selection: {len(visitor_questions(subject))} eligible items · {excluded} reviewed defective items excluded. Full model assessments retain all canonical rows.')
     identity = (subject, json.dumps(opponent, sort_keys=True))
     state = st.session_state.get('quiz_state')
     restart = st.button('Start a new quiz')
-    if state is None or state['identity'] != identity or restart:
+    if state and any(q['id'] in ISSUES for q in state['questions']):
+        st.info('A question in your previous quiz has been excluded after review. A fresh quiz starts below.')
+    if (state is None or state['identity'] != identity or restart
+            or any(q['id'] in ISSUES for q in state['questions'])):
         state = {'identity': identity, 'questions': random.sample(visitor_questions(subject), 10),
                  'answers': {}, 'model_answers': {}, 'reflections': {}, 'index': 0,
                  'nonce': uuid.uuid4().hex, 'opponent': opponent}
@@ -236,21 +239,41 @@ def quiz():
 
 def critique():
     st.title('Question the benchmark')
-    st.write('A score depends on the questions and the key. Can you identify a problem in this canonical MMLU item?')
-    q = questions('high_school_us_history')[129]
+    st.write('A score depends on the questions and the key. Inspect confirmed defects in the original MMLU history items: swapped passages, missing source material, and keys that contradict the supplied text.')
+    exhibits = {q['id']: q for subject in SUBJECTS for q in questions(subject) if q['id'] in ISSUES}
+    st.caption(f'{len(exhibits)} reviewed items are excluded from the visitor challenge. These exhibits are unscored. Canonical data and full model assessments retain their original questions and keys.')
+    selected_id = st.selectbox(
+        'Inspect a defective benchmark item', list(exhibits),
+        format_func=lambda item_id: f"{item_id} · {ISSUES[item_id]['title']}",
+        index=list(exhibits).index('high_school_us_history:test:130'), key='critique_item')
+    q = exhibits[selected_id]
+    issue = ISSUES[selected_id]
     question_panel(q)
     for letter, option in zip(LETTERS, q['options']):
         st.write(f'{letter}. {option}')
-    st.caption('This exhibit is unscored and excluded from the ordinary visitor challenge.')
-    st.radio('Does the supplied passage support this question?', ['Choose an observation', 'Yes, it supplies the relevant context', 'No, the passage and question concern different contexts', 'I am unsure'], key='source_observation')
+    st.radio('What problem do you notice?', [
+        'Choose an observation', 'The passage and question concern different contexts',
+        'Required source material or a question referent is missing',
+        'The official key contradicts the supplied passage', 'I am unsure'],
+        key=f'source_observation_{selected_id}')
     if st.button('Reveal the source problem'):
-        st.session_state.source_revealed = True
-    if st.session_state.get('source_revealed'):
-        st.warning(ISSUES[q['id']]['explanation'])
-        st.write('The official key is A: British forts in the Great Lakes. An answer can agree with that key while bypassing the unrelated passage entirely. This exposes a problem in the assessment itself.')
-        st.write('We downloaded the original archive again and compared all six history CSVs byte for byte: 606 test questions and 15 development examples match. This defect is upstream, and appears in U.S. test rows 22, 44, and 130.')
-        st.markdown('[Original MMLU dataset and evaluation project](https://github.com/hendrycks/test)')
-        st.download_button('Download the validation report', (Path(__file__).parent / 'data/VALIDATION_2026-09-30.md').read_text(), 'mmlu-validation.md', 'text/markdown')
+        revealed = set(st.session_state.get('revealed_benchmark_items', []))
+        revealed.add(selected_id)
+        st.session_state.revealed_benchmark_items = sorted(revealed)
+    if selected_id in st.session_state.get('revealed_benchmark_items', []):
+        st.warning(issue['explanation'])
+        st.caption(f"Defect: {issue['kind']} · Reviewed {issue['reviewed']}")
+        st.write(f"The original benchmark key is {q['answer']}: {q['options'][LETTERS.index(q['answer'])]}")
+        st.write('This is the original key for inspection, not an endorsed or repaired answer. No score is awarded in this exhibit.')
+        st.write('A fresh original-archive comparison on 2026-10-21 confirmed that all six history CSVs and all 621 test/development rows match the local files and loader. These defects are present upstream; they were not introduced by the app.')
+    st.markdown('[Original MMLU dataset and evaluation project](https://github.com/hendrycks/test)')
+    report = Path(__file__).parent / 'data/STRUCTURAL_AUDIT_2026-10-21.md'
+    st.download_button('Download the question audit', report.read_text(encoding='utf-8'), 'mmlu-structural-audit.md', 'text/markdown')
+    with st.expander('Audit scope and all excluded items'):
+        st.write('All 606 test items were screened for structural alignment. This does not certify every remaining item or resolve disputed historical interpretations. A demonstrably swapped source group is excluded even when a stem remains answerable as standalone trivia.')
+        st.dataframe([{'ID': item_id, 'Subject': SUBJECTS[item['subject']],
+                       'Defect': ISSUES[item_id]['kind'], 'Problem': ISSUES[item_id]['title']}
+                      for item_id, item in exhibits.items()], hide_index=True, use_container_width=True)
     st.subheader('Four ways to read a score')
     tabs = st.tabs(['Training exposure', 'Whose history?', 'Recognition / reasoning', 'How do we know?'])
     with tabs[0]:
@@ -308,8 +331,8 @@ def results():
 1. **Fixed data:** 204 U.S., 165 European, and 237 World history test questions from the original MMLU archive. The source and file checksums are preserved with the project.
 2. **Five examples:** Each request contains all five worked development examples for its subject, then one test question with its four choices. The test answer is withheld. Each request is independent; no browsing or retrieval is supplied.
 3. **One answer:** The model is asked for a single letter. Scoring strips surrounding whitespace and accepts upper- or lower-case A–D. Explanations, ambiguous answers, and empty responses are invalid and count as unsuccessful.
-4. **Transparent results:** Accuracy is correct answers divided by all test questions in that subject, including invalid responses. API failures leave a run incomplete; it cannot enter the public comparison. Small smoke runs are also excluded.
-5. **A recorded experiment:** Model ID, dates, settings, prompts, raw responses, and scoring decisions are downloadable. A single run does not measure repeat-run stability. Settings and model versions matter when comparing results.
+4. **Transparent results:** Accuracy is correct answers divided by all test questions in that subject, including invalid responses. API failures leave a run incomplete; it cannot enter the public comparison.
+5. **A recorded experiment:** Model ID, dates, settings, prompts, raw responses, and scoring decisions are downloadable. A single run does not reproducibility. Settings and model versions matter when comparing results.
 """)
     st.subheader("What the scores cannot establish")
     st.write("Public benchmark questions may have appeared in training data. These results cannot distinguish memorization from generalization. They cover a limited curriculum and answer-selection task, not source criticism or interpretive synthesis. A ten-question visitor quiz is not included in the benchmark results.")

@@ -1,5 +1,9 @@
 # Restart handoff — 2026-09-30, interactive redesign
 
+## Structural question audit — 2026-10-21
+
+The user requested exclusion of structurally bogus questions from You versus the model and inclusion in Question the benchmark. All 606 test stems/options were screened with source grouping and full-item follow-up of suspects. A fresh upstream archive comparison passed for all six CSVs and 621 loaded test/dev rows. The audit now records 19 excluded items (16 U.S., 1 European, 2 World), including the original 3; visitor counts are 188, 164, and 235 respectively. See `data/STRUCTURAL_AUDIT_2026-10-21.md`, its JSON issue register, and the per-item CSV screening ledger. The exhibit exposes every excluded item, original key, and reason. Existing visitor sessions containing an excluded item restart on the next quiz render. Canonical data, evaluator code/prompts, and all four saved assessments remain unchanged. This structural screen is not certification of all remaining historical answers; borderline historical, attribution, and interpretive concerns remain outside the exclusion policy. Validation: 35 offline tests passed, dependency and whitespace checks passed, and protected data/evaluator/result files retained their original hashes. Older three-item counts below are historical.
+
 ## GitHub publication — 2026-10-21
 
 The user authorized committing and pushing the completed local updates to the existing GitHub repository. This authorization supersedes older no-publication stopping points below. Publication includes the redesigned app, canonical data, four complete assessments, tests, archived experiments, and preview controls. Secrets, partial runs, live allowance state, and preview runtime state remain excluded. Public live play remains disabled locally; hosted secrets are managed separately. Browser visual verification remains outstanding. See Git history for the publication commit.

@@ -1,14 +1,10 @@
 """Visitor curation and downloadable session records; canonical data stays unchanged."""
 import json
+from pathlib import Path
 from history import questions
 
-ISSUES = {
-    f'high_school_us_history:test:{row:03}': {
-        'kind': 'Passage / question mismatch',
-        'explanation': 'The passage is Samuel Thomas’s 1865 testimony about freedpeople. The question refers to Hamilton’s Federalist No. 15, whose passage is absent.',
-        'reviewed': '2026-09-30',
-    } for row in (22, 44, 130)
-}
+AUDIT_PATH = Path(__file__).resolve().parent / 'data/STRUCTURAL_AUDIT_2026-10-21.json'
+ISSUES = json.loads(AUDIT_PATH.read_text(encoding='utf-8'))['issues']
 
 
 def visitor_questions(subject):
@@ -26,7 +22,7 @@ def split_question(text):
 def session_json(state):
     return json.dumps({
         'purpose': 'Personal visitor challenge; not a full benchmark evaluation',
-        'selection': 'Random ten-item selection excluding the three reviewed passage mismatches',
+        'selection': f'Random ten-item selection excluding {len(ISSUES)} reviewed structurally defective items across all subjects',
         'opponent': state['opponent'],
         'items': [{**{k: v for k, v in q.items() if k != 'answer' or q['id'] in state['answers']},
                    'your_answer': state['answers'].get(q['id']),

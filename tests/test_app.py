@@ -10,7 +10,8 @@ def test_entry_and_results_without_secrets(monkeypatch):
     monkeypatch.setattr(views, 'published_runs', lambda: ([], []))
     app = AppTest.from_file('app.py').run()
     assert not app.exception
-    assert 'correct answer' in app.title[0].value
+    assert app.title[0].value
+    assert set(app.session_state['navigation_pages']) == {'about', 'quiz', 'critique', 'results'}
     result = AppTest.from_string('from views import results; results()').run()
     assert not result.exception
     assert 'No completed' in result.info[0].value

@@ -14,3 +14,7 @@ CSV columns (no header): question, A, B, C, D, answer letter. Stable IDs combine
 Citation: Dan Hendrycks, Collin Burns, Steven Basart, Andy Zou, Mantas Mazeika, Dawn Song, and Jacob Steinhardt. *Measuring Massive Multitask Language Understanding*. ICLR 2021. https://arxiv.org/abs/2009.03300
 
 The source repository publishes an MIT license, reproduced in `MMLU-LICENSE` with its copyright notice. Questions include material compiled from educational sources; this attribution does not assert new ownership of underlying excerpts. Preserve upstream notices and the dataset's educational/research provenance when redistributing.
+
+## Structural question audit
+
+See `STRUCTURAL_AUDIT_2026-10-21.md` for the 606-item structural screen and exclusion evidence. Its JSON issue register drives visitor filtering and the unscored exhibit; its CSV records a disposition for every test item. Canonical CSVs and full assessments are unchanged.
