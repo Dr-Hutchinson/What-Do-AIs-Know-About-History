@@ -10,6 +10,7 @@ st.markdown("""<style>
 [data-testid="stText"] {white-space:pre-wrap;line-height:1.7;font-size:1rem;font-family:inherit;}
 </style>""", unsafe_allow_html=True)
 st.sidebar.title("What Do AIs Know About History?")
+st.sidebar.caption("By Daniel Hutchinson")
 st.sidebar.caption("Take the challenge. Inspect the answers. Question the score.")
 pages = {
     'about': st.Page(about, title="Start here", default=True),
