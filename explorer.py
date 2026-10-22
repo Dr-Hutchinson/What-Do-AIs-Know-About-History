@@ -51,14 +51,35 @@ def comparison_charts(runs):
         return
     labels = [f"{r['config']['model']} · {r['name']}" for r in runs]
     accuracy = go.Figure()
-    for run, label in zip(runs, labels):
-        values = []
+    model_names = [CATALOG.get(catalog_id(run['config']['model']), {}).get(
+        'name', catalog_id(run['config']['model'])) for run in runs]
+    for index, (run, model_name) in enumerate(zip(runs, model_names)):
+        # Keep the legend readable; retain exact model and run identities in hover details.
+        label = model_name
+        if model_names.count(model_name) > 1:
+            label += f" · run {model_names[:index + 1].count(model_name)}"
+        values, details = [], []
         for subject in SUBJECTS:
             records = [r for r in run['records'] if r['subject'] == subject]
-            values.append(100 * sum(r['correct'] for r in records) / len(records))
-        accuracy.add_trace(go.Bar(name=label, x=list(SUBJECTS.values()), y=values))
-    accuracy.add_hline(y=25, line_dash='dot', annotation_text='Uniform random choice: 25%')
-    accuracy.update_layout(yaxis_title='Canonical test accuracy (%)', yaxis_range=[0, 100], barmode='group', height=390)
+            correct = sum(r['correct'] for r in records)
+            values.append(100 * correct / len(records))
+            details.append([run['config']['model'], run['name'], correct, len(records)])
+        accuracy.add_trace(go.Bar(
+            name=label, x=list(SUBJECTS.values()), y=values, customdata=details,
+            hovertemplate='<b>%{fullData.name}</b><br>%{x}: %{y:.1f}%'
+                          '<br>%{customdata[2]} / %{customdata[3]} correct'
+                          '<br>Model: %{customdata[0]}<br>Run: %{customdata[1]}<extra></extra>'))
+    accuracy.add_hline(
+        y=25, line_dash='dash', line_color='#343434', line_width=2.5,
+        annotation_text='<b>Random choice: 25%</b>', annotation_position='top left',
+        annotation_font_color='#202020', annotation_font_size=13,
+        annotation_bgcolor='#ffffff', annotation_bordercolor='#343434',
+        annotation_borderwidth=1, annotation_borderpad=4)
+    accuracy.update_layout(
+        yaxis_title='Canonical test accuracy (%)', yaxis_range=[0, 100],
+        barmode='group', height=460, margin=dict(l=65, r=20, t=25, b=125),
+        legend=dict(orientation='h', x=0, xanchor='left', y=-0.22, yanchor='top',
+                    entrywidth=0.5, entrywidthmode='fraction', font=dict(size=12)))
     st.plotly_chart(accuracy, use_container_width=True)
     st.caption('Full canonical test sets, including known defective items. These runs share our five-shot prompts; provider, token budget, sampling, and reasoning settings can differ and remain inspectable below.')
     settings = [{
